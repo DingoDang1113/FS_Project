@@ -11,10 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_08_14_212218) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "case_comments", force: :cascade do |t|
-    t.integer "case_id", null: false
-    t.integer "parent_comment_id"
-    t.integer "user_id"
+    t.bigint "case_id", null: false
+    t.bigint "parent_comment_id"
+    t.bigint "user_id"
     t.string "receiver_comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_212218) do
   create_table "case_requests", force: :cascade do |t|
     t.string "request_title", null: false
     t.string "request_category", null: false
-    t.integer "requester_id", null: false
+    t.bigint "requester_id", null: false
     t.text "request", null: false
     t.boolean "request_status", null: false
     t.datetime "created_at", null: false
@@ -35,11 +38,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_212218) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "company_id", null: false
+    t.string "company_code", null: false
     t.string "company_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_companies_on_company_id", unique: true
+    t.index ["company_code"], name: "index_companies_on_company_code", unique: true
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -72,14 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_212218) do
     t.string "org_level_three_description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["org_level_one_id"], name: "index_org_hierachies_on_org_level_one_id", unique: true
-    t.index ["org_level_three_id"], name: "index_org_hierachies_on_org_level_three_id", unique: true
-    t.index ["org_level_two_id"], name: "index_org_hierachies_on_org_level_two_id", unique: true
+    t.index ["org_level_one_id"], name: "index_org_hierachies_on_org_level_one_id"
+    t.index ["org_level_three_id"], name: "index_org_hierachies_on_org_level_three_id"
+    t.index ["org_level_two_id"], name: "index_org_hierachies_on_org_level_two_id"
     t.index ["position_code"], name: "index_org_hierachies_on_position_code", unique: true
   end
 
   create_table "user_effective_dates", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "field_name", null: false
     t.text "old_value"
     t.text "new_value"
@@ -95,13 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_212218) do
     t.string "last_name", null: false
     t.string "employee_status", null: false
     t.string "employee_id", null: false
+    t.date "start_date", null: false
+    t.date "termination_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "job_code", null: false
     t.string "level_code", null: false
     t.string "company_code", null: false
     t.string "position_id", null: false
-    t.integer "manager_id", null: false
+    t.bigint "manager_id", null: false
     t.index ["employee_id"], name: "index_users_on_employee_id", unique: true
     t.index ["manager_id"], name: "index_users_on_manager_id"
   end
@@ -111,7 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_212218) do
   add_foreign_key "case_comments", "users"
   add_foreign_key "case_requests", "users", column: "requester_id"
   add_foreign_key "user_effective_dates", "users"
-  add_foreign_key "users", "companies", column: "company_code", primary_key: "company_id"
+  add_foreign_key "users", "companies", column: "company_code", primary_key: "company_code"
   add_foreign_key "users", "jobs", column: "job_code", primary_key: "job_code"
   add_foreign_key "users", "levels", column: "level_code", primary_key: "level_code"
   add_foreign_key "users", "org_hierachies", column: "position_id", primary_key: "position_code"

@@ -17,4 +17,9 @@
 #  manager_id      :integer          not null
 #
 class User < ApplicationRecord
+    validates :first_name, :middle_name, :last_name, :employee_status,:job_code, :level_code, :company_code, :position_id, :manager_id, presence:true 
+
+    
+
+
 end
