@@ -2,8 +2,8 @@
 #
 # Table name: user_effective_dates
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer          not null
+#  id             :bigint           not null, primary key
+#  user_id        :bigint           not null
 #  field_name     :string           not null
 #  old_value      :text
 #  new_value      :text
@@ -12,4 +12,8 @@
 #  updated_at     :datetime         not null
 #
 class UserEffectiveDate < ApplicationRecord
+    validates :effective_date, :old_value, :new_value, presence:true
+    validates :field_name, presence: true, inclusion: {in: User.field_names}
+    
+    belongs_to :user 
 end
