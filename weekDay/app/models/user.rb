@@ -24,7 +24,7 @@ class User < ApplicationRecord
     before_validation :ensure_session_token 
 
     validates :first_name, :middle_name, :last_name, :employee_status,:job_code, :level_code, :company_code, :position_id, :manager_id, presence:true 
-    validates :employee_id, presence:true, uniqueness: true
+    validates :employee_id, :session_token, uniqueness: true, presence:true
     validates :password, length: {minimum: 6}, allow_nil: true
 
     belongs_to :company, foreign_key: :company_code
