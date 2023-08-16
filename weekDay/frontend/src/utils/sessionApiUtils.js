@@ -18,6 +18,7 @@ export const postSession = async credentials => {
         body: JSON.stringify(credentials)
     })
     const user = await res.json()
+    debugger
     return user 
 }
 

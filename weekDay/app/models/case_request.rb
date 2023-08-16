@@ -12,11 +12,11 @@
 #  updated_at       :datetime         not null
 #
 
-CATEGORY = ['PTO Request', 'Benefits - General', 'Benefits - Leave', 'Payslip']
+# CATEGORY = ['PTO Request', 'Benefits - General', 'Benefits - Leave', 'Payslip']
 
 class CaseRequest < ApplicationRecord
     validates :request_title, :request, presence:true
-    validates :request_category, presence: true, inclusion: {in: CATEGORY}
+    # validates :request_category, presence: true, inclusion: {in: CATEGORY}
 
     belongs_to :requester, class_name: :User
     has_many :case_comments

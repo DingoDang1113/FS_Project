@@ -2,7 +2,8 @@ import './App.css';
 // import { useState, useEffect } from 'react';
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import LoginForm from './components/LoginForm/LoginForm';
-import { Router } from 'react-router-dom';
+// import { Router } from 'react-router-dom';
+import UserWelcome from './components/UserWelcome/UserWelcome'
 
 
 
@@ -12,19 +13,15 @@ function App() {
     <>
       <header>
         <h1>May Flowers Employee Site</h1>
-        <p>powered by <strong>weekDay</strong></p>
+        <p>powered by <strong>weekday</strong></p>
       </header>
-    <Router>
+
+ 
       <Switch>
-        {/* <Route path='/api/session'> */}
-          <LoginForm />
-        {/* </Route> */}
-
-
+        <Route path={`/users/:userId`} component={UserWelcome} /> 
+        <Route path='/' component={LoginForm} /> 
       </Switch>
 
-
-    </Router>
 
     </>
   );

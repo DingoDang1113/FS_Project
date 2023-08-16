@@ -1,15 +1,13 @@
 
-* {
-    /* width: 90%; */
-}
-
 
 header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(171, 171, 248, 0.85);
+    /* background-color: #0b6efd; */
+    background-color: #2c69b6;
+    color: white;
     /* width: 80%; */
 }
 
@@ -23,4 +21,6 @@ p {
 
 strong {
     background-color: inherit;
+    color: #f4990b;
+    font-family: Linear Bold;
 }

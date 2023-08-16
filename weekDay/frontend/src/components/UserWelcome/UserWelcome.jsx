@@ -3,17 +3,20 @@ import { fetchUser } from '../../utils/userUtils';
 import './UserWelcome.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {selectUserById} from '../../store/usersReducer'
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-const UserWelcome = ({ user }) => {
+const UserWelcome = ({ }) => {
     const dispatch = useDispatch()
-    const employee = useSelector(state => selectUserById(state, user.id));
+    const {userId} = useParams()
+    const employee = useSelector(state => selectUserById(state, userId));
+
 
     useEffect(() => {
         if(!employee) {
-            dispatch(fetchUser(user.id));
+            dispatch(fetchUser(userId));
         }
-    }, [dispatch, user.id, employee]);
+    }, [dispatch, userId]);
 
 
     return (
