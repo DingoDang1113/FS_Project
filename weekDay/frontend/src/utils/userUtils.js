@@ -22,7 +22,7 @@ export const fetchUser = async employeeId => {
 } 
 
 export const createUser = async user => {
-    const res = await csrfFetch('api/users', {
+    const res = await csrfFetch('/api/users', {
         method: "POST"
     })
     if (res.ok) {
@@ -34,7 +34,7 @@ export const createUser = async user => {
 }
 
 export const deleteUser = async userId => {
-    const res = await csrfFetch(`api/users/${userId}`, {
+    const res = await csrfFetch(`/api/users/${userId}`, {
         method: "DELETE"
     })
     if (res.ok) {

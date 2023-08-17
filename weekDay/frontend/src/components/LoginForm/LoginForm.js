@@ -55,7 +55,7 @@ function LoginForm() {
                     <button type="submit">Login</button>
                 </form>
                 <div className="auth-links">
-                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/users/new">Sign Up</Link>
                     <Link to="/forgot-password">Forgot Password?</Link>
                     <Link to="/hr-demo-login">HR Demo Login</Link>
                 </div>

@@ -4,39 +4,46 @@ import './UserWelcome.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {findUser, logoutUser} from '../../store/usersReducer'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { Redirect} from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect, } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react"
 
 
 
 const UserWelcome = () => {
+    
     const dispatch = useDispatch()
     const {employeeId} = useParams()
     const userid = useSelector((state) =>  state.session?.currentUser)
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
     // console.log(useSelector((state) =>  state.session.currentUser))
     // console.log(employee)
-    const [redirectToLogin, setRedirectToLogin] = useState(false)
-
-
+    // const [redirectToLogin, setRedirectToLogin] = useState(false)
+    
+    
     useEffect(() => {
         if(!employee) {
             dispatch(findUser(employeeId));
         }
     }, [dispatch, employeeId]);
-
-const handleClick = () => {
     
-    // if (employee) {
+    const handleClick = () => {
+        // const clicked = true
         dispatch(logoutUser(employeeId))
-        setRedirectToLogin(true)
-    // }
-}
-
+        // if (employee) {
+            //     setRedirectToLogin(true)
+            // }
+        }
+        
+    if (!userid && !employee) return <Redirect to={`/`} />
+//   useEffect(() => {
+//     if(!userid) {
+//         Redirect('/')
+//     }
+//   }, [userid])
 
     return (
         <>
-            {redirectToLogin ? <Redirect to="/" /> : null}
+            {/* {redirectToLogin ? <Redirect to="/" /> : null} */}
             <header>
                 <p>Profile</p>
                 <p>Create a request</p>
