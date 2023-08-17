@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-    before_action :require_logged_in, only: [:destroy]
+    # before_action :require_logged_in, only: [:destroy]
     # before_action :require_logged_out, only: [:create]
   
     def show
@@ -26,7 +26,7 @@ class Api::SessionsController < ApplicationController
     end
   
     def destroy
-      logout
+      logout if current_user
       head :no_content
     end
   end

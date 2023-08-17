@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 import { postUser } from "../../utils/sessionApiUtils"
 
+
 const UserForm = props => {
     const currentUser = useSelector(state.session.currentUser)
     const dispatch = useDispatch()
@@ -41,7 +42,7 @@ const UserForm = props => {
     return (
         <form onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
-            
+
 
 
         </form>

@@ -35,7 +35,7 @@ function LoginForm() {
     return (
 
         <>
-            <header>
+            <header className="login-header">
                 <h1>May Flowers Employee Site</h1>
                 <p>powered by <strong>weekday</strong></p>
             </header>

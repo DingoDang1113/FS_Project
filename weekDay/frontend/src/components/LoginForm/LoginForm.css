@@ -4,7 +4,7 @@
     /* width: 80%; */
 }
 
-header {
+.login-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +27,7 @@ strong {
     background-color: inherit;
     color: #f4990b;
     font-family: Linear Bold;
+    font-weight: 900;
 }
 
 .login-container{

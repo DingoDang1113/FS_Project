@@ -27,24 +27,23 @@ const UserWelcome = () => {
 
 const handleClick = () => {
     
-    dispatch(logoutUser(employeeId))
-    // if (!employee) {
-        // setRedirectToLogin(true)
+    // if (employee) {
+        dispatch(logoutUser(employeeId))
+        setRedirectToLogin(true)
     // }
 }
 
 
     return (
         <>
-            {/* {redirectToLogin ? <Redirect to="/" /> : null} */}
+            {redirectToLogin ? <Redirect to="/" /> : null}
             <header>
                 <p>Profile</p>
                 <p>Create a request</p>
                 <p>Org Chart</p>
                 <button onClick={handleClick}> SignOut</button>
             </header>
-
-            <h1> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal  </h1>
+            <p> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal  </p>
         
         </>
     )
