@@ -5,7 +5,7 @@ import { postUser } from "../../utils/sessionApiUtils"
 
 
 const UserForm = props => {
-    const currentUser = useSelector(state.session.currentUser)
+    const currentUser = useSelector(state => state.session.currentUser)
     const dispatch = useDispatch()
     const [employeeId, setEmployeeId] = useState('')
     const [firstName, setFirstName] = useState('')
@@ -15,7 +15,7 @@ const UserForm = props => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [errors, setErrors] = useState([])
 
-    if (sessionUser) return <Redirect to='/' />
+    if (currentUser) return <Redirect to='/' />
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -48,3 +48,5 @@ const UserForm = props => {
         </form>
     )
 }
+
+export default UserForm

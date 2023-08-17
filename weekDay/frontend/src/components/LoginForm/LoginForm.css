@@ -40,3 +40,18 @@ strong {
     /* width: 15%; */
 }
 
+.login-container .auth-links {
+    text-decoration: none;
+    color:inherit;
+    cursor: pointer;
+    font-family: inherit;
+    /* padding: 2px; */
+    margin-right: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: left;
+    margin-top: 5px;
+
+}
+

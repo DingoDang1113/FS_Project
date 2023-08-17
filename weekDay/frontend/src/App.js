@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import LoginForm from './components/LoginForm/LoginForm';
 // import { Router } from 'react-router-dom';
 import UserWelcome from './components/UserWelcome/UserWelcome'
+import UserForm from './components/UserForm/UserForm';
 
 
 
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route path={`/users/:employeeId`} component={UserWelcome} /> 
         <Route path='/' component={LoginForm} /> 
+        <Route path='users/new' component={UserForm} />
       </Switch>
     </>
   );
