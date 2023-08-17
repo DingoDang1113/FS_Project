@@ -11,8 +11,8 @@ export const fetchAllUsers = () => (
      })
 )
 
-export const fetchUser = async userId => {
-    const res = await fetch(`/api/users/${userId}`)
+export const fetchUser = async employeeId => {
+    const res = await fetch(`/api/users/${employeeId}`)
     if(res.ok) {
         const data = await res.json()
         return data 

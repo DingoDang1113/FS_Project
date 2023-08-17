@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { restoreSession } from './utils/authUtils';
+import { csrfFetch, restoreSession } from './utils/authUtils';
 import { Provider } from 'react-redux';
 import configureStore from './store/store';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 const store = configureStore ({
-  session: {
-    currentUser: 1
-  }
+  // session: {
+  //   currentUs
+  // }
 })
+
+window.csrfFetch = csrfFetch
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

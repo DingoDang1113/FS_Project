@@ -1,4 +1,5 @@
 import { deleteSession, postSession, postUser } from "../utils/sessionApiUtils";
+import { fetchUser } from "../utils/userUtils";
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -8,19 +9,26 @@ export const receiveUser = user => ({
     payload: user
 })
 
-export const removeUser = userId => ({
+export const removeUser = employeeId => ({
     type: REMOVE_USER,
-    payload: userId
+    payload: employeeId
 })
 
-export const selectUserById = (state, userId) => {
-    return state.users.byId[userId]
-}
+// export const selectUserById = (state, userId) => {
+//     return state.users.byId[userId]
+// }
 
 export const createUser = userData => dispatch => (
     postUser(userData)
         .then(user => {
             sessionStorage.setItem('currentUser', JSON.stringify(user.user))
+            dispatch(receiveUser(user))
+        })
+)
+
+export const findUser = userData => dispatch => (
+    fetchUser(userData)
+        .then(user => {
             dispatch(receiveUser(user))
         })
 )
@@ -34,12 +42,11 @@ export const loginUser = credentials => dispatch => (
         })
 )
 
-export const logoutUser = userId => dispatch => (
+export const logoutUser = employeeId => dispatch => (
     deleteSession()
         .then(() => {
             sessionStorage.setItem('currentUser', null)
-            dispatch(removeUser(userId))
-
+            dispatch(removeUser(employeeId))
         })
 )
 
@@ -50,7 +57,7 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_USER: 
             nextState[action.payload.user.id] = action.payload.user
             return nextState
-        case RECEIVE_USER: 
+        case REMOVE_USER: 
             delete nextState[action.payload]
             return nextState
         default: 

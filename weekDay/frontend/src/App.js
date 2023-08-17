@@ -11,18 +11,10 @@ import UserWelcome from './components/UserWelcome/UserWelcome'
 function App() {
   return (
     <>
-      <header>
-        <h1>May Flowers Employee Site</h1>
-        <p>powered by <strong>weekday</strong></p>
-      </header>
-
- 
       <Switch>
-        <Route path={`/users/:userId`} component={UserWelcome} /> 
+        <Route path={`/users/:employeeId`} component={UserWelcome} /> 
         <Route path='/' component={LoginForm} /> 
       </Switch>
-
-
     </>
   );
 }

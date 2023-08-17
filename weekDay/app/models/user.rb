@@ -44,7 +44,7 @@ class User < ApplicationRecord
     end
 
 
-    def self.find_by_credentials(username, password)
+    def self.find_by_credentials(employee_id, password)
         user = User.find_by(employee_id: employee_id)
         
         if user && user.authenticate(password)

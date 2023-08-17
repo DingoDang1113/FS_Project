@@ -3,7 +3,7 @@
 export const restoreSession = async () => {
     try {
         const res = await fetch('/api/session');
-        const token = res.headers.get('X-Csrf-Token');
+        const token = res.headers.get('X-CSRF-Token');
 
         if (res.ok) {
             const data = await res.json(); 
@@ -30,6 +30,7 @@ export const csrfFetch = async (url, options = {}) => {
     }
 
     const res = await fetch(url, options);
+    // debugger
 
     if (!res.ok) {
         console.error('Error in csrfFetch:', res.statusText);
