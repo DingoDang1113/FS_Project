@@ -16,6 +16,6 @@ class CaseComment < ApplicationRecord
     belongs_to :case_request, foreign_key: :case_id
     belongs_to :user 
     belongs_to :parent_comment, class_name: :CaseComment, optional: true
-    has_many :replies, class_name: :CaseComment, foreign_key: :parent_comment_id 
+    has_many :replies, class_name: :CaseComment, foreign_key: :parent_comment_id,dependent: :destroy
     
 end

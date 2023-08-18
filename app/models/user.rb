@@ -33,9 +33,9 @@ class User < ApplicationRecord
     belongs_to :position, primary_key: :position_code,  foreign_key: :position_id, class_name: :OrgHierachy
     belongs_to :manager, primary_key: :id, class_name: :User, foreign_key: :manager_id, optional: true
 
-    has_many :case_requests, foreign_key: :requester_id
-    has_many :case_comments
-    has_many :user_effective_dates
+    has_many :case_requests, foreign_key: :requester_id,dependent: :destroy
+    has_many :case_comments,dependent: :destroy
+    has_many :user_effective_dates,dependent: :destroy
 
 
 
