@@ -19,7 +19,7 @@ export const postSession = async credentials => {
     })
     if (res.ok) {
         const user = await res.json()
-        console.log('postSession User', user)  
+        // console.log('postSession User', user)  
         // {
         //     "user": {
         //         "id": 1,
