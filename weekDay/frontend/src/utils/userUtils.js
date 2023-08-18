@@ -21,15 +21,17 @@ export const fetchUser = async employeeId => {
     }
 } 
 
-export const createUser = async user => {
+export const createUser = async userData => {
     const res = await csrfFetch('/api/users', {
-        method: "POST"
+        method: "POST",
+        body: JSON.stringify(userData)
     })
     if (res.ok) {
         const data = await res.json()
         return data 
     } else {
-        throw res 
+        const errors = await res.json()
+        throw errors
     }
 }
 

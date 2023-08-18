@@ -1,5 +1,8 @@
 import { deleteSession, postSession, postUser } from "../utils/sessionApiUtils";
 import { fetchUser } from "../utils/userUtils";
+import { createUser } from "../utils/userUtils";
+import {receiveCreateUserErrors, receiveLoginUserErrors} from './errorsReducer'
+import * as usersUtils from '../utils/userUtils'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -18,13 +21,15 @@ export const removeUser = employeeId => ({
 //     return state.users.byId[userId]
 // }
 
-export const createUser = userData => dispatch => (
-    postUser(userData)
-        .then(user => {
-            sessionStorage.setItem('currentUser', JSON.stringify(user.user))
-            dispatch(receiveUser(user))
-        })
-)
+export const createEmployee = userData => async dispatch => {
+    try {
+        const user = await usersUtils.createUser(userData)
+        return dispatch(receiveUser({user}))
+    } catch (errors) {
+        dispatch(receiveCreateUserErrors(errors))
+        // throw errors
+    }
+}
 
 export const findUser = userData => dispatch => (
     fetchUser(userData)
@@ -33,14 +38,20 @@ export const findUser = userData => dispatch => (
         })
 )
 
-export const loginUser = credentials => dispatch => (
+export const loginUser = credentials => async dispatch => {
+    // try {
+    //     const user = await postSession(credentials)
+    //     return dispatch(receiveUser({user}))
+    // } catch(errors) {
+    //     dispatch(receiveLoginUserErrors(errors))
+    // }
     postSession(credentials)
         .then (user => {
             sessionStorage.setItem('currentUser', JSON.stringify(user.user))
             dispatch(receiveUser(user))
-            
         })
-)
+        .catch(error => dispatch(receiveLoginUserErrors(error)))
+}
 
 export const logoutUser = employeeId => dispatch => (
     deleteSession()

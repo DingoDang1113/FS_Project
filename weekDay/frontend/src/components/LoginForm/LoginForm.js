@@ -1,15 +1,19 @@
 import { useState } from "react"
-import { postSession } from '../../utils/sessionApiUtils';
+// import { postSession } from '../../utils/sessionApiUtils';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import './LoginForm.css'
 import { loginUser } from "../../store/usersReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+
+
 
 function LoginForm() {
     const [employeeId, setEmployeeId] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const errors = useSelector(state => state.errors.loginUser.errors)
+
     const currentUser = useSelector((state) =>  state.session?.currentUser)
     const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
     // console.log(useSelector((state) => state.entities.users[currentUser].employeeId))
@@ -21,12 +25,6 @@ function LoginForm() {
         try {
             // const user = await loginUser({ employee_id: employeeId, password });
             const user = await dispatch(loginUser({employeeId: employeeId, password}))
-            // if (user) {
-            //     console.log('Login successful', user);
-
-            // } else {
-            //     console.log('Login failed');
-            // }
         } catch (error) {
             console.error('There was an error during login', error);
         }
@@ -55,11 +53,17 @@ function LoginForm() {
                     <button type="submit">Login</button>
                 </form>
                 <div className="auth-links">
-                    <Link to="/users/new">Sign Up</Link>
-                    <Link to="/forgot-password">Forgot Password?</Link>
-                    <Link to="/hr-demo-login">HR Demo Login</Link>
+                    <Link to="/users/new"> Sign Up</Link>
+                    {/* <Link to="/forgot-password">Forgot Password?</Link> */}
+                    <Link to={"/users/G433"}>HR Demo Login</Link>
                 </div>
             </div>
+
+            <ul className="error-login">
+                {Array.isArray(errors) ? errors.map((error) => <li key={error}>{error}</li>) : ''}
+            </ul>
+
+
         </>
 
 

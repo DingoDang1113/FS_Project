@@ -35,22 +35,19 @@ const UserWelcome = () => {
         }
         
     if (!userid && !employee) return <Redirect to={`/`} />
-//   useEffect(() => {
-//     if(!userid) {
-//         Redirect('/')
-//     }
-//   }, [userid])
+
 
     return (
         <>
-            {/* {redirectToLogin ? <Redirect to="/" /> : null} */}
             <header>
                 <p>Profile</p>
                 <p>Create a request</p>
                 <p>Org Chart</p>
+                {employee.firstName=== 'HR' && <p> HR Functions </p>}
                 <button onClick={handleClick}> SignOut</button>
             </header>
             <p> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal  </p>
+
         
         </>
     )

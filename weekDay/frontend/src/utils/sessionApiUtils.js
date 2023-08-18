@@ -17,9 +17,14 @@ export const postSession = async credentials => {
         method: "POST",
         body: JSON.stringify(credentials)
     })
-    const user = await res.json()
-    // debugger
-    return user 
+    if (res.ok) {
+        const user = await res.json()
+        return user
+    } else {
+        const errors = await res.json()
+        throw errors
+    }
+
 }
 
 export const deleteSession = async() => {

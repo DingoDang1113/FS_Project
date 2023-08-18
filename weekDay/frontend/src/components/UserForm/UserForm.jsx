@@ -1,21 +1,22 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
-import { postUser } from "../../utils/sessionApiUtils"
+// import { postUser } from "../../utils/sessionApiUtils"
 import './UserForm.css'
-import { createUser } from "../../store/usersReducer"
+import { createEmployee } from "../../store/usersReducer"
 
 
 const UserForm = () => {
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
+    const errors = useSelector(state => state.errors.createUser)
     const [employeeId, setEmployeeId] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLasttName] = useState('')
     const [middleName, setMiddleName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
 
     // if (sessionUser) return <Redirect to='/' />
 
@@ -27,30 +28,39 @@ const UserForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(password === confirmPassword) {
-            setErrors([]);
-            return dispatch(createUser({employeeId:'E1234', firstName, middleName, lastName, password}))
-                .catch(async (res) => {
-                let data; 
-                try {
-                    data = await res.json()
-                } catch {
-                    data = await res.text()
+            // setErrors([]);
+            return dispatch(createEmployee({employeeId, firstName, middleName, lastName, password}))
+                // .catch(async (res) => {
+                // let data; 
+                // try {
+                // debugger
+                    // data = await res.json()
+                    // console.log(data)
+                // } catch {
+                // debugger
+                    // data = await res.text()
                 }
-                if(data?.errors) setErrors(data.errors); 
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText])
-            });
-        }
-        return setErrors(['Confirmed Password is not matching Password']);
+                // console.log(data)
+                // debugger
+                // if(data?.errors) setErrors(data.errors); 
+                // else if (data) setErrors(data);
+                // else setErrors([res.statusText])
+            // });
+        // }
+        // return setErrors(['Confirmed Password is not matching Password']);
+        
     }
+    // console.log(errors)
 
     return (
-        <>     
-            <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {/* {errors.map((error) => <li key={error}>{error}</li>)} */}
-                </ul>
+        <>   
+            <header className="header-signup">
+                <h1>May Flowers Employee Site</h1>
+                <p>powered by <strong>weekday</strong></p>
+            </header>
+                <h2 className="title-signup">Sign Up</h2>
+                    <p className="title-signup">Welcome Onboard! </p>
+            <form onSubmit={handleSubmit} className="signup-form">
                 {/* <label> Employee Id
                     <input type="text" value={employeeId}  onChange={(e) => setEmployeeId(e.target.value)} required />
                     {/* <input type="hidden" value={'E1234'} /> */}
@@ -75,7 +85,11 @@ const UserForm = () => {
                     <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                 </label>
 
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="button-signup">Submit</button>
+
+                <ul>
+                    {errors.map((error) => <li key={error}>{error}</li>)}
+                </ul>
             </form>
         </>
     )

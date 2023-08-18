@@ -32,10 +32,10 @@ export const csrfFetch = async (url, options = {}) => {
     const res = await fetch(url, options);
     // debugger
 
-    if (!res.ok) {
-        console.error('Error in csrfFetch:', res.statusText);
-        throw res;
-    }
+    // if (!res.ok) {
+        // console.error('Error in csrfFetch:', res.statusText);
+        // throw res;
+    // }
 
     return res;
 }

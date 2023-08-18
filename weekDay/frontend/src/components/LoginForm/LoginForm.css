@@ -40,18 +40,43 @@ strong {
     /* width: 15%; */
 }
 
-.login-container .auth-links {
-    text-decoration: none;
-    color:inherit;
+.auth-links {
+    /* text-decoration: none; */
+    /* color:inherit; */
     cursor: pointer;
-    font-family: inherit;
+    /* font-family: inherit; */
     /* padding: 2px; */
-    margin-right: 2px;
+    /* margin-right: 2px; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: left;
-    margin-top: 5px;
-
+    /* margin-top: 5px; */
+    background-color: #2c69b6;
 }
 
+.error-login{
+    width: 60%;
+    color:red;
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: left; */
+    list-style: none;
+    background-color: #f4990b;
+    margin-left: 40%;
+}
+
+ul{
+    width: 100%;
+    border: #2c69b6;
+}
+
+li {
+    width: 100%;
+    background-color: #2c69b6;
+}
+
+Link {
+    text-decoration: none;
+    background-color: #2c69b6;
+}
