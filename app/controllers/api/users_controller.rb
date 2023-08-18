@@ -30,9 +30,7 @@ class Api::UsersController < ApplicationController
       @user.job_code = 'IT001'
       @user.level_code = '101'
       @user.company_code = 'MFLO'
-      # @user.job = 'IT People'
-      # @user.level = '101'
-      @user.position_id = 'P001'
+      @user.position_id = 'P131'
       @user.start_date = Date.today
       
       if @user.save
@@ -70,16 +68,9 @@ class Api::UsersController < ApplicationController
     def generate_employee_id 
       loop do 
           random_letter = ('A'..'Z').to_a.sample 
-          random_number = (rand(0..999).to_s).rjust(3, '0')
+          random_number = (rand(0..9999).to_s).rjust(4, '0')
           employee_id = (random_letter + random_number)
           return employee_id unless  User.exists?(employee_id: employee_id)
         end
     end
-
-    # ceo_employee_id = generate_employee_id
-    # cto_employee_id = generate_employee_id
-    # it_director_eid = generate_employee_id
-
-
-
   end

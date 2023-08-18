@@ -32,7 +32,7 @@ function LoginForm() {
 
     const handleHRDemo = async (e) => {
         e.preventDefault();
-        const user = await dispatch(loginUser({employeeId: 'G433', password: '123456'}))
+        const user = await dispatch(loginUser({employeeId: 'G4333', password: '123456'}))
     }
 
     const handleMgrDemo = async (e) => {
@@ -67,7 +67,7 @@ function LoginForm() {
                 <div className="auth-links">
                     <Link to="/users/new"> New Hire Sign Up</Link>
                     {/* <Link to="/forgot-password">Forgot Password?</Link> */}
-                    <Link to={"/users/G433"} onClick={handleHRDemo}>HR Demo Login</Link>
+                    <Link to={"/users/G4333"} onClick={handleHRDemo}>HR Demo Login</Link>
                     <Link to={"/users/G9413"} onClick={handleMgrDemo}>Mgr Demo Login</Link>
 
                 </div>
