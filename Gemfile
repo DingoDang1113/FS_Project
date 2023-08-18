@@ -50,8 +50,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'pry-rails'
-  # gem 'binding_of_caller'
-  # gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'better_errors'
   gem 'annotate'
 end
 

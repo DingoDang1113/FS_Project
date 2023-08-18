@@ -1,0 +1,6 @@
+1. refine error handling for more cases 
+  - add names filed cannot have numbers 
+  - PW must contain a letter or something 
+
+2. Add a component for Nav Bar after log in 
+3. Add company logo & slogans 
