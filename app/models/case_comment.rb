@@ -14,7 +14,7 @@ class CaseComment < ApplicationRecord
     validates :receiver_comment, presence:true
 
     belongs_to :case_request, foreign_key: :case_id
-    belongs_to :user 
+    belongs_to :user, foreign_key: :user_id
     belongs_to :parent_comment, class_name: :CaseComment, optional: true
     has_many :replies, class_name: :CaseComment, foreign_key: :parent_comment_id,dependent: :destroy
     

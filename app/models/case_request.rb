@@ -18,7 +18,7 @@ class CaseRequest < ApplicationRecord
     validates :request_title, :request, presence:true
     # validates :request_category, presence: true, inclusion: {in: CATEGORY}
 
-    belongs_to :requester, class_name: :User
+    belongs_to :requester, foreign_key: :requester_id, class_name: :User
     has_many :case_comments,dependent: :destroy
 
 
