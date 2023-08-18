@@ -14,6 +14,6 @@ class Job < ApplicationRecord
     validates :job_code, length:{minimum: 5},  presence:true 
     validates :job_code_description, :job_function_description,:job_function_code,  presence: true
 
-    has_many :users,dependent: :destroy
+    # has_many :users,dependent: :destroy
 
 end

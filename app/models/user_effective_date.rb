@@ -15,5 +15,5 @@ class UserEffectiveDate < ApplicationRecord
     validates :effective_date, :old_value, :new_value, presence:true
     validates :field_name, presence: true, inclusion: {in: User.field_names}
     
-    belongs_to :user, foreign_key: :user_id
+    # belongs_to :user, foreign_key: :user_id
 end

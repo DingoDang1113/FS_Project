@@ -12,7 +12,7 @@ class Level < ApplicationRecord
     validates :level_code, presence:true, uniqueness: true
     validates :level_description, presence:true
 
-    has_many :users ,dependent: :destroy
+    # has_many :users ,dependent: :destroy
 
 
 end

@@ -27,15 +27,15 @@ class User < ApplicationRecord
     validates :employee_id, :session_token, uniqueness: true, presence:true
     validates :password, length: {minimum: 6}, allow_nil: true
 
-    belongs_to :company, primary_key: :company_code, foreign_key: :company_code, class_name: :Company 
-    belongs_to :job, primary_key: :job_code, foreign_key: :job_code, class_name: :Job 
-    belongs_to :level, primary_key: :level_code, foreign_key: :level_code, class_name: :Level
-    belongs_to :position, primary_key: :position_code,  foreign_key: :position_id, class_name: :OrgHierachy
-    # belongs_to :manager, primary_key: :id, class_name: :User, foreign_key: :manager_id, optional: true
+    # belongs_to :company, primary_key: :company_code, foreign_key: :company_code, class_name: :Company 
+    # belongs_to :job, primary_key: :job_code, foreign_key: :job_code, class_name: :Job 
+    # belongs_to :level, primary_key: :level_code, foreign_key: :level_code, class_name: :Level
+    # belongs_to :position, primary_key: :position_code,  foreign_key: :position_id, class_name: :OrgHierachy
+    # # belongs_to :manager, primary_key: :id, class_name: :User, foreign_key: :manager_id, optional: true
 
-    has_many :case_requests, foreign_key: :requester_id,dependent: :destroy
-    has_many :case_comments,dependent: :destroy
-    has_many :user_effective_dates,dependent: :destroy
+    # has_many :case_requests, foreign_key: :requester_id,dependent: :destroy
+    # has_many :case_comments,dependent: :destroy
+    # has_many :user_effective_dates,dependent: :destroy
 
 
 
