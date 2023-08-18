@@ -12,7 +12,7 @@ class Company < ApplicationRecord
     validates :company_code, presence:true, uniqueness: true
     validates :company_name, presence:true
 
-    # has_many :users,dependent: :destroy
+    has_many :users,dependent: :destroy
 
 
 end
