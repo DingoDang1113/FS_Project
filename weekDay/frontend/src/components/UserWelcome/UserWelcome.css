@@ -1,13 +1,15 @@
 
-header {
+.header-welcome {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     background-color: #0b6efd;
     color: white;
-    font-weight: 300;
+    /* font-weight: 300; */
 }
+
+
 
 button {
     border: none;

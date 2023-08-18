@@ -29,7 +29,7 @@ const UserForm = () => {
         e.preventDefault();
         if(password === confirmPassword) {
             // setErrors([]);
-            return dispatch(createEmployee({employeeId, firstName, middleName, lastName, password}))
+            dispatch(createEmployee({employeeId, firstName, middleName, lastName, password}))
                 // .catch(async (res) => {
                 // let data; 
                 // try {
@@ -58,30 +58,28 @@ const UserForm = () => {
                 <h1>May Flowers Employee Site</h1>
                 <p>powered by <strong>weekday</strong></p>
             </header>
+            
                 <h2 className="title-signup">Sign Up</h2>
                     <p className="title-signup">Welcome Onboard! </p>
             <form onSubmit={handleSubmit} className="signup-form">
-                {/* <label> Employee Id
-                    <input type="text" value={employeeId}  onChange={(e) => setEmployeeId(e.target.value)} required />
-                    {/* <input type="hidden" value={'E1234'} /> */}
-                {/* </label> */} 
-                <label> First Name
+
+                <label className="signup"> First Name
                     <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
                 </label>
 
-                <label> Middle Name
+                <label className="signup"> Middle Name
                     <input type="text" value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
                 </label>
 
-                <label> Last Name
+                <label className="signup"> Last Name
                     <input type="text" value={lastName} onChange={(e) => setLasttName(e.target.value)} required />
                 </label>
 
-                <label> Password
+                <label className="signup"> Password
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </label>
 
-                <label> Confirmed Password
+                <label className="signup"> Confirmed Password
                     <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                 </label>
 

@@ -10,3 +10,22 @@
         json.manager_id user.manager_id
     end
 end
+
+
+# data output format 
+
+# {
+#     '1':{
+#         'employee_id': 'E1711',
+#         "first_name": "Francis",
+#         "last_name": "Geary",
+#         "employee_status": "Active",
+#         "job_code": "EXE01",
+#         "level_code": "L1",
+#         "position_id": "P101",
+#         "manager_id": null
+#     },
+#      '2':{
+
+#      }
+#     }

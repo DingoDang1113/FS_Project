@@ -17,7 +17,7 @@ const UserWelcome = () => {
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
     // console.log(useSelector((state) =>  state.session.currentUser))
     // console.log(employee)
-    // const [redirectToLogin, setRedirectToLogin] = useState(false)
+  
     
     
     useEffect(() => {
@@ -27,11 +27,7 @@ const UserWelcome = () => {
     }, [dispatch, employeeId]);
     
     const handleClick = () => {
-        // const clicked = true
         dispatch(logoutUser(employeeId))
-        // if (employee) {
-            //     setRedirectToLogin(true)
-            // }
         }
         
     if (!userid && !employee) return <Redirect to={`/`} />
@@ -39,13 +35,15 @@ const UserWelcome = () => {
 
     return (
         <>
-            <header>
+            <header className='header-welcome'>
                 <p>Profile</p>
                 <p>Create a request</p>
                 <p>Org Chart</p>
                 {employee.firstName=== 'HR' && <p> HR Functions </p>}
+                {employeeId ==='T9413' && <p>My Team</p>}
                 <button onClick={handleClick}> SignOut</button>
             </header>
+            
             <p> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal  </p>
 
         

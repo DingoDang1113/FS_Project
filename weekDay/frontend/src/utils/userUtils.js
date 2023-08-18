@@ -1,15 +1,15 @@
 import { csrfFetch } from "./authUtils";
 
-export const fetchAllUsers = () => (
-    fetch('/api/users')
-     .then(res => {
-        if(res.ok) {
-            return res.json()
-        } else {
-            throw res 
-        }
-     })
-)
+// export const fetchAllUsers = () => (
+//     fetch('/api/users')
+//      .then(res => {
+//         if(res.ok) {
+//             return res.json()
+//         } else {
+//             throw res 
+//         }
+//      })
+// )
 
 export const fetchUser = async employeeId => {
     const res = await fetch(`/api/users/${employeeId}`)
@@ -21,14 +21,28 @@ export const fetchUser = async employeeId => {
     }
 } 
 
+
 export const createUser = async userData => {
     const res = await csrfFetch('/api/users', {
         method: "POST",
         body: JSON.stringify(userData)
     })
     if (res.ok) {
-        const data = await res.json()
-        return data 
+        const user = await res.json()
+        console.log('createUser User',user)
+        // {
+        //     "user": {
+        //         "id": 48,
+        //         "employeeId": "Q530",
+        //         "firstName": "Vivian",
+        //         "lastName": "Huang",
+        //         "jobCode": "IT001",
+        //         "managerId": null,
+        //         "startDate": "2023-08-17",
+        //         "jobCodeDescription": "Software Engineer"
+        //     }
+        // }
+        return user 
     } else {
         const errors = await res.json()
         throw errors

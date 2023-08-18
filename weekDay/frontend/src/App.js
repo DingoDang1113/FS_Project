@@ -1,10 +1,11 @@
 import './App.css';
 // import { useState, useEffect } from 'react';
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import LoginForm from './components/LoginForm/LoginForm';
 // import { Router } from 'react-router-dom';
 import UserWelcome from './components/UserWelcome/UserWelcome'
 import UserForm from './components/UserForm/UserForm';
+
 
 
 
@@ -15,8 +16,10 @@ function App() {
       <Switch>
         <Route path='/users/new' component={UserForm} />
         <Route path={`/users/:employeeId`} component={UserWelcome} /> 
-        <Route path='/' component={LoginForm} /> 
+        <Route path='/' component={LoginForm} exact />
+        <Redirect to='/'/> 
       </Switch>
+
     </>
   );
 }

@@ -30,6 +30,16 @@ function LoginForm() {
         }
     };
 
+    const handleHRDemo = async (e) => {
+        e.preventDefault();
+        const user = await dispatch(loginUser({employeeId: 'G433', password: '123456'}))
+    }
+
+    const handleMgrDemo = async (e) => {
+        e.preventDefault();
+        const user = await dispatch(loginUser({employeeId: 'T9413', password: '123456'}))
+    }
+
     return (
 
         <>
@@ -37,6 +47,7 @@ function LoginForm() {
                 <h1>May Flowers Employee Site</h1>
                 <p>powered by <strong>weekday</strong></p>
             </header>
+            
             <div className="login-container">
                 <form onSubmit={handleSubmit}>
                     <input 
@@ -52,10 +63,13 @@ function LoginForm() {
                     />
                     <button type="submit">Login</button>
                 </form>
+
                 <div className="auth-links">
-                    <Link to="/users/new"> Sign Up</Link>
+                    <Link to="/users/new"> New Hire Sign Up</Link>
                     {/* <Link to="/forgot-password">Forgot Password?</Link> */}
-                    <Link to={"/users/G433"}>HR Demo Login</Link>
+                    <Link to={"/users/G433"} onClick={handleHRDemo}>HR Demo Login</Link>
+                    <Link to={"/users/G9413"} onClick={handleMgrDemo}>Mgr Demo Login</Link>
+
                 </div>
             </div>
 

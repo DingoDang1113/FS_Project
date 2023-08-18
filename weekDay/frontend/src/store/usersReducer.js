@@ -9,7 +9,7 @@ export const REMOVE_USER = 'REMOVE_USER'
 
 export const receiveUser = user => ({
     type: RECEIVE_USER,
-    payload: user
+    user   //check ASK FOR HELPPPPPPPPP
 })
 
 export const removeUser = employeeId => ({
@@ -17,14 +17,14 @@ export const removeUser = employeeId => ({
     payload: employeeId
 })
 
-// export const selectUserById = (state, userId) => {
-//     return state.users.byId[userId]
-// }
-
 export const createEmployee = userData => async dispatch => {
     try {
-        const user = await usersUtils.createUser(userData)
-        return dispatch(receiveUser({user}))
+        const user = await usersUtils.createUser(userData);
+        sessionStorage.setItem('currentUser', JSON.stringify(user)); //HELLLLPPPPP!!!!!!!!!
+        console.log('thunk user:', JSON.stringify(user))
+        console.log('thunk currentUser', sessionStorage.getItem('currentUser'))
+        // console.log('thunk user', user.user)
+        dispatch(receiveUser(user))
     } catch (errors) {
         dispatch(receiveCreateUserErrors(errors))
         // throw errors
@@ -38,19 +38,15 @@ export const findUser = userData => dispatch => (
         })
 )
 
-export const loginUser = credentials => async dispatch => {
-    // try {
-    //     const user = await postSession(credentials)
-    //     return dispatch(receiveUser({user}))
-    // } catch(errors) {
-    //     dispatch(receiveLoginUserErrors(errors))
-    // }
-    postSession(credentials)
-        .then (user => {
-            sessionStorage.setItem('currentUser', JSON.stringify(user.user))
-            dispatch(receiveUser(user))
-        })
-        .catch(error => dispatch(receiveLoginUserErrors(error)))
+export const loginUser = credentials =>  async dispatch => {
+    try {
+        const user = await postSession(credentials)
+        // console.log('login user.user:', JSON.stringify(user.user))
+        sessionStorage.setItem('currentUser', JSON.stringify(user))  // => login user.user: {"id":1,"employeeId":"E1711","fi}
+        return dispatch(receiveUser(user))
+    } catch(errors) {
+        dispatch(receiveLoginUserErrors(errors))
+    }
 }
 
 export const logoutUser = employeeId => dispatch => (
@@ -66,7 +62,10 @@ const usersReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_USER: 
-            nextState[action.payload.user.id] = action.payload.user
+            nextState[action.user.id] = action.user  // HELLLPPPPP!
+            // console.log('reducer: ', action.payload)
+            // console.log('reducer USER.USER:', action.payload.user.user)
+            // console.log('reducer:', action.payload.user.id)
             return nextState
         case REMOVE_USER: 
             delete nextState[action.payload]
