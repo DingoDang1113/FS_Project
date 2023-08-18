@@ -21,8 +21,8 @@ export const createEmployee = userData => async dispatch => {
     try {
         const user = await usersUtils.createUser(userData);
         sessionStorage.setItem('currentUser', JSON.stringify(user)); //HELLLLPPPPP!!!!!!!!!
-        console.log('thunk user:', JSON.stringify(user))
-        console.log('thunk currentUser', sessionStorage.getItem('currentUser'))
+        // console.log('thunk user:', JSON.stringify(user))
+        // console.log('thunk currentUser', sessionStorage.getItem('currentUser'))
         // console.log('thunk user', user.user)
         dispatch(receiveUser(user))
     } catch (errors) {
