@@ -20,8 +20,8 @@ class OrgHierachy < ApplicationRecord
     validates :position_description, presence:true
     validates :mgr_position_code, presence:true
 
-    # has_many :users, foreign_key: :position_id
-    # belongs_to :manager_position, class_name: :OrgHierarchy, foreign_key: :mgr_position_code,dependent: :destroy
+    # belongs_to :manager_position, class_name: :OrgHierarchy, foreign_key: :mgr_position_code
+    # has_many :users, foreign_key: :position_id,dependent: :destroy
 
 
 
