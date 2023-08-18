@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_190928) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_18_231147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -113,14 +113,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_190928) do
     t.index ["manager_id"], name: "index_users_on_manager_id"
   end
 
-  # add_foreign_key "case_comments", "case_comments", column: "parent_comment_id"
-  # add_foreign_key "case_comments", "case_requests", column: "case_id"
-  # add_foreign_key "case_comments", "users"
-  # add_foreign_key "case_requests", "users", column: "requester_id"
-  # add_foreign_key "user_effective_dates", "users"
-  # add_foreign_key "users", "companies", column: "company_code", primary_key: "company_code"
-  # add_foreign_key "users", "jobs", column: "job_code", primary_key: "job_code"
-  # add_foreign_key "users", "levels", column: "level_code", primary_key: "level_code"
-  # add_foreign_key "users", "org_hierachies", column: "position_id", primary_key: "position_code"
-  # add_foreign_key "users", "users", column: "manager_id"
+  add_foreign_key "case_comments", "case_comments", column: "parent_comment_id"
+  add_foreign_key "case_comments", "case_requests", column: "case_id"
+  add_foreign_key "case_comments", "users"
+  add_foreign_key "case_requests", "users", column: "requester_id"
+  add_foreign_key "user_effective_dates", "users"
+  add_foreign_key "users", "companies", column: "company_code", primary_key: "company_code"
+  add_foreign_key "users", "jobs", column: "job_code", primary_key: "job_code"
+  add_foreign_key "users", "levels", column: "level_code", primary_key: "level_code"
+  add_foreign_key "users", "org_hierachies", column: "position_id", primary_key: "position_code"
 end
