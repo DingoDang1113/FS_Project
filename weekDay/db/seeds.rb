@@ -85,25 +85,14 @@ org_hierarchies.each do |org_hierarchy|
   OrgHierachy.create!(org_hierarchy)
 end
 
-# Seed data for Users
-# def generate_employee_id 
-#     random_letter = ('A'..'Z').to_a.sample 
-#     random_number = rand(100..999).to_s 
 
-#     employee_id = (random_letter + random_number)
-#     return employee_id
-# end
-
-# ceo_employee_id = generate_employee_id
-# cto_employee_id = generate_employee_id
-# it_director_eid = generate_employee_id
 
 users = [
-  { first_name: 'Francis', middle_name: '', last_name: 'Geary', employee_status: 'Active', employee_id: 'E1711', job_code: 'EXE01', start_date:'2021-08-14', level_code: '501', company_code: 'MFLO', position_id: 'P001', manager_id: 1 },
-  { first_name: 'Marcus', middle_name: '', last_name: 'Geary', employee_status: 'Active', employee_id: 'R4402', job_code: 'EXE02', start_date:'2021-08-14',level_code: '501', company_code: 'MFLO', position_id: 'P002', manager_id: 1},
-  { first_name: 'Darren', middle_name: '', last_name: 'Eid', employee_status: 'Active', employee_id: 'U4507', job_code: 'IT004', start_date:'2021-08-14',level_code: '401', company_code: 'MFLO', position_id: 'P013', manager_id: 2 },
-  { first_name: 'Taylor', middle_name: '', last_name: 'Musolf', employee_status: 'Active', employee_id: 'T9413', job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P123', manager_id: 3},
-  { first_name: 'Diego', middle_name: '', last_name: 'Chavez', employee_status: 'Active', employee_id: 'W1529', job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P223', manager_id: 3 },
+  { first_name: 'Francis', middle_name: '', last_name: 'Geary', employee_status: 'Active', employee_id: 'E1711', password: '123456',job_code: 'EXE01', start_date:'2021-08-14', level_code: '501', company_code: 'MFLO', position_id: 'P001' },
+  { first_name: 'Marcus', middle_name: '', last_name: 'Geary', employee_status: 'Active', employee_id: 'R4402', password: '123456',job_code: 'EXE02', start_date:'2021-08-14',level_code: '501', company_code: 'MFLO', position_id: 'P002', manager_id: 1},
+  { first_name: 'Darren', middle_name: '', last_name: 'Eid', employee_status: 'Active', employee_id: 'U4507', password: '123456',job_code: 'IT004', start_date:'2021-08-14',level_code: '401', company_code: 'MFLO', position_id: 'P013', manager_id: 1 },
+  { first_name: 'Taylor', middle_name: '', last_name: 'Musolf', employee_status: 'Active', employee_id: 'T9413', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P123', manager_id: 1},
+  { first_name: 'Diego', middle_name: '', last_name: 'Chavez', employee_status: 'Active', employee_id: 'W1529', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P223', manager_id: 1 },
 
 
 

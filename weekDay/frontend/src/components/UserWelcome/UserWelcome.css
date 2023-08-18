@@ -1,0 +1,29 @@
+
+.header-welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #0b6efd;
+    color: white;
+    /* font-weight: 300; */
+}
+
+
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+h1{
+    display: flex;
+    font-size: 18px;
+    font-weight: 200;
+}

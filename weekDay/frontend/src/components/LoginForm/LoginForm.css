@@ -1,0 +1,77 @@
+.login-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #0b6efd; */
+    background-color: #2c69b6;
+    color: white;
+    /* width: 80%; */
+}
+
+.login-header h1 {
+    background-color:  inherit;
+    font-weight: 500;
+}
+
+p {
+    background-color: inherit;
+}
+
+strong {
+    background-color: inherit;
+    color: #f4990b;
+    font-family: Linear Bold;
+    font-weight: 900;
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    margin-top: 2%;
+    /* background-color: aqua; */
+    /* width: 15%; */
+}
+
+div.auth-links {
+    text-decoration: none;
+    color:black;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 2px;
+    margin-right: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    /* background-color: #2c69b6; */
+}
+
+.error-login{
+    width: 60%;
+    color:red;
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: left; */
+    list-style: none;
+    background-color: #f4990b;
+    margin-left: 40%;
+}
+
+ul{
+    width: 100%;
+    border: #2c69b6;
+}
+
+li {
+    width: 100%;
+    background-color: #2c69b6;
+}
+
+Link {
+    text-decoration: none;
+    background-color: #2c69b6;
+}
