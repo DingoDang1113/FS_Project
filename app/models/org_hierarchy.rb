@@ -15,12 +15,12 @@
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #
-class OrgHierachy < ApplicationRecord
+class OrgHierarchy < ApplicationRecord
     validates :position_code, presence: true, uniqueness: true
     validates :position_description, presence:true
     validates :mgr_position_code, presence:true
 
-    belongs_to :manager_position, class_name: :OrgHierarchy, foreign_key: :mgr_position_code
+    belongs_to :manager_position, class_name: :OrgHierarchy, foreign_key: :mgr_position_code, optional: true
     has_many :users, foreign_key: :position_id,dependent: :destroy
 
 

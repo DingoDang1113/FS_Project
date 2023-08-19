@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_18_231147) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_18_235727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_231147) do
     t.index ["level_code"], name: "index_levels_on_level_code", unique: true
   end
 
-  create_table "org_hierachies", force: :cascade do |t|
+  create_table "org_hierarchies", force: :cascade do |t|
     t.string "position_code", null: false
     t.string "position_description", null: false
     t.string "mgr_position_code", null: false
@@ -75,10 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_231147) do
     t.string "org_level_three_description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["org_level_one_id"], name: "index_org_hierachies_on_org_level_one_id"
-    t.index ["org_level_three_id"], name: "index_org_hierachies_on_org_level_three_id"
-    t.index ["org_level_two_id"], name: "index_org_hierachies_on_org_level_two_id"
-    t.index ["position_code"], name: "index_org_hierachies_on_position_code", unique: true
+    t.index ["org_level_one_id"], name: "index_org_hierarchies_on_org_level_one_id"
+    t.index ["org_level_three_id"], name: "index_org_hierarchies_on_org_level_three_id"
+    t.index ["org_level_two_id"], name: "index_org_hierarchies_on_org_level_two_id"
+    t.index ["position_code"], name: "index_org_hierarchies_on_position_code", unique: true
   end
 
   create_table "user_effective_dates", force: :cascade do |t|
@@ -121,5 +121,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_231147) do
   add_foreign_key "users", "companies", column: "company_code", primary_key: "company_code"
   add_foreign_key "users", "jobs", column: "job_code", primary_key: "job_code"
   add_foreign_key "users", "levels", column: "level_code", primary_key: "level_code"
-  add_foreign_key "users", "org_hierachies", column: "position_id", primary_key: "position_code"
+  add_foreign_key "users", "org_hierarchies", column: "position_id", primary_key: "position_code"
 end

@@ -12,7 +12,7 @@ UserEffectiveDate.destroy_all
 CaseComment.destroy_all
 CaseRequest.destroy_all
 User.destroy_all
-OrgHierachy.destroy_all
+OrgHierarchy.destroy_all
 Level.destroy_all
 Job.destroy_all
 Company.destroy_all
@@ -83,7 +83,7 @@ org_hierarchies = [
 
 ]
 org_hierarchies.each do |org_hierarchy|
-  OrgHierachy.create!(org_hierarchy)
+  OrgHierarchy.create!(org_hierarchy)
 end
 
 
