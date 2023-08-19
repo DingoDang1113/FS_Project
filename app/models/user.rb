@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
     belongs_to :company, primary_key: :company_code, foreign_key: :company_code, class_name: :Company 
     belongs_to :job, primary_key: :job_code, foreign_key: :job_code, class_name: :Job 
-    # belongs_to :level, primary_key: :level_code, foreign_key: :level_code, class_name: :Level
+    belongs_to :level, primary_key: :level_code, foreign_key: :level_code, class_name: :Level
     belongs_to :position, primary_key: :position_code,  foreign_key: :position_id, class_name: :OrgHierarchy
     # belongs_to :manager, primary_key: :id, class_name: :User, foreign_key: :manager_id, optional: true
 
