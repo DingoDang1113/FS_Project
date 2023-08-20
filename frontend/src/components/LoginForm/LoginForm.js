@@ -40,6 +40,11 @@ function LoginForm() {
         const user = await dispatch(loginUser({employeeId: 'T9413', password: '123456'}))
     }
 
+    const handleUserDemo = async (e) => {
+        e.preventDefault();
+        const user = await dispatch(loginUser({employeeId: 'P8925', password: '123456'}))
+    }
+
     return (
 
         <>
@@ -48,8 +53,8 @@ function LoginForm() {
                 <p>powered by <strong>weekday</strong></p>
             </header>
             
-            <div className="login-container">
-                <form onSubmit={handleSubmit}>
+            <div onSubmit={handleSubmit} className="login-container">
+                <form >
                     <input 
                         value={employeeId} 
                         onChange={e => setEmployeeId(e.target.value)} 
@@ -61,21 +66,23 @@ function LoginForm() {
                         onChange={e => setPassword(e.target.value)} 
                         placeholder="Password"
                     />
-                    <button type="submit">Login</button>
+                    <button type="submit" className="login-button">Sign In</button>
                 </form>
+                <ul className="error-login">
+                    {Array.isArray(errors) ? errors.map((error) => <li key={error}>{error}</li>) : ''}
+                </ul>
 
                 <div className="auth-links">
-                    <Link to="/users/new"> New Hire Sign Up</Link>
+                    <Link to="/users/new" className="signup"> New Joiner Sign Up</Link>
                     {/* <Link to="/forgot-password">Forgot Password?</Link> */}
-                    <Link to={"/users/G4333"} onClick={handleHRDemo}>HR Demo Login</Link>
-                    <Link to={"/users/G9413"} onClick={handleMgrDemo}>Mgr Demo Login</Link>
-
+                    <Link to={"/users/G4333"} className="demo" onClick={handleHRDemo}>HR Demo Sign In</Link>
+                    <Link to={"/users/G9413"} className="demo" onClick={handleMgrDemo}>Mgr Demo Sign In</Link>
+                    <Link to={"/users/8925"} className="demo" onClick={handleUserDemo}>User Demo Sign In</Link>
                 </div>
+
+
             </div>
 
-            <ul className="error-login">
-                {Array.isArray(errors) ? errors.map((error) => <li key={error}>{error}</li>) : ''}
-            </ul>
 
 
         </>

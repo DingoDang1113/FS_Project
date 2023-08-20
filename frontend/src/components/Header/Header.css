@@ -1,0 +1,38 @@
+
+.header-welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: right;
+    background-color: #0b6efd;
+    color: white;
+    height: 8dvh;
+    /* font-weight: 300; */
+}
+
+div .icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+    width: fit-content;
+}
+
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+h1{
+    display: flex;
+    font-size: 18px;
+    font-weight: 200;
+}

@@ -1,22 +1,17 @@
 import { useEffect } from 'react';
-// import { fetchUser } from '../../utils/userUtils';
-import './UserWelcome.css';
+import './Header.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {findUser, logoutUser} from '../../store/usersReducer'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { Redirect, } from "react-router-dom/cjs/react-router-dom.min";
-import Header from '../Header/Header';
-// import { useState } from "react"
 
-const UserWelcome = () => {
-    
+
+const Header = () => {
     const dispatch = useDispatch()
     const {employeeId} = useParams()
     const userid = useSelector((state) =>  state.session?.currentUser)
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
-    // console.log(useSelector((state) =>  state.session.currentUser))
-    // console.log(employee)
-  
+
     useEffect(() => {
         if(!employee) {
             dispatch(findUser(employeeId));
@@ -28,25 +23,32 @@ const UserWelcome = () => {
         }
         
     if (!userid && !employee) return <Redirect to={`/`} />
-
-
     return (
         <>
-            {/* <header className='header-welcome'>
-                <p>Profile</p>
-                <p>Create a request</p>
-                <p>Org Chart</p>
-                {employee.firstName=== 'HR' && <p> HR Functions </p>}
-                {employeeId ==='T9413' && <p>My Team</p>}
-                <button onClick={handleClick}> SignOut</button>
-            </header> */}
-            
-            <Header />
-            <p> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal  </p>
+            <header className='header-welcome'>
 
-        
+                <div className='logo'>
+                    <p>logo</p>
+                </div>
+
+                <div className='search'>
+                    <input type='text' placeholder='Search People' />
+                </div>
+              
+                <div className='icons'>
+                    <button> profile </button>
+                    <button> request</button>
+                    <button> org-chart </button>
+                    {employee.firstName=== 'HR' && <button> HR Functions </button>}
+                    {employeeId ==='T9413' && <button>My Team</button>}
+                    <button onClick={handleClick}> SignOut</button>
+                </div>
+
+
+            </header>
+                    
         </>
     )
 }
 
-export default UserWelcome
+export default Header

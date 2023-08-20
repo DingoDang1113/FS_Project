@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 // import { postUser } from "../../utils/sessionApiUtils"
 import './UserForm.css'
 import { createEmployee } from "../../store/usersReducer"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const UserForm = () => {
@@ -85,9 +86,15 @@ const UserForm = () => {
 
                 <button type="submit" className="button-signup">Submit</button>
 
-                <ul>
+                <ul className="error-signup">
                     {errors.map((error) => <li key={error}>{error}</li>)}
                 </ul>
+
+                <div className="auth-links">
+                    <Link to={"/"} className="back" >Back to Sign In</Link>
+                </div>
+
+
             </form>
         </>
     )
