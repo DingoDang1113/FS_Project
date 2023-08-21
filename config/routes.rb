@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   end
   
   get '*path',
-  to: 'static_pages#frontend',
+  to: 'static_pages#frontend_index',
   constraints: lambda {|req| !req.xhr? && req.format.html? }
   
-  root to: 'static_pages#frontend'
+  root to: 'static_pages#frontend_index'
   
 end
