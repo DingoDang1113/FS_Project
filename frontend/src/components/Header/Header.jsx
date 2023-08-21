@@ -4,6 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import {findUser, logoutUser} from '../../store/usersReducer'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { Redirect, } from "react-router-dom/cjs/react-router-dom.min";
+import LoginForm from '../LoginForm/LoginForm';
+import Search from '../Search/Search';
+import {CgProfile} from 'react-icons/cg';
+import {SlEnvolopeLetter} from 'react-icons/sl';
+import {GiOrganigram} from 'react-icons/gi';
+import {FaSignOutAlt} from 'react-icons/fa';
+import {RiTeamLine} from 'react-icons/ri';
+import {MdDashboard} from 'react-icons/md';
+
+
 
 
 const Header = () => {
@@ -26,22 +36,25 @@ const Header = () => {
     return (
         <>
             <header className='header-welcome'>
+                <button>Menu</button>
 
                 <div className='logo'>
                     <p>logo</p>
                 </div>
 
-                <div className='search'>
+                {/* <div className='search'>
                     <input type='text' placeholder='Search People' />
-                </div>
+                </div> */}
+
+                <Search />
               
                 <div className='icons'>
-                    <button> profile </button>
-                    <button> request</button>
-                    <button> org-chart </button>
-                    {employee.firstName=== 'HR' && <button> HR Functions </button>}
-                    {employeeId ==='T9413' && <button>My Team</button>}
-                    <button onClick={handleClick}> SignOut</button>
+                    <button value={'Profile'}> <span><CgProfile /> </span> </button>
+                    <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button>
+                    <button value={'Org Chart'}> <span><GiOrganigram/></span> </button>
+                    {employee.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>}
+                    {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>}
+                    <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
                 </div>
 
 

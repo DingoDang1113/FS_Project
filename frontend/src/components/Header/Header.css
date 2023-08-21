@@ -2,11 +2,12 @@
 .header-welcome {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: right;
+    justify-content: space-between;
+    align-items: center;
     background-color: #0b6efd;
     color: white;
     height: 8dvh;
+    /* margin-left: 0%; */
     /* font-weight: 300; */
 }
 
@@ -16,7 +17,31 @@ div .icons {
     align-items: center;
     justify-content: space-evenly;
     /* background-color: aqua; */
-    width: fit-content;
+    width: 15%;
+    font-size: 25px;
+    position: relative;
+    border: none;
+    
+}
+
+.icons button:hover {
+    background-color: #f4990b;
+ 
+}
+
+.icons button span::after {
+    content: attr(value);
+    display: none;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+}
+
+.icons button:hover span::after {
+    display: block;
 }
 
 
@@ -36,3 +61,4 @@ h1{
     font-size: 18px;
     font-weight: 200;
 }
+

@@ -1,15 +1,16 @@
 import { csrfFetch } from "./authUtils";
 
-// export const fetchAllUsers = () => (
-//     fetch('/api/users')
-//      .then(res => {
-//         if(res.ok) {
-//             return res.json()
-//         } else {
-//             throw res 
-//         }
-//      })
-// )
+export const fetchAllUsers = () => (
+    fetch('/api/users')
+     .then(res => {
+        if(res.ok) {
+            const users = res.json()
+            return users
+        } else {
+            throw res 
+        }
+     })
+)
 
 export const fetchUser = async employeeId => {
     const res = await fetch(`/api/users/${employeeId}`)
@@ -48,6 +49,24 @@ export const createUser = async userData => {
         throw errors
     }
 }
+
+export const editUser = async userData => {
+    const res = await csrfFetch('/api/users', {
+        method: "PATCH",
+        body: JSON.stringify(userData)
+    })
+    if (res.ok) {
+        const user = await res.json()
+        // console.log('createUser User',user)
+
+        return user 
+    } else {
+        const errors = await res.json()
+        throw errors
+    }
+}
+
+
 
 export const deleteUser = async userId => {
     const res = await csrfFetch(`/api/users/${userId}`, {

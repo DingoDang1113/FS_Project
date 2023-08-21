@@ -6,6 +6,8 @@ import {findUser, logoutUser} from '../../store/usersReducer'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { Redirect, } from "react-router-dom/cjs/react-router-dom.min";
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
 // import { useState } from "react"
 
 const UserWelcome = () => {
@@ -16,6 +18,7 @@ const UserWelcome = () => {
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
     // console.log(useSelector((state) =>  state.session.currentUser))
     // console.log(employee)
+    let currentDate = new Date().toDateString();
   
     useEffect(() => {
         if(!employee) {
@@ -32,18 +35,38 @@ const UserWelcome = () => {
 
     return (
         <>
-            {/* <header className='header-welcome'>
-                <p>Profile</p>
-                <p>Create a request</p>
-                <p>Org Chart</p>
-                {employee.firstName=== 'HR' && <p> HR Functions </p>}
-                {employeeId ==='T9413' && <p>My Team</p>}
-                <button onClick={handleClick}> SignOut</button>
-            </header> */}
-            
+           
             <Header />
-            <p> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal  </p>
 
+            <div className='home'>
+                <p> Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal. It's {currentDate}  </p>
+
+
+                <div className='waiting'>
+                    <h4>Awaiting Your Action</h4>
+                </div>
+                <div className='waiting' >
+                    <h4>Timely Suggestions</h4>
+                </div>
+                <div className='waiting' >
+                    <h4>Quick Tasks</h4>
+                </div>
+
+                <div className='docs'>
+                    <h2>Recommended for you </h2>
+
+                    <div className='sub-docs'>
+                        <h3>Understand Your People Network</h3>
+                        <h4>Based on your role</h4>
+                        <Link to={'users/orgChart'}> View Org Chart</Link>
+                    </div>
+                    <div className='sub-docs'>
+                        <h3>Showcase Your Best Self with Your Profile</h3>
+                        <h4>Based on your most popular actions</h4>
+                        <Link to={'users/employeeId'}> Manage Profile</Link>
+                    </div>
+                </div>
+            </div>
         
         </>
     )
