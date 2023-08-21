@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import UserWelcome from './components/UserWelcome/UserWelcome'
 import UserForm from './components/UserForm/UserForm';
 import Profile from './components/Profile/Profile';
+import NotFound from './components/NotFound/NotFound'
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/users/new' component={UserForm} />
         <Route path={`/users/:employeeId`} component={UserWelcome} /> 
         <Route path='/' component={LoginForm} exact />
+        <Route component={NotFound} />
         <Redirect to='/'/> 
       </Switch>
 
