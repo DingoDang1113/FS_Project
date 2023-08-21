@@ -2,12 +2,13 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 // import { postUser } from "../../utils/sessionApiUtils"
-import './UserForm.css'
+import './Profile.css'
 import { createEmployee } from "../../store/usersReducer"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Header from "../Header/Header"
 
 
-const UserForm = () => {
+const Profile = () => {
     // const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     const errors = useSelector(state => state.errors.createUser)
@@ -17,51 +18,24 @@ const UserForm = () => {
     const [middleName, setMiddleName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    // const [errors, setErrors] = useState([])
 
-    // if (sessionUser) return <Redirect to='/' />
 
     const currentUser = useSelector((state) =>  state.session?.currentUser)
     const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
-    if (currentUser && currentEmployeeId) return <Redirect to={`/users/${currentEmployeeId}`} />
+    // if (currentUser && currentEmployeeId) return <Redirect to={`/users/${currentEmployeeId}`} />
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(password === confirmPassword) {
-            // setErrors([]);
             dispatch(createEmployee({employeeId, firstName, middleName, lastName, password}))
-                // .catch(async (res) => {
-                // let data; 
-                // try {
-                // debugger
-                    // data = await res.json()
-                    // console.log(data)
-                // } catch {
-                // debugger
-                    // data = await res.text()
-                }
-                // console.log(data)
-                // debugger
-                // if(data?.errors) setErrors(data.errors); 
-                // else if (data) setErrors(data);
-                // else setErrors([res.statusText])
-            // });
-        // }
-        // return setErrors(['Confirmed Password is not matching Password']);
-        
+        }
     }
-    // console.log(errors)
+
 
     return (
         <>   
-            <header className="header-signup">
-                <h1>May Flowers Employee Site</h1>
-                <p>powered by <strong>weekday</strong></p>
-            </header>
-            
-                <h2 className="title-signup">Sign Up</h2>
-                    <p className="title-signup">Welcome Onboard! </p>
+            <Header />
             <form onSubmit={handleSubmit} className="signup-form">
 
                 <label className="signup"> First Name
@@ -100,4 +74,4 @@ const UserForm = () => {
     )
 }
 
-export default UserForm
+export default Profile

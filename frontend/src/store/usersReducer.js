@@ -5,11 +5,18 @@ import {receiveCreateUserErrors, receiveLoginUserErrors} from './errorsReducer'
 import * as usersUtils from '../utils/userUtils'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
+export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const REMOVE_USER = 'REMOVE_USER'
+
+
+// export const receiveUsers = users => ({
+//     type: RECEIVE_USERS,
+//     users   
+// })
 
 export const receiveUser = user => ({
     type: RECEIVE_USER,
-    user   //check ASK FOR HELPPPPPPPPP
+    user   
 })
 
 export const removeUser = employeeId => ({
@@ -17,10 +24,28 @@ export const removeUser = employeeId => ({
     payload: employeeId
 })
 
+
+export const getUsers = (state) => Object.values(state.users || [])
+
+
 export const createEmployee = userData => async dispatch => {
     try {
         const user = await usersUtils.createUser(userData);
-        sessionStorage.setItem('currentUser', JSON.stringify(user)); //HELLLLPPPPP!!!!!!!!!
+        sessionStorage.setItem('currentUser', JSON.stringify(user)); 
+        // console.log('thunk user:', JSON.stringify(user))
+        // console.log('thunk currentUser', sessionStorage.getItem('currentUser'))
+        // console.log('thunk user', user.user)
+        dispatch(receiveUser(user))
+    } catch (errors) {
+        dispatch(receiveCreateUserErrors(errors))
+        // throw errors
+    }
+}
+
+export const updateEmployee = userData => async dispatch => {
+    try {
+        const user = await usersUtils.createUser(userData);
+        sessionStorage.setItem('currentUser', JSON.stringify(user)); 
         // console.log('thunk user:', JSON.stringify(user))
         // console.log('thunk currentUser', sessionStorage.getItem('currentUser'))
         // console.log('thunk user', user.user)
@@ -61,8 +86,10 @@ const usersReducer = (state = {}, action) => {
     const nextState = {...state}
 
     switch(action.type) {
+        // case RECEIVE_USERS:
+        //     return action.users
         case RECEIVE_USER: 
-            nextState[action.user.id] = action.user  // HELLLPPPPP!
+            nextState[action.user.id] = action.user 
             // console.log('reducer: ', action.payload)
             // console.log('reducer USER.USER:', action.payload.user.user)
             // console.log('reducer:', action.payload.user.id)

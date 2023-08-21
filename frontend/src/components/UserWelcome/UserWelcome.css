@@ -1,5 +1,5 @@
 
-.header-welcome {
+/* .header-welcome {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -7,6 +7,10 @@
     background-color: #0b6efd;
     color: white;
     /* font-weight: 300; */
+/* } */ 
+
+.home{
+    margin-left: 1.2%;
 }
 
 
@@ -27,3 +31,44 @@ h1{
     font-size: 18px;
     font-weight: 200;
 }
+
+
+.waiting {
+    background-color: white;
+    width: 60%;
+    height: 100px;
+    border-radius: 16px;
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: */
+}
+
+.docs {
+    background-color: white;
+    width: 60%;
+    height: 300px;
+    border-radius: 16px;
+    display: flex;
+    /* flex-direction: row; */
+    align-items: flex-start;
+    justify-content:space-evenly;
+}
+
+.docs h2{
+    background-color: aqua;
+    width: 100%;
+}
+
+.sub-docs{
+    background-color: pink;
+    width: 80%;
+    height: 150px;
+    border-radius: 16px;
+    display: fle;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
+
