@@ -16,6 +16,8 @@ const UserWelcome = () => {
     const {employeeId} = useParams()
     const userid = useSelector((state) =>  state.session?.currentUser)
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
+    // const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
+
     // console.log(useSelector((state) =>  state.session.currentUser))
     // console.log(employee)
     let currentDate = new Date().toDateString();
@@ -31,6 +33,7 @@ const UserWelcome = () => {
         }
         
     if (!userid && !employee) return <Redirect to={`/`} />
+    // if (userid) return <Redirect to={`/users/${employee.EmployeeId}`} />
 
 
     return (

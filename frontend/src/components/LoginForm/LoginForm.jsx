@@ -17,7 +17,11 @@ function LoginForm() {
     const currentUser = useSelector((state) =>  state.session?.currentUser)
     const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
     // console.log(useSelector((state) => state.entities.users[currentUser].employeeId))
-    if (currentUser && currentEmployeeId) return <Redirect to={`/users/${currentEmployeeId}`} />
+
+    console.log('current_user:', currentUser)
+    console.log('emp_id:', currentEmployeeId)
+
+    if (currentUser) return <Redirect to={`/users/home`} />
 
 
     const handleSubmit = async (e) => {
