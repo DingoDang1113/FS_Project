@@ -15,12 +15,25 @@ const rootReducer = combineReducers({
     ui: dummyReducer
 })
 
-const configureStore = (preloadedState = {}) => (
-    createStore(
+
+
+
+
+const configureStore = (preloadedState = {}) => {
+    const middlewares = [thunk];
+    
+    if (process.env.NODE_ENV !== 'production') {
+        // const logger = require('redux-logger')
+        middlewares.push(logger)
+    }
+    const middlewareEnhancer = applyMiddleware(...middlewares);
+
+    return createStore(
         rootReducer,
         preloadedState,
-        applyMiddleware(thunk,logger)
-    )
-)
+        middlewareEnhancer
+    );
+
+}
 
 export default configureStore;

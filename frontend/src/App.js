@@ -16,9 +16,9 @@ function App() {
   return (
     <>
       <Switch>
-        <Route path={`/users/:employeeId/profile`} component={Profile} /> 
+        <Route path={`/users/profile/:employeeId`} component={Profile} /> 
         <Route path='/users/new' component={UserForm} />
-        <Route path={`/users/:employeeId`} component={UserWelcome} /> 
+        <Route path={`/users/home`} component={UserWelcome} /> 
         <Route path='/' component={LoginForm} exact />
         <Route component={NotFound} />
         <Redirect to='/'/> 

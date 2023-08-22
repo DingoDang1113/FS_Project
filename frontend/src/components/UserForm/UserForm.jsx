@@ -23,7 +23,7 @@ const UserForm = () => {
 
     const currentUser = useSelector((state) =>  state.session?.currentUser)
     const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
-    if (currentUser && currentEmployeeId) return <Redirect to={`/users/${currentEmployeeId}`} />
+    if (currentUser && currentEmployeeId) return <Redirect to={`/users/home`} />
 
 
     const handleSubmit = (e) => {

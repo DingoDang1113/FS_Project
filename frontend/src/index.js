@@ -14,6 +14,7 @@ const store = configureStore ({
 })
 
 window.csrfFetch = csrfFetch
+window.store = store
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
