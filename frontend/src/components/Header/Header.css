@@ -63,3 +63,13 @@ h1{
     font-weight: 200;
 }
 
+.icons a {
+    text-decoration: none;
+    color: white;
+}
+
+.icons a:hover {
+    background-color: #f4990b;
+    font-size: 25px;
+}
+

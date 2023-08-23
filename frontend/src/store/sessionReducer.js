@@ -1,16 +1,27 @@
 import { RECEIVE_USER, REMOVE_USER } from "./usersReducer";
 
 export const selectCurrentUser = state => (
-    state.sessionReducer.currentUser ? state.entities.users[state.session.currentUser] : null 
+    state.sessionReducer.currentUser ? state.entities.users[state.session.currentUser] : null  
 )
 
-const sessionReducer = (state = {currentUser: null}, action) => {
+let initialState = {currentUser: null}
+
+// console.log("SOMETHING",sessionStorage.getItem('currentUser'))
+
+if (JSON.parse(sessionStorage.getItem('currentUser'))){
+    initialState = {currentUser: JSON.parse(sessionStorage.getItem('currentUser')).id}
+}
+
+// console.log(JSON.parse(sessionStorage.getItem('currentUser'))
+
+
+const sessionReducer = (state = initialState, action) => {
     switch(action.type) {
         //login
         case RECEIVE_USER: 
                 // console.log('session user', action.payload.user)   //NESTED
                 // console.log('session user.user', action.payload.user.user)
-                return {currentUser: action.user.id}    // HELLLLLLPPPP
+                return {currentUser: action.user.id}    
         //logout        
         case REMOVE_USER: 
             return {currentUser: null}

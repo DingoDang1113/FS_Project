@@ -112,21 +112,43 @@ div.auth-links a {
     text-decoration: none;
     margin-top: 20px;
     color: white;
+    position: relative;
+    /* border-radius: 10px; */
 }
 
 div.auth-links .signup {
     /* background-color: #f49b0b67; */
     border-bottom: rgb(0,0,128) solid 2px;
     color: rgb(0,0,128);
+    line-height: 20px; 
+    text-align: center;
 }
 
 div.auth-links .demo {
     background-color: #f4990b;
+    color: white;
+    appearance: none;
+    box-sizing: border-box;
+    font-size: 100%;
+    box-shadow: none;
+    position: relative;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     height: 30px;
-    border-radius: 100px;
+    min-width: 12%;
+    border-radius: 50px;
+    border: 1px solid rgb(241,241,241);
+    outline: none;
     overflow: hidden;
-    /* position: center; */
-    
+    text-decoration: none;  
+    display: inline-block;  
+    padding: 0 15px;  
+    line-height: 30px; 
+}
+
+div.auth-links .demo:hover {
+    background-color: #df9011;
 }
 
 .error-login{

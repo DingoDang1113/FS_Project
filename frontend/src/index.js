@@ -33,8 +33,11 @@ const renderApp = () => {
 const currentUser = sessionStorage.getItem('currentUser')
 const csrfToken = sessionStorage.getItem('csrfToken')
 
+console.log('current_user_index',currentUser)
+console.log("token_index",csrfToken)
+
 if (!currentUser || !csrfToken) {
-  restoreSession().then(renderApp)
+  store.dispatch(restoreSession()).then(renderApp)
 } else {
   renderApp()
 } 

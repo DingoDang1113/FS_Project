@@ -1,14 +1,17 @@
+import { receiveUser } from "../store/usersReducer";
 
 //fetch info about current user from the backend 
-export const restoreSession = async () => {
+export const restoreSession = () => async dispatch => {
     try {
         const res = await fetch('/api/session');
         const token = res.headers.get('X-CSRF-Token');
 
         if (res.ok) {
             const data = await res.json(); 
-            sessionStorage.setItem('currentUser', JSON.stringify(data.user));
+            sessionStorage.setItem('currentUser', JSON.stringify(data));
             sessionStorage.setItem('csrfToken', token);
+            console.log ('session', data)
+            dispatch(receiveUser(data))
             return true;
         } else {
             throw res;

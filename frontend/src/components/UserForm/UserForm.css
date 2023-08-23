@@ -12,7 +12,7 @@
 }
 
 .header-signup h1{
-    background-color:  inherit;
+    background-color:inherit;
     font-weight: 400;
     font-size: 25px;
 }
@@ -43,7 +43,7 @@ strong {
     justify-content: left;
     align-items: center;
     /* border: white; */
-    background-color: rgb(241,241,241);
+    /* background-color: rgb(241,241,241); */
 }
 label{
     width: 25%;
@@ -104,6 +104,10 @@ label{
     text-decoration: none;
     color: rgb(0,0,128);
     border-bottom: #2c69b6 solid 2px;
+}
+
+div.auth-links a {
+    color:rgb(0,0,128);
 }
 
 .error-signup{
