@@ -2,7 +2,7 @@
 
 .search-wrapper {
     background-color: white;
-    width: 18%;
+    width: 20%;
     border-radius: 10px;
     height: 2.5rem;
     padding: 0 15px;
@@ -19,6 +19,12 @@
     font-size: 1.25rem;
     width: 100%;
     margin-left: 5px;
+    flex-grow: 1;
+}
+
+div .input-bar {
+    width: 100%;
+    /* background-color: aqua; */
 }
 
 .search-wrapper input:focus {

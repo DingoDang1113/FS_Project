@@ -13,27 +13,29 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 const UserWelcome = () => {
     
     const dispatch = useDispatch()
-    const {employeeId} = useParams()
+    // const {employeeId} = useParams()
     const userid = useSelector((state) =>  state.session?.currentUser)
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
+    const employeeId = employee?.employeeId
+
     // const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
 
     // console.log(useSelector((state) =>  state.session.currentUser))
     // console.log(employee)
     let currentDate = new Date().toDateString();
   
-    useEffect(() => {
-        if(!employee) {
-            dispatch(findUser(employeeId));
-        }
-    }, [dispatch, employeeId]);
+    // useEffect(() => {
+    //     if(!employee) {
+    //         dispatch(findUser(employeeId));
+    //     }
+    // }, [dispatch, employeeId]);
     
     const handleClick = () => {
         dispatch(logoutUser(employeeId))
         }
         
     if (!userid && !employee) return <Redirect to={`/`} />
-    // if (userid) return <Redirect to={`/users/${employee.EmployeeId}`} />
+
 
 
     return (
@@ -61,12 +63,12 @@ const UserWelcome = () => {
                     <div className='sub-docs'>
                         <h3>Understand Your People Network</h3>
                         <h4>Based on your role</h4>
-                        <Link to={'users/orgChart'}> View Org Chart</Link>
+                        <Link to={`/users/org-chart`}> View Org Chart</Link>
                     </div>
                     <div className='sub-docs'>
                         <h3>Showcase Your Best Self with Your Profile</h3>
                         <h4>Based on your most popular actions</h4>
-                        <Link to={'users/employeeId'}> Manage Profile</Link>
+                        <Link to={`/users/profile/${employeeId}`}> Manage Profile</Link>
                     </div>
                 </div>
             </div>

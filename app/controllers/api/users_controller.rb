@@ -3,13 +3,22 @@ class Api::UsersController < ApplicationController
 
     
     def index 
-      @users = User.all 
-      # hash = {}
-      # @users.each do |user|
-        # user.employee_id = generate_employee_id
-        # hash[user.id] = user 
-      # end
-      # render json: hash # array of objects, change in 
+      @users = User.all
+
+      if params[:search_first_name]
+        @users = @users.where("first_name ILIKE ?", "%#{params[:search_first_name]}%")
+      end
+
+      if params[:search_last_name]
+        @users = @users.where("last_name ILIKE ?", "%#{params[:search_last_name]}%")
+      end
+
+      if params[:search_employee_id]
+        @users = @users.where("employee_id ILIKE ?", "%#{params[:search_employee_id]}%")
+      end
+
+
+
       render :index
       # render json: @users 
     end

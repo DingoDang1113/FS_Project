@@ -30,19 +30,8 @@ export const createUser = async userData => {
     })
     if (res.ok) {
         const user = await res.json()
-        console.log('createUser User',user)
-        // {
-        //     "user": {
-        //         "id": 48,
-        //         "employeeId": "Q530",
-        //         "firstName": "Vivian",
-        //         "lastName": "Huang",
-        //         "jobCode": "IT001",
-        //         "managerId": null,
-        //         "startDate": "2023-08-17",
-        //         "jobCodeDescription": "Software Engineer"
-        //     }
-        // }
+        // console.log('createUser User',user)
+
         return user 
     } else {
         const errors = await res.json()
@@ -50,15 +39,18 @@ export const createUser = async userData => {
     }
 }
 
-export const editUser = async userData => {
-    const res = await csrfFetch('/api/users', {
+export const editUser = async (userData) =>  {
+    console.log("EDIT", userData)
+    const res = await csrfFetch(`/api/users/${userData.employeeId}`, {
         method: "PATCH",
-        body: JSON.stringify(userData)
-    })
+        body: JSON.stringify(userData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
     if (res.ok) {
         const user = await res.json()
-        // console.log('createUser User',user)
-
+        console.log('createUser User',user)
         return user 
     } else {
         const errors = await res.json()

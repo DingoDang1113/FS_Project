@@ -1,7 +1,7 @@
 import { deleteSession, postSession, postUser } from "../utils/sessionApiUtils";
 import { fetchUser } from "../utils/userUtils";
 import { createUser } from "../utils/userUtils";
-import {receiveCreateUserErrors, receiveLoginUserErrors} from './errorsReducer'
+import {receiveCreateUserErrors, receiveLoginUserErrors, receiveUpdateUserErrors} from './errorsReducer'
 import * as usersUtils from '../utils/userUtils'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
@@ -42,16 +42,16 @@ export const createEmployee = userData => async dispatch => {
     }
 }
 
-export const updateEmployee = userData => async dispatch => {
+export const updateEmployee = (userData) => async dispatch => {
     try {
-        const user = await usersUtils.createUser(userData);
+        const user = await usersUtils.editUser(userData);
         sessionStorage.setItem('currentUser', JSON.stringify(user)); 
         // console.log('thunk user:', JSON.stringify(user))
         // console.log('thunk currentUser', sessionStorage.getItem('currentUser'))
         // console.log('thunk user', user.user)
         dispatch(receiveUser(user))
     } catch (errors) {
-        dispatch(receiveCreateUserErrors(errors))
+        dispatch(receiveUpdateUserErrors(errors))
         // throw errors
     }
 }
@@ -82,7 +82,17 @@ export const logoutUser = employeeId => dispatch => (
         })
 )
 
-const usersReducer = (state = {}, action) => {
+let initialState = {};
+
+console.log(JSON.parse(sessionStorage.getItem('currentUser')))
+console.log(typeof null)
+if (JSON.parse(sessionStorage.getItem('currentUser'))){
+    const userObj = JSON.parse(sessionStorage.getItem('currentUser'))
+    console.log("USER",userObj)
+    initialState = {[userObj?.id]:userObj}
+} 
+
+const usersReducer = (state = initialState, action) => {
     const nextState = {...state}
 
     switch(action.type) {

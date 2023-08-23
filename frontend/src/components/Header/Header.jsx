@@ -22,19 +22,21 @@ const Header = () => {
     // const {employeeId} = useParams()
     const userid = useSelector((state) =>  state.session?.currentUser)
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
-    const employeeId = employee.employeeId
+    const employeeId = employee?.employeeId
 
-    useEffect(() => {
-        if(!employee) {
-            dispatch(findUser(employeeId));
-        }
-    }, [dispatch, employeeId]);
+    // console.log(employee)
+
+    // useEffect(() => {
+    //     if(!employee) {
+    //         dispatch(findUser(employeeId));
+    //     }
+    // }, [dispatch, employeeId]);
     
     const handleClick = () => {
         dispatch(logoutUser(employeeId))
         }
         
-    // if (!userid && !employee) return <Redirect to={`/`} />
+    if (!userid && !employee) return <Redirect to={`/`} />
 
     return (
         <>
@@ -42,7 +44,9 @@ const Header = () => {
                 <button>Menu</button>
 
                 <div className='logo'>
+                    <Link to={`/users/home`} className="button">
                     <p>logo</p>
+                    </Link>
                 </div>
 
                 {/* <div className='search'>
@@ -52,17 +56,21 @@ const Header = () => {
                 <Search />
               
                 <div className='icons'>
-                    <button value={'Profile'}> <span><CgProfile /> </span>
-                    <Link to={'/users/profile'} /> 
-                     </button>
+                    {/* <button value={'Profile'}> <span><CgProfile /> </span>
+                    {/* <Link to={'/users/profile'} />  */}
+                     {/* </button> */}
 
                      <Link to={`/users/profile/${employeeId}`} className="button">
                          <span><CgProfile /></span> 
                     </Link>
 
+                    <Link to={`/users/org-chart`} className="button">
+                         <span><GiOrganigram /></span> 
+                    </Link>
+
+                    {/* <button value={'Org Chart'}> <span><GiOrganigram/></span> </button> */}
                     <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button>
-                    <button value={'Org Chart'}> <span><GiOrganigram/></span> </button>
-                    {employee.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>}
+                    {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>}
                     {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>}
                     <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
                 </div>

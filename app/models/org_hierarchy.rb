@@ -22,6 +22,9 @@ class OrgHierarchy < ApplicationRecord
 
     belongs_to :manager_position, class_name: :OrgHierarchy, foreign_key: :mgr_position_code, optional: true
     has_many :users, foreign_key: :position_id,dependent: :destroy
+    # has_many :subordinate_positions, class_name: :OrgHierarchy, foreign_key: :mgr_position_code, dependent: :destroy
+    # has_many :subordinate_users, through: 
+
 
 
 

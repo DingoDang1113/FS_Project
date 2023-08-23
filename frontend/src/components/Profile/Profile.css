@@ -1,5 +1,31 @@
 
 
-.form{
-    background-color: aqua;
+.edit-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: aquamarine; */
+    
 }
+
+.profile-form label {
+    font-weight: 400;
+    border: 1px solid #ddd;
+
+}
+
+.profile-form .fields{
+    display: flex;
+    flex-direction: row;
+    align-items: self-start;
+    justify-content: space-between;
+    /* margin-left: 30%; */
+
+}
+
+/* .fields input { */
+    /* margin-left: 5%; */
+    /* width: 40%; */
+
+/* } */

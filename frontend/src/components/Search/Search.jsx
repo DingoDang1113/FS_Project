@@ -38,6 +38,7 @@ const Search = () => {
         fetchAllUsers()
         .then(users => {
             const names = Object.values(users).map(employee => `${employee.firstName} ${employee.lastName}`);
+            //need to add employee id, make this an objects - > key-employee 
             setNameList(names);
         })
         .catch(error => {
@@ -54,13 +55,19 @@ const Search = () => {
         }
     }, [searchName, nameList]);
 
+    const handleSearch = e => {
+        e.preventDefault()
+
+    }
+
     return (
         <>
 
             <div className='search-wrapper'>
                 <FaSearch id="search-icon" />
                 <input type='text' 
-                placeholder='Search People'
+                className="input-bar"
+                placeholder='Search People by name/employeeId'
                 value={searchName}
                 onChange={e => setSearchName(e.target.value)}
                 />
