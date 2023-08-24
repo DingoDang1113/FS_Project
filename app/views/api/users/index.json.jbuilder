@@ -1,5 +1,5 @@
 @users.each do |user|
-    json.set! user.id do 
+    json.set! user.employee_id do 
         json.employee_id user.employee_id
         json.first_name user.first_name
         json.last_name user.last_name
@@ -8,7 +8,13 @@
         json.level_code user.level_code
         json.position_id user.position_id
         json.manager_id user.manager_id
+
+        if user.position
+            json.position_description user.position.position_description
+        end
+      
     end
+
 end
 
 

@@ -1,22 +1,23 @@
 class Api::UsersController < ApplicationController
-    wrap_parameters include: User.attribute_names + ['password', 'firstName', 'middleName', 'lastName', 'employeeId']
+    wrap_parameters include: User.attribute_names + ['password', 'firstName', 'middleName', 'lastName', 'managerId','employeeId','jobCode', 'positionId']
 
     
     def index 
       @users = User.all
 
-      if params[:search_first_name]
-        @users = @users.where("first_name ILIKE ?", "%#{params[:search_first_name]}%")
+      if params[:name]
+        @users = @users.where("first_name ILIKE ? `%#{params[:name]}%` OR last_name ILIKE `%#{[:name]}%`")
       end
-
-      if params[:search_last_name]
-        @users = @users.where("last_name ILIKE ?", "%#{params[:search_last_name]}%")
-      end
-
+      
       if params[:search_employee_id]
         @users = @users.where("employee_id ILIKE ?", "%#{params[:search_employee_id]}%")
       end
 
+      if params[:new_hire]
+        @users = @users.where(" ILIKE ?", "%#{params[manager_id === null]}%")
+      end
+
+      
 
 
       render :index
@@ -39,7 +40,7 @@ class Api::UsersController < ApplicationController
       @user.job_code = 'IT001'
       @user.level_code = '101'
       @user.company_code = 'MFLO'
-      @user.position_id = 'P131'
+      @user.position_id = 'P999'
       @user.start_date = Date.today
       
       if @user.save
@@ -69,7 +70,7 @@ class Api::UsersController < ApplicationController
     def user_params
       # frontend ideally wants to dispatch { employee_id: 'employee_id', password: 'password'}
       # backend expects { user: { employee_id: 'employee_id', password: 'password' }}
-      params.require(:user).permit(:employee_id, :first_name, :middle_name, :last_name, :password)
+      params.require(:user).permit(:employee_id, :first_name, :middle_name, :last_name, :manager_id, :job_code, :position_id, :password)
     end
 
 

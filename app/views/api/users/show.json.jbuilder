@@ -1,23 +1,29 @@
 # json.user do
-    json.extract! @user, :id, :employee_id, :first_name, :last_name, :job_code, :level_code, :position_id, :manager_id, :start_date
+    json.extract! @user, :id, :employee_id, :first_name, :middle_name, :last_name, :employee_status, :job_code, :level_code, :position_id, :manager_id, :start_date, :termination_date
+    
     if @user.job 
         json.job_code_description @user.job.job_code_description
-    else nil 
     end
     if @user.level 
         json.level_description @user.level.level_description
-    else nil 
     end
     if @user.position 
         json.position_description @user.position.position_description
         json.mgr_position_code   @user.position.mgr_position_code  
         # json.position   @user.position.mgr_position_code  
-    else nil 
     end
     if @user.manager
-        json.manager @user.user.manager_id
-    else nil 
+        # json.manager_first_name @user.manager.first_name
+        # json.manager_last_name @user.manager.last_name
+        json.manager @user.manager.first_name + ' '+  @user.manager.last_name
     end
+    if @user.team_members
+        # json.team_members_first_name @user.team_members.first_name
+        # json.manager_last_name @user.manager.last_name
+        # json.team_members @user.team_members.first_name + ' '+  @user.team_members.last_name
+    end
+
+
 
 
 # end 

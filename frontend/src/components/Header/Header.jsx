@@ -68,10 +68,20 @@ const Header = () => {
                          <span><GiOrganigram /></span> 
                     </Link>
 
+                    {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
+                         <span><MdDashboard /></span> 
+                    </Link>}
+
+                    {employee.levelCode !== '101' && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                         <span><RiTeamLine /></span> 
+                    </Link>}
+
+
+
                     {/* <button value={'Org Chart'}> <span><GiOrganigram/></span> </button> */}
-                    <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button>
-                    {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>}
-                    {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>}
+                    {/* <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button> */}
+                    {/* {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>} */}
+                    {/* {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>} */}
                     <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
                 </div>
 

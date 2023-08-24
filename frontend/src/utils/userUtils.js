@@ -12,6 +12,24 @@ export const fetchAllUsers = () => (
      })
 )
 
+export const fetchUsers = params => {
+    let baseUrl = '/api/users'
+
+    for (let k in params) {
+        baseUrl = baseUrl + `${k}=${params[k]}&`
+    }
+
+    return fetch(baseUrl)
+     .then(res => {
+        if(res.ok) {
+            const users = res.json()
+            return users
+        } else {
+            throw res 
+        }
+     })
+}
+
 export const fetchUser = async employeeId => {
     const res = await fetch(`/api/users/${employeeId}`)
     if(res.ok) {
@@ -42,7 +60,7 @@ export const createUser = async userData => {
 export const editUser = async (userData) =>  {
     console.log("EDIT", userData)
     const res = await csrfFetch(`/api/users/${userData.employeeId}`, {
-        method: "PATCH",
+        method: "PUT",
         body: JSON.stringify(userData),
         headers: {
             'Content-Type': 'application/json'
@@ -50,7 +68,7 @@ export const editUser = async (userData) =>  {
     });
     if (res.ok) {
         const user = await res.json()
-        console.log('createUser User',user)
+        // console.log('createUser User',user)
         return user 
     } else {
         const errors = await res.json()

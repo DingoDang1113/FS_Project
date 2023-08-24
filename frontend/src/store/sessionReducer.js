@@ -9,7 +9,7 @@ let initialState = {currentUser: null}
 // console.log("SOMETHING",sessionStorage.getItem('currentUser'))
 
 if (JSON.parse(sessionStorage.getItem('currentUser'))){
-    initialState = {currentUser: JSON.parse(sessionStorage.getItem('currentUser')).id}
+    initialState = {currentUser: JSON.parse(sessionStorage.getItem('currentUser')).employeeId}
 }
 
 // console.log(JSON.parse(sessionStorage.getItem('currentUser'))
@@ -21,7 +21,7 @@ const sessionReducer = (state = initialState, action) => {
         case RECEIVE_USER: 
                 // console.log('session user', action.payload.user)   //NESTED
                 // console.log('session user.user', action.payload.user.user)
-                return {currentUser: action.user.id}    
+                return {currentUser: action.user.employeeId}    
         //logout        
         case REMOVE_USER: 
             return {currentUser: null}

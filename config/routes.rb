@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get 'users/:employee_id', to: 'users#show', as: 'user_by_employee_id'
     put 'users/:employee_id', to: 'users#update'
     resource :session, only: [:show, :create, :destroy]
-
   end
+  # resources :positions, only [:create, :index, :show, :update]
   
   get '*path',
   to: 'static_pages#frontend_index',

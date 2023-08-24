@@ -4,3 +4,7 @@
 
 2. Add a component for Nav Bar after log in 
 3. Add company logo & slogans 
+
+4. how to add team_members in Jbuilder 
+5. User_Reducer need to update to make sure when submit changes on profile, user won't change 
+6. add successful message when update the form 

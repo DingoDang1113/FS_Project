@@ -78,6 +78,9 @@ org_hierarchies = [
   { position_code: 'P223', position_description: 'Manager - TECH', mgr_position_code: 'P013', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010313', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'FULL STACK' },
   { position_code: 'P014', position_description: 'Director - HR', mgr_position_code: 'P004', org_level_one_id: '001', org_level_two_id: '00104', org_level_three_id: '0010314', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'HR', org_level_three_description: 'HRBP - TECH' },
   { position_code: 'P131', position_description: 'Developer', mgr_position_code: 'P123', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPEMENT' },
+  { position_code: 'P202', position_description: 'Manager - FIN', mgr_position_code: 'P002', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010102', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'FIN', org_level_three_description: 'FP&A' },
+  { position_code: 'P999', position_description: 'New Hire', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'NEWHIRE', org_level_three_description: 'NEWHIRE' },
+
 
 
 
@@ -94,8 +97,10 @@ users = [
   { first_name: 'Darren', middle_name: '', last_name: 'Eid', employee_status: 'Active', employee_id: 'U4507', password: '123456',job_code: 'IT004', start_date:'2021-08-14',level_code: '401', company_code: 'MFLO', position_id: 'P013' },
   { first_name: 'Taylor', middle_name: '', last_name: 'Musolf', employee_status: 'Active', employee_id: 'T9413', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P123'},
   { first_name: 'Diego', middle_name: '', last_name: 'Chavez', employee_status: 'Active', employee_id: 'W1529', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P223'},
-  { first_name: 'HR', middle_name: '', last_name: 'HR', employee_status: 'Active', employee_id: 'G4333', password: '123456',job_code: 'HR003', start_date:'2021-08-14',level_code: '401', company_code: 'MFLO', position_id: 'P014'},
+  { first_name: 'HR', middle_name: '', last_name: 'HR', employee_status: 'Active', employee_id: 'G4333', password: '123456',job_code: 'HR003', start_date:'2023-05-27',level_code: '401', company_code: 'MFLO', position_id: 'P014', manager_id: 2},
   { first_name: 'Shali', middle_name: '', last_name: 'Peng', employee_status: 'Active', employee_id: 'P8925', password: '123456',job_code: 'IT001', start_date:'2023-08-14',level_code: '101', company_code: 'MFLO', position_id: 'P131'},
+  { first_name: 'A', middle_name: '', last_name: 'Goodman', employee_status: 'Terminanted', employee_id: 'R1234', password: '123456',job_code: 'IT001', start_date:'2021-08-14',termination_date: '2023-08-24', level_code: '301', company_code: 'MFLO', position_id: 'P223'},
+
 
 
 

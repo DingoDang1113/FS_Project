@@ -1,7 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
-
 import './Profile.css'
 // import { createEmployee } from "../../store/usersReducer"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
@@ -9,39 +8,21 @@ import Header from "../Header/Header"
 import OrgChart from "../OrgChart/OrgChart";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { updateEmployee } from "../../store/usersReducer";
+// import { fetchUser } from "../../utils/userUtils";
+import { findUser } from "../../store/usersReducer";
 
 
 const Profile = () => {
     // const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
-    const profileUser = useParams().employeeId
-    console.log(profileUser)
-    
-    const currentUser = useSelector((state) =>  state.session?.currentUser)
-    // console.log(currentUser)
-    
-    // const currentEmployee = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?)
-    
-    const employee = useSelector(state => state?.entities.users && state.entities.users[currentUser]);
-    // const employeeArr = employee ? Object.values(employee) : [];
-    const employeeKey = employee ? Object.keys(employee) : [];
-    // console.log('ee',Object.keys(employee))
-    // console.log(employee.jobCode)
-    
-    // if (currentUser && currentEmployeeId) return <Redirect to={`/users/${currentEmployeeId}`} />
-
-    // if (profileUser === employee.employeeId) { 
-    //     return false;   
-    // } else if (employee.firstName === 'HR') {    
-    //     return false;
-    // } else {                                      
-    //     return true;                    
-    // }
-
+    const profileUserEID = useParams().employeeId
+    const [successful, setSuccessful] = useState(false)
+    const errors = useSelector(state => state.errors.updateUser)
 
     const[input, setInput] = useState([{
         employeeId:'',
         firstName:'', 
+        employeeStatus:'',
         id:'' ,
         jobCode:'',
         jobCodeDescription:'',
@@ -49,6 +30,7 @@ const Profile = () => {
         levelCode:'',
         levelDescription: '',
         managerId:'',
+        manager:'',
         managerPosition:'', 
         mgrPositionCode:'', 
         positionDescription:'', 
@@ -56,6 +38,39 @@ const Profile = () => {
         startDate:''
     
     }])
+    // console.log(profileUser)
+    const profileUserInfo =  useSelector((state) => state?.entities.users && state.entities.users[profileUserEID])
+
+    useEffect(() => {
+        dispatch(findUser(profileUserEID))
+        console.log("PROFILE FETCH",profileUserEID)
+    }, [profileUserEID])
+
+    useEffect(() =>{
+        if(profileUserInfo) {
+            setInput(profileUserInfo)
+        }
+    },[profileUserInfo])
+
+    // console.log('PROFILE',profileUserInfo)
+
+
+    
+    const loginEID = useSelector((state) =>  state.session?.currentUser)
+    const currentUser = useSelector((state) => state?.entities.users && state.entities.users[loginEID])
+
+    // console.log(loginEID)
+    // const currentEmployee = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?)
+    
+    // const employee = useSelector(state => state?.entities.users && state.entities.users[currentUser]);
+    // const employeeArr = employee ? Object.values(employee) : [];
+    // const employeeKey = employee ? Object.keys(employee) : [];
+    // console.log('ee',Object.keys(employee))
+    // console.log(employee.jobCode)
+    
+    // if (currentUser && currentEmployeeId) return <Redirect to={`/users/${currentEmployeeId}`} />
+
+
 
 
     if(!currentUser) return <Redirect to={`/`} />
@@ -67,9 +82,28 @@ const Profile = () => {
         // if(password === confirmPassword) {
             // dispatch(createEmployee({firstName, middleName, lastName}))
         // }
+        dispatch(updateEmployee(input, (profileUserEID === currentUser.employeeId)))
+        .then (() => {
+            setSuccessful(true)
+        })
 
-        dispatch(updateEmployee(input))
+    }
 
+    const fieldsSelector = (fieldName) => {
+        if (profileUserEID === currentUser.employeeId) {
+            return !['firstName', 'middleName', 'lastName'].includes(fieldName);
+        } else if (currentUser.firstName === 'HR') {
+            return false; 
+        } else {
+            return true
+        };
+
+    };
+
+
+    const handleInput = (e, field) => {
+        setInput(prevState => ({...prevState, [field]: e.target.value
+        }));
     }
 
 
@@ -78,26 +112,85 @@ const Profile = () => {
             <Header />
 
             <div className="profile-form">
-            <h1> Hi, {employee.firstName}! Welcome to your profile</h1>
+            <h1> Hi, {currentUser.firstName}!</h1>
         
             <form onSubmit={handleSubmit} className="edit-form">
-                {/* <label className="edit"> First Name
-                    <input type="text" value={employee.firstName} onChange={(e) => setFirstName(e.target.value)}/>
-                </label>
+                    <label className="fields"> Employee ID
+                    <input type="text" value={input.employeeId} onChange={(e) => handleInput(e, 'employeeId')} readOnly={fieldsSelector('employeeId')} />
+                    </label>
+                    <label className="fields"> First Name
+                        <input type="text" value={input.firstName} onChange={(e) => handleInput(e, 'firstName')} readOnly={fieldsSelector('firstName')} />
+                    </label>
 
-                <label className="edit"> Position Description
-                    <input type="text" value={employee.positionDescription} onChange={(e) => setLasttName(e.target.value)} />
-                </label> */}
+                    {(profileUserEID === currentUser.employeeId || currentUser.firstName==="HR") && (
+                        <label className="fields"> Middle Name
+                            <input type="text" value={input.middleName} onChange={(e) => handleInput(e, 'middleName')} readOnly={fieldsSelector("middleName")} />
+                        </label>                       
+                    )}
 
-                {employeeKey.map((ele) => <label key={ele} className="fields">{ele}
-                    <input type="text" value={employee[ele]} onChange={(e) => setInput(e.target.value)} 
-                    readOnly={ (employee.firstName === 'HR') ? false : true}/>
-                </label>)}
+                    <label className="fields"> Last Name
+                        <input type="text" value={input.lastName} onChange={(e) => handleInput(e, 'lastName')} readOnly={fieldsSelector('lastName')} />
+                    </label>
+                    <label className="fields"> Position
+                        <input type="text" value={input.positionDescription} onChange={(e) => handleInput(e, 'positionDescription')} readOnly  />
+                    </label>
+                    <label className="fields"> Job
+                        <input type="text" value={input.jobCodeDescription} onChange={(e) => handleInput(e, 'JobCodeDescription')} readOnly />
+                    </label>
+                    <label className="fields"> Level
+                        <input type="text" value={input.levelDescription} onChange={(e) => handleInput(e, 'levelDescription')} readOnly />
+                    </label>
+                    <label className="fields"> Manager
+                        <input type="text" value={input.manager} onChange={(e) => handleInput(e, 'manager')} readOnly />
+                    </label>
 
-                <button type="submit" className="button-signup" >Submit</button>
-                {/* <ul className="error-signup">
+                {(profileUserEID === currentUser.employeeId || currentUser.firstName==="HR") ? 
+                    <>
+                        <label className="fields"> Employee Status
+                        <input type="text" value={input.employeeStatus} onChange={(e) => handleInput(e, 'employeeStatus')} readOnly={fieldsSelector('employeeStatus')}  />
+                        </label>
+
+                        <label className="fields"> Start Date
+                        <input type="text" value={input.startDate} onChange={(e) => handleInput(e, 'startDate')} readOnly={fieldsSelector('startDate')}  />
+                        </label>
+
+                        <label className="fields"> Termination Date
+                        <input type="text" value={input.terminationDate} onChange={(e) => handleInput(e, 'terminationDate')} readOnly={fieldsSelector('terminationDate')}  />
+                        </label>
+
+                        <label className="fields"> Manager Employee ID
+                        <input type="text" value={input.managerId} onChange={(e) => handleInput(e, 'managerId')} readOnly={fieldsSelector("managerId")}  />
+                        </label>
+
+                        <label className="fields"> Position Code
+                        <input type="text" value={input.positionId} onChange={(e) => handleInput(e, 'positionId')} readOnly={fieldsSelector("positionId")} />
+                        </label>
+
+                        <label className="fields"> Job Code
+                            <input type="text" value={input.jobCode} onChange={(e) => handleInput(e, 'jobCode')} readOnly={fieldsSelector("jobCode")} />
+                        </label>
+
+                        <label className="fields"> Level Code
+                            <input type="text" value={input.levelCode} onChange={(e) => handleInput(e, 'levelCode')} readOnly={fieldsSelector("levelCode")}  />
+                        </label>                
+                        
+
+                        {(errors.length===0 && successful) && <p>Changes saved</p>}
+                        <button type="submit" className="button-signup" >Submit</button>    
+                    </>
+                
+            
+                : ""}
+
+                {/* {employeeKey.map((ele) => 
+                <label key={ele} className="fields">{ele}
+                    <input type="text" value={input[ele]} onChange={(e) => setInput(e.target.value)} 
+                    readOnly={ fieldsSelector(ele)}/>
+                </label>)} */}
+
+                <ul className="error-update">
                     {errors.map((error) => <li key={error}>{error}</li>)}
-                </ul> */} 
+                </ul>
 
             </form>
 
