@@ -6,6 +6,14 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllUsers } from "../../utils/userUtils";
 import { useState } from "react";
+import Manager from "../Manager/Manager";
+import OneLevel from "../Manager/OneLevel";
+import './OrgChart.css'
+import OrganizationChart from '@dabeng/react-orgchart';
+import MyNode from "./MyNode";
+import { Redirect } from "react-router-dom/cjs/react-router-dom";
+
+
 
 const OrgChart = () =>{
     const dispatch = useDispatch();
@@ -16,13 +24,16 @@ const OrgChart = () =>{
     useEffect(() => {
         fetchAllUsers()
         .then(users => {
-            const miniProfile = Object.values(users).reduce((acc, employee) => {
+            const activeEmployees = Object.values(users).filter(employee => employee['employeeStatus'] ===  'Active');
+            console.log('EEEE',activeEmployees)
+            const miniProfile = Object.values(activeEmployees).reduce((acc, employee) => {
                 acc[employee.employeeId] = {
                     employeeId: employee.employeeId,
                     name:`${employee.firstName} ${employee.lastName}`,
                     position: `${employee.positionDescription}`,
                     level: employee.levelCode,
-                    manager: employee.managerId
+                    manager: employee.managerId,
+                    directsID: employee.teamMembers
                 };
                 // console.log(employee)
                 return acc; 
@@ -34,10 +45,29 @@ const OrgChart = () =>{
         });
     }, []);
 
-    const empIds = Object.keys(nameList)
-    const employees = Object.values(nameList)
+    const employeeData = (employeeMap, managerId='E1711') => {
+        const employee = employeeMap[managerId];
+        if(!employee) {return null}
+        const children = (employee.directsID || []).map(eId => employeeData(employeeMap, eId)).filter( e => e!==null)
+        return {
+            employeeId:employee.employeeId,
+            name:employee.name,
+            // page:<Redirect to={`/users/profile/${employee.employeeId}`} />,
+            title: employee.position,
+            ...(children.length > 0 && {children})
+        };
+    };
 
-    console.log('CHECH',Object.values(employees))
+    const ds = employeeData(nameList)
+
+    // const ceoId = 'E1711';
+    // const ceo = nameList[ceoId]
+    // const employees = Object.values(nameList)
+
+
+
+    // console.log('CHECH',ds)
+    if (!ds) return null  
 
 
 
@@ -46,55 +76,25 @@ const OrgChart = () =>{
 
         <>
             <Header />
-            {/* <h1> Hi </h1> */}
-            <div>
-                {/* <Tree label={<div><Link to={`/users/profile/${employeeId}`}>CEO</Link></div>} > */}
 
-                <Tree label={<div>
-                    <Link to={`/users/profile/E1711`}>Francis Geary</Link>
-                    <p>CEO</p>
-                    </div>} >
-                {Object.values(employees).map (employee => (
-                    <span>
-                         <Link to={`/users/profile/${employee.employeeId}`}>{employee.name}</Link>
-                            <p>{employee.position}</p>
-                            <p>{employee.level}</p>
-                    </span>
+            <img className='banner' src="https://media.mktg.workday.com/is/image/workday/workday-yellow?fmt=png-alpha&wid=1664" />
+            {/* <div className="org-chart">
+                {ceo ? (
+                    <Tree label={<div>
+                        <Link to={`/users/profile/${ceo.employeeId}`}>{ceo.name}</Link>
+                        <p>{ceo.position}</p>
+                        </div>} >
 
-                ))}
+                        <OneLevel mgr={ceo} employees={employees}/> 
 
-
-
-
-
-
-                    <TreeNode label={<div><Link to={`/users/profile/R4402`}>Marcus Geary</Link>
-                        <p>CFO</p>
-                    </div>} >
-                        
-                        <TreeNode label={<div>Open Positon</div>} />
-                    </TreeNode>
-
-                    <TreeNode label={<div><Link to={`/users/profile/U4507`}>Darren Eid</Link>
-                        <p>Tech Director</p>
-                    </div>} >
-
-                        <TreeNode label={<div><Link to={`/users/profile/T9413`}>Taylor Musolf</Link>
-                            <p>Tech Manager</p>
-                        </div>} >   
-                            <TreeNode label={<div><Link to={`/users/profile/P8925`}>Shali Peng</Link>
-                                <p>Developer</p>
-                            </div>} />
-                        </TreeNode>
-
-                        <TreeNode label={<div><Link to={`/users/profile/W1529`}>Diego </Link>
-                                <p>Tech Manager</p>
-                            </div>} >
-                        </TreeNode>
-
-                    </TreeNode>
-
-                </Tree>
+                    </Tree>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div> */}
+            
+            <div className="chart">
+                <OrganizationChart datasource={ds} NodeTemplate={MyNode} chartClass="myChart"/>;
             </div>
         
         

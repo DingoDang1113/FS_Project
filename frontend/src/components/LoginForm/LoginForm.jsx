@@ -52,11 +52,11 @@ function LoginForm() {
     return (
 
         <>
+            
             <header className="login-header">
-                <h1>May Flowers Employee Site</h1>
+                <h1>MayFlowers Employee Site</h1>
                 <p>powered by <strong>weekday</strong></p>
             </header>
-            
             <div onSubmit={handleSubmit} className="login-container">
                 <form >
                     <input 
@@ -86,6 +86,8 @@ function LoginForm() {
 
 
             </div>
+
+            <img className="log-img" src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffiles.constantcontact.com%2F91e499e6801%2F05e55984-6a8c-4859-9602-63bd411aa04b.png&f=1&nofb=1&ipt=73f314cac6474b7eff6ea25e4ec1741009d24a7f6985986069ff323bc250371c&ipo=images'/>
 
 
 

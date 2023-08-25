@@ -45,7 +45,7 @@ const Search = () => {
                 <FaSearch id="search-icon" />
                 <input type='text' 
                 className="input-bar"
-                placeholder='Search People by name/employeeId'
+                placeholder='Search People...'
                 value={searchName}
                 onChange={e => setSearchName(e.target.value)}
                 />

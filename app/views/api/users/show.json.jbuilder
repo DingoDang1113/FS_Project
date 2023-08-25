@@ -1,5 +1,6 @@
 # json.user do
     json.extract! @user, :id, :employee_id, :first_name, :middle_name, :last_name, :employee_status, :job_code, :level_code, :position_id, :manager_id, :start_date, :termination_date
+    # json.name [@user.first_name, @user.last_name]
     
     if @user.job 
         json.job_code_description @user.job.job_code_description
@@ -18,7 +19,7 @@
         json.manager @user.manager.first_name + ' '+  @user.manager.last_name
     end
     if @user.team_members
-        # json.team_members_first_name @user.team_members.first_name
+        json.team_members @user.team_members.map {|member| member.employee_id}
         # json.manager_last_name @user.manager.last_name
         # json.team_members @user.team_members.first_name + ' '+  @user.team_members.last_name
     end

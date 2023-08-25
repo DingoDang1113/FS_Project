@@ -13,6 +13,7 @@ import {GiOrganigram} from 'react-icons/gi';
 import {FaSignOutAlt} from 'react-icons/fa';
 import {RiTeamLine} from 'react-icons/ri';
 import {MdDashboard} from 'react-icons/md';
+import {GiBoatPropeller} from 'react-icons/gi'
 
 
 
@@ -44,8 +45,9 @@ const Header = () => {
                 <button>Menu</button>
 
                 <div className='logo'>
-                    <Link to={`/users/home`} className="button">
-                    <p>logo</p>
+                    <Link to={`/users/home`} className="button-logo">
+                        <span id='logo'><GiBoatPropeller /></span>
+                        <p id='logo'>MayFlowers</p>
                     </Link>
                 </div>
 

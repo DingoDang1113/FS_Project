@@ -16,7 +16,7 @@ const HR = () => {
         fetchAllUsers()
         .then(users => {
             const newHires = Object.values(users).filter(employee => employee.managerId === null && employee.employeeStatus === 'Active' );
-            const leavers = Object.values(users).filter(employee => employee.employeeStatus !== 'Active' && employee.jobCode !== '' );
+            const leavers = Object.values(users).filter(employee => employee.employeeStatus !== 'Active' && employee.positionId !== 'P666' );
             setNewHires(newHires);
             setLeavers(leavers);
         })

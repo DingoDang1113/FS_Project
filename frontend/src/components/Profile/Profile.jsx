@@ -111,8 +111,10 @@ const Profile = () => {
         <>   
             <Header />
 
+            <img className="banner" src='https://media.mktg.workday.com/is/image/workday/workday-orange?fmt=png-alpha&wid=1664' />
+
             <div className="profile-form">
-            <h1> Hi, {currentUser.firstName}!</h1>
+            <h1> Hi, {currentUser.firstName}! You can update your name here </h1>
         
             <form onSubmit={handleSubmit} className="edit-form">
                     <label className="fields"> Employee ID
@@ -158,7 +160,7 @@ const Profile = () => {
                         <input type="text" value={input.terminationDate} onChange={(e) => handleInput(e, 'terminationDate')} readOnly={fieldsSelector('terminationDate')}  />
                         </label>
 
-                        <label className="fields"> Manager Employee ID
+                        <label className="fields"> Manager EID
                         <input type="text" value={input.managerId} onChange={(e) => handleInput(e, 'managerId')} readOnly={fieldsSelector("managerId")}  />
                         </label>
 

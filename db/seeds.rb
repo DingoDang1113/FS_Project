@@ -49,6 +49,10 @@ jobs = [
   { job_code: 'EXE01', job_code_description: 'CEO', job_function_code: 'EXEC', job_function_description: 'EXECUTIVES' },
   { job_code: 'EXE02', job_code_description: 'C-LEVEL', job_function_code: 'EXEC', job_function_description: 'EXECUTIVES' },
   { job_code: 'HR003', job_code_description: 'HR Business Partner', job_function_code: 'HR', job_function_description: 'Human Resources' },
+  { job_code: 'L0000', job_code_description: 'Terminated', job_function_code: 'XX', job_function_description: 'Terms' },
+  { job_code: 'NH000', job_code_description: 'New Hire', job_function_code: 'NH', job_function_description: 'New Hire' },
+
+
 
 ]
 jobs.each do |job|
@@ -62,6 +66,7 @@ levels = [
   { level_code: '301', level_description: 'Level 3 - Manager Level' },
   { level_code: '401', level_description: 'Level 4 - Director Level' },
   { level_code: '501', level_description: 'Level 5 - Executive Level' }
+  { level_code: '000', level_description: 'Unassigned' }
 ]
 levels.each do |level|
   Level.create!(level)
@@ -80,6 +85,8 @@ org_hierarchies = [
   { position_code: 'P131', position_description: 'Developer', mgr_position_code: 'P123', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPEMENT' },
   { position_code: 'P202', position_description: 'Manager - FIN', mgr_position_code: 'P002', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010102', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'FIN', org_level_three_description: 'FP&A' },
   { position_code: 'P999', position_description: 'New Hire', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'NEWHIRE', org_level_three_description: 'NEWHIRE' },
+  { position_code: 'P666', position_description: 'Terms', mgr_position_code: 'P001', org_level_one_id: '000', org_level_two_id: '0000', org_level_three_id: '00000', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TERMS', org_level_three_description: 'TERMS' },
+
 
 
 
