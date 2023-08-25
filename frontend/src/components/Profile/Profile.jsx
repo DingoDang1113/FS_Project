@@ -114,7 +114,7 @@ const Profile = () => {
             <img className="banner" src='https://media.mktg.workday.com/is/image/workday/workday-orange?fmt=png-alpha&wid=1664' />
 
             <div className="profile-form">
-            <h1> Hi, {currentUser.firstName}! You can update your name here </h1>
+            <h1> Hi, {currentUser.firstName}! You are looking at the Profile of {input.firstName + ' '+ input.lastName} </h1>
         
             <form onSubmit={handleSubmit} className="edit-form">
                     <label className="fields"> Employee ID

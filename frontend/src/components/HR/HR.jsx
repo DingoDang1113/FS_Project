@@ -3,6 +3,7 @@ import { fetchAllUsers } from "../../utils/userUtils";
 import { useState, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import './HR.css'
 
 
 
@@ -32,28 +33,56 @@ const HR = () => {
     return (
         <>
             <Header />
-            <div>HR Function Dashboard</div>
-            
-            <div>
-                <h3>Onboard New Hires</h3>
-                {Object.values(newHires).map(employee => (
-                    <li><Link to={`/users/profile/${employee.employeeId}`} >
-                        {employee.firstName + ' ' + employee.lastName}
-                    </Link></li>
-                    // <li>{employee.name}</li> 
+
+            <img className='banner' src='https://media.mktg.workday.com/is/image/workday/workday-yellow?fmt=png-alpha&wid=1664' />
+
+
+            <h3>Onboard New Hires</h3>
+            <div className='New-hires'>
+                <div className="field-name">Employee Id</div>               
+                <div className="field-name">Name</div>
+                {/* <div className="field-name">Level</div> */}
+                <div className="field-name">Start Date</div>
+                {/* <div className="field-name">Profile</div> */}
+
+
+                {Object.values(newHires).map (employee => (
+                        <div className='employee-row'>
+                            <input type="text" value={employee.employeeId}  />
+
+                        <Link to={`/users/profile/${employee.employeeId}`} >
+                            {employee.firstName + ' ' + employee.lastName}
+                        </Link>
+                            {/* <input type="text" value={employee.level}  /> */}
+                            <input type="date" value={employee.startDate} />
+                        </div>
+
                 ))}
-
-
             </div>
+
             
-            <div>
-                <h3>Offboad Employees</h3>
-                {Object.values(leavers).map(employee => (
-                    <li><Link to={`/users/profile/${employee.employeeId}`} >
-                        {employee.firstName + ' ' + employee.lastName}
-                    </Link></li>
-                    // <li>{employee.name}</li> 
+            <h3>Offboard Employees</h3>
+            <div className='Offboard-employees'>
+                <div className="field-name">Employee Id</div>               
+                <div className="field-name">Name</div>
+                {/* <div className="field-name">Level</div> */}
+                <div className="field-name">Termination Date</div>
+
+                {Object.values(leavers).map (employee => (
+                        <div className='employee-row'>
+                            <input type="text" value={employee.employeeId}  />
+                            
+                            <Link to={`/users/profile/${employee.employeeId}`} >
+                                {employee.firstName + ' ' + employee.lastName}
+                            </Link>
+                                {/* <input type="text" value={employee.level}  /> */}
+                                <input type="date" value={employee.terminationDate} />
+                        </div>
+
                 ))}
+
+
+                
 
 
             </div>

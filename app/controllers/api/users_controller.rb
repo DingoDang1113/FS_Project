@@ -37,8 +37,8 @@ class Api::UsersController < ApplicationController
       @user = User.new(user_params)
       @user.employee_id = generate_employee_id
       @user.employee_status = 'Active'
-      @user.job_code = 'IT001'
-      @user.level_code = '101'
+      @user.job_code = 'NH000'
+      @user.level_code = '000'
       @user.company_code = 'MFLO'
       @user.position_id = 'P999'
       @user.start_date = Date.today

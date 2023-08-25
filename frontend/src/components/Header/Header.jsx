@@ -74,7 +74,7 @@ const Header = () => {
                          <span><MdDashboard /></span> 
                     </Link>}
 
-                    {employee.levelCode !== '101' && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                    {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
                          <span><RiTeamLine /></span> 
                     </Link>}
 
