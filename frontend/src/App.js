@@ -8,6 +8,9 @@ import UserForm from './components/UserForm/UserForm';
 import Profile from './components/Profile/Profile';
 import NotFound from './components/NotFound/NotFound'
 import OrgChart from './components/OrgChart/OrgChart';
+import HR from './components/HR/HR';
+import Manager from './components/Manager/Manager';
+
 
 
 
@@ -18,7 +21,9 @@ function App() {
     <>
       <Switch>
         <Route path={`/users/profile/:employeeId`} component={Profile} /> 
+        <Route path={`/users/org-chart/:employeeId`} component={Manager} /> 
         <Route path='/users/org-chart' component={OrgChart} />
+        <Route path={`/users/hr-admin`} component={HR} /> 
         <Route path='/users/new' component={UserForm} />
         <Route path={`/users/home`} component={UserWelcome} /> 
         <Route path='/' component={LoginForm} exact />

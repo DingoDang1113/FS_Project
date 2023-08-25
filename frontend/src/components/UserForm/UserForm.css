@@ -9,12 +9,14 @@
     color: white;
     height: 15dvh;
     font-size: 20px;
+    width: 100%;
 }
 
 .header-signup h1{
     background-color:inherit;
     font-weight: 400;
     font-size: 25px;
+    /* margin-top: 2%; */
 }
 
 p {
@@ -35,6 +37,7 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1%;
 }
 
 .signup-form {
@@ -42,6 +45,7 @@ strong {
     flex-direction: column;
     justify-content: left;
     align-items: center;
+    width: 100%;
     /* border: white; */
     /* background-color: rgb(241,241,241); */
 }

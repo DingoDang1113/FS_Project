@@ -13,6 +13,7 @@ import {GiOrganigram} from 'react-icons/gi';
 import {FaSignOutAlt} from 'react-icons/fa';
 import {RiTeamLine} from 'react-icons/ri';
 import {MdDashboard} from 'react-icons/md';
+import {GiBoatPropeller} from 'react-icons/gi'
 
 
 
@@ -44,8 +45,9 @@ const Header = () => {
                 <button>Menu</button>
 
                 <div className='logo'>
-                    <Link to={`/users/home`} className="button">
-                    <p>logo</p>
+                    <Link to={`/users/home`} className="button-logo">
+                        <span id='logo'><GiBoatPropeller /></span>
+                        <p id='logo'>MayFlowers</p>
                     </Link>
                 </div>
 
@@ -68,10 +70,20 @@ const Header = () => {
                          <span><GiOrganigram /></span> 
                     </Link>
 
+                    {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
+                         <span><MdDashboard /></span> 
+                    </Link>}
+
+                    {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                         <span><RiTeamLine /></span> 
+                    </Link>}
+
+
+
                     {/* <button value={'Org Chart'}> <span><GiOrganigram/></span> </button> */}
-                    <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button>
-                    {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>}
-                    {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>}
+                    {/* <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button> */}
+                    {/* {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>} */}
+                    {/* {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>} */}
                     <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
                 </div>
 

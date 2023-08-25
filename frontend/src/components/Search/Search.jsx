@@ -12,33 +12,11 @@ const Search = () => {
     const [filterResult, setFilterResult] = useState('');
     const [nameList, setNameList] = useState([]);
  
-    // const nameList = []
-    // const userLists = async () => {
-    //     const users = dispatch(fetchAllUsers);
-    //     try {
-    //         const employees = await users;
-    //         Object.values(employees).forEach(employee => {
-    //             const fullName = employee.firstName + ' ' + employee.lastName 
-    //             nameList.push(fullName)
-    //             // console.log(fullName)
-    //             return nameList
-    //         });
-            
-            // console.log(Object.values(employees))  // => 'Francis'
-            // return employees
-            
-    //     } catch(error) {
-    //         console.error('Failed to fetch users', error)
-    //     }
-    // }
-    // userLists()
-    // console.log(nameList)
-    
+   
     useEffect(() => {
         fetchAllUsers()
         .then(users => {
             const names = Object.values(users).map(employee => `${employee.firstName} ${employee.lastName}`);
-            //need to add employee id, make this an objects - > key-employee 
             setNameList(names);
         })
         .catch(error => {
@@ -67,7 +45,7 @@ const Search = () => {
                 <FaSearch id="search-icon" />
                 <input type='text' 
                 className="input-bar"
-                placeholder='Search People by name/employeeId'
+                placeholder='Search People...'
                 value={searchName}
                 onChange={e => setSearchName(e.target.value)}
                 />
