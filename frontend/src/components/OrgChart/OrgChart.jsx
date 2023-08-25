@@ -8,7 +8,7 @@ import { fetchAllUsers } from "../../utils/userUtils";
 import { useState } from "react";
 import Manager from "../Manager/Manager";
 import OneLevel from "../Manager/OneLevel";
-import './OrgChart.css'
+// import './OrgChart.css'
 import OrganizationChart from '@dabeng/react-orgchart';
 import MyNode from "./MyNode";
 import { Redirect } from "react-router-dom/cjs/react-router-dom";
