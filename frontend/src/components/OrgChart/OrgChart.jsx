@@ -94,7 +94,7 @@ const OrgChart = () =>{
             </div> */}
             
             <div className="chart">
-                <OrganizationChart datasource={ds} NodeTemplate={MyNode} chartClass="myChart"/>;
+                <OrganizationChart datasource={ds} NodeTemplate={MyNode} chartClass="myChart"/>
             </div>
         
         

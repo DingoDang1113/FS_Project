@@ -91,7 +91,7 @@ const Profile = () => {
 
     const fieldsSelector = (fieldName) => {
         if (profileUserEID === currentUser.employeeId) {
-            return !['firstName', 'middleName', 'lastName'].includes(fieldName);
+            return ![].includes(fieldName);
         } else if (currentUser.firstName === 'HR') {
             return false; 
         } else {
@@ -106,6 +106,16 @@ const Profile = () => {
         }));
     }
 
+    let userTypeClass;
+    if(currentUser.firstName === input.firstName && currentUser.firstName === "HR" ) {
+        userTypeClass = 'self'; 
+    } else if (currentUser.firstName === "HR") {
+        userTypeClass = 'hrUser';
+    } else {
+        userTypeClass = 'user';
+    }
+    
+
 
     return (
         <>   
@@ -118,67 +128,71 @@ const Profile = () => {
         
             <form onSubmit={handleSubmit} className="edit-form">
                     <label className="fields"> Employee ID
-                    <input type="text" value={input.employeeId} onChange={(e) => handleInput(e, 'employeeId')} readOnly={fieldsSelector('employeeId')} />
+                    <input type="text"  className={'user'} value={input.employeeId} onChange={(e) => handleInput(e, 'employeeId')} readOnly={fieldsSelector('employeeId')} />
                     </label>
                     <label className="fields"> First Name
-                        <input type="text" value={input.firstName} onChange={(e) => handleInput(e, 'firstName')} readOnly={fieldsSelector('firstName')} />
+                        <input type="text" className={userTypeClass} value={input.firstName} onChange={(e) => handleInput(e, 'firstName')} readOnly={fieldsSelector('firstName')} />
                     </label>
 
                     {(profileUserEID === currentUser.employeeId || currentUser.firstName==="HR") && (
                         <label className="fields"> Middle Name
-                            <input type="text" value={input.middleName} onChange={(e) => handleInput(e, 'middleName')} readOnly={fieldsSelector("middleName")} />
+                            <input type="text" className={userTypeClass} value={input.middleName} onChange={(e) => handleInput(e, 'middleName')} readOnly={fieldsSelector("middleName")} />
                         </label>                       
                     )}
 
                     <label className="fields"> Last Name
-                        <input type="text" value={input.lastName} onChange={(e) => handleInput(e, 'lastName')} readOnly={fieldsSelector('lastName')} />
+                        <input type="text" className={userTypeClass} value={input.lastName} onChange={(e) => handleInput(e, 'lastName')} readOnly={fieldsSelector('lastName')} />
                     </label>
-                    <label className="fields"> Position
-                        <input type="text" value={input.positionDescription} onChange={(e) => handleInput(e, 'positionDescription')} readOnly  />
+                    <label className="fields"> Position Desc
+                        <input type="text" className={'user'} value={input.positionDescription} onChange={(e) => handleInput(e, 'positionDescription')} readOnly  />
                     </label>
-                    <label className="fields"> Job
-                        <input type="text" value={input.jobCodeDescription} onChange={(e) => handleInput(e, 'JobCodeDescription')} readOnly />
+                    <label className="fields"> Job Title
+                        <input type="text" className={'user'} value={input.jobCodeDescription} onChange={(e) => handleInput(e, 'JobCodeDescription')} readOnly />
                     </label>
-                    <label className="fields"> Level
-                        <input type="text" value={input.levelDescription} onChange={(e) => handleInput(e, 'levelDescription')} readOnly />
+                    <label className="fields"> Level Desc
+                        <input type="text" className={'user'} value={input.levelDescription} onChange={(e) => handleInput(e, 'levelDescription')} readOnly />
                     </label>
-                    <label className="fields"> Manager
-                        <input type="text" value={input.manager} onChange={(e) => handleInput(e, 'manager')} readOnly />
+                    <label className="fields"> Manager Name
+                        <input type="text" className={'user'} value={input.manager} onChange={(e) => handleInput(e, 'manager')} readOnly />
                     </label>
 
                 {(profileUserEID === currentUser.employeeId || currentUser.firstName==="HR") ? 
                     <>
                         <label className="fields"> Employee Status
-                        <input type="text" value={input.employeeStatus} onChange={(e) => handleInput(e, 'employeeStatus')} readOnly={fieldsSelector('employeeStatus')}  />
+                            <select className={userTypeClass} value={input.employeeStatus} onChange={(e) => handleInput(e, 'employeeStatus')} disabled={userTypeClass !== 'hrUser'} readOnly={fieldsSelector('employeeStatus')}  >
+                                <option value={"Terminated"}>Terminated</option>
+                                <option value={"LOA"}>Leave</option>
+                                <option value={"Active"}>Active</option>
+                            </select>
                         </label>
 
                         <label className="fields"> Start Date
-                        <input type="text" value={input.startDate} onChange={(e) => handleInput(e, 'startDate')} readOnly={fieldsSelector('startDate')}  />
+                        <input type="text" className={userTypeClass} value={input.startDate} onChange={(e) => handleInput(e, 'startDate')} readOnly={fieldsSelector('startDate')}  />
                         </label>
 
                         <label className="fields"> Termination Date
-                        <input type="text" value={input.terminationDate} onChange={(e) => handleInput(e, 'terminationDate')} readOnly={fieldsSelector('terminationDate')}  />
+                        <input type="text" className={userTypeClass} value={input.terminationDate} onChange={(e) => handleInput(e, 'terminationDate')} readOnly={fieldsSelector('terminationDate')}  />
                         </label>
 
                         <label className="fields"> Manager EID
-                        <input type="text" value={input.managerId} onChange={(e) => handleInput(e, 'managerId')} readOnly={fieldsSelector("managerId")}  />
+                        <input type="text" className={userTypeClass} value={input.managerId} onChange={(e) => handleInput(e, 'managerId')} readOnly={fieldsSelector("managerId")}  />
                         </label>
 
                         <label className="fields"> Position Code
-                        <input type="text" value={input.positionId} onChange={(e) => handleInput(e, 'positionId')} readOnly={fieldsSelector("positionId")} />
+                        <input type="text" className={userTypeClass} value={input.positionId} onChange={(e) => handleInput(e, 'positionId')} readOnly={fieldsSelector("positionId")} />
                         </label>
 
                         <label className="fields"> Job Code
-                            <input type="text" value={input.jobCode} onChange={(e) => handleInput(e, 'jobCode')} readOnly={fieldsSelector("jobCode")} />
+                            <input type="text" className={userTypeClass} value={input.jobCode} onChange={(e) => handleInput(e, 'jobCode')} readOnly={fieldsSelector("jobCode")} />
                         </label>
 
                         <label className="fields"> Level Code
-                            <input type="text" value={input.levelCode} onChange={(e) => handleInput(e, 'levelCode')} readOnly={fieldsSelector("levelCode")}  />
+                            <input type="text" className={userTypeClass} value={input.levelCode} onChange={(e) => handleInput(e, 'levelCode')} readOnly={fieldsSelector("levelCode")}  />
                         </label>                
                         
 
                         {(errors.length===0 && successful) && <p>Changes saved</p>}
-                        <button type="submit" className="button-signup" >Submit</button>    
+                       { userTypeClass ==="hrUser" ? <button type="submit" className="button-signup" >Submit</button> : "" }  
                     </>
                 
             

@@ -1,6 +1,7 @@
 1. refine error handling for more cases 
   - add names filed cannot have numbers 
   - PW must contain a letter or something 
+  - Error for PW not == confirmed PW
 
 2. Add a component for Nav Bar after log in  - need to work on side bar
 <!-- 3. Add company logo & slogans  -->
