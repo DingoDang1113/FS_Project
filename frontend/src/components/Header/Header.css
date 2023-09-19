@@ -51,10 +51,10 @@ div .icons {
     
 }
 
-.icons button:hover {
-    background-color: #f4990b;
+/* .icons button:hover { */
+    /* background-color: #f4990b; */
  
-}
+/* } */
 
 .icons button span::after {
     content: attr(value);
@@ -145,9 +145,9 @@ h1{
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;   /* adjust width as needed */
+    width: 9.8%;   /* adjust width as needed */
     height: 80%;
-    background-color: #ffffff;  /* adjust color as needed */
+    background-color: inherit;  
     overflow-x: hidden;
     transition: 0.5s;  /* smooth transition effect */
     padding-top: 60px; /* adjust padding as needed */
@@ -155,13 +155,50 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* justify-content: space-around; */
+    justify-content: space-between;
     /* gap: 5%; */
 }
 
-.sidebar .side-icons{
+.menu-items{
     text-decoration: none;
-    margin-top: 2px;
+    margin-top: 10px;
+    font-size: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    /* background-color: #1372ec; */
+    height: 60%;
+}
+
+.exit{
+    position: fixed;
+    top:10px;
+    left: 8%;
+
+}
+
+.button{
+    text-decoration: none;
+    color: #626971;
+}
+
+
+span#symbol-text  {
+    text-decoration: none;
+    width: 100%;
+    /* background-color: #1372ec; */
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: space-between;
+    color: #626971;
+
+}
+
+.side-icons:hover {
+    background-color: lightgray;
+    /* width: 100%; */
 }
 
 

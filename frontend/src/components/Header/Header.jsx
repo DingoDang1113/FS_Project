@@ -45,37 +45,41 @@ const Header = () => {
                 <div className='sidebar'>
 
                     <div className='exit'>
-                        <button onClick={() => setSidebar(false)}><AiOutlineClose /> Exit </button>
+                        <button onClick={() => setSidebar(false)}><AiOutlineClose /> </button>
                     </div>
 
-                    <div className='side-icons'>
-                        <Link to={`/users/profile/${employeeId}`} className="button">
-                            <span id='symbol-text'><CgProfile /> Profile </span> 
-                        </Link>
+                    <div className='menu-items'>
+
+                        <div className='side-icons'>
+                            <Link to={`/users/profile/${employeeId}`} className="button">
+                                <span id='symbol-text'><CgProfile />Profile </span> 
+                            </Link>
+                        </div>
+
+                        <div className='side-icons'>
+                            <Link to={`/users/org-chart`} className="button">
+                                <span id='symbol-text'><GiOrganigram />Org Chart </span> 
+                            </Link>
+                        </div>
+
+                        {employee?.firstName=== 'HR' &&
+                        <div className='side-icons'>
+                            <Link to={`/users/hr-admin`} className="button">
+                                <span id='symbol-text'><MdDashboard />HR Dashboard</span> 
+                            </Link>
+                        </div>}
+
+                        {employee?.teamMembers?.length > 0 &&
+                        <div className='side-icons'>
+                            <Link to={`/users/org-chart/${employeeId}`} className="button">
+                                <span id='symbol-text'><RiTeamLine /> My Team </span> 
+                            </Link>
+                        </div>}
                     </div>
 
-                    <div className='side-icons'>
-                        <Link to={`/users/org-chart`} className="button">
-                            <span id='symbol-text'><GiOrganigram /> Org Chart </span> 
-                        </Link>
-                    </div>
-
-                    {employee?.firstName=== 'HR' &&
-                     <div className='side-icons'>
-                         <Link to={`/users/hr-admin`} className="button">
-                            <span id='symbol-text'><MdDashboard />HR Dashboard</span> 
-                        </Link>
-                    </div>}
-
-                    {employee?.teamMembers?.length > 0 &&
-                    <div className='side-icons'>
-                         <Link to={`/users/org-chart/${employeeId}`} className="button">
-                            <span id='symbol-text'><RiTeamLine /> My Team </span> 
-                        </Link>
-                    </div>}
 
                     <div className='side-icons'>
-                        <button onClick={handleClick} value={'Sign Out'}> <span id='symbol-text'><FaSignOutAlt/></span> Sign Out</button>
+                        <button onClick={handleClick} value={'Sign Out'}> <span id='symbol-text'><FaSignOutAlt/>Sign Out</span></button>
                     </div>
 
                 </div>
