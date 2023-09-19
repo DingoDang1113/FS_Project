@@ -5,6 +5,8 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 import './UserForm.css'
 import { createEmployee } from "../../store/usersReducer"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import {GiBoatPropeller} from 'react-icons/gi';
+
 
 
 const UserForm = () => {
@@ -23,12 +25,17 @@ const UserForm = () => {
 
     const currentUser = useSelector((state) =>  state.session?.currentUser)
     const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
+    const [localErrors, setLocalErrors] = useState([]);
     if (currentUser && currentEmployeeId) return <Redirect to={`/users/home`} />
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(password === confirmPassword) {
+
+        if (password !== confirmPassword) {
+            setLocalErrors(['Confirmed Password is not matching Password'])
+
+        } else {
             // setErrors([]);
             dispatch(createEmployee({employeeId, firstName, middleName, lastName, password}))
                 // .catch(async (res) => {
@@ -56,7 +63,12 @@ const UserForm = () => {
     return (
         <>   
             <header className="header-signup">
-                <h1>MayFlowers Employee Site</h1>
+            <div className='logo-login'>
+                        <span id='logo'><GiBoatPropeller /></span>
+                        <p id='logo'>MayFlowers </p>
+                        <h1> Employee Site</h1>  
+                </div>
+
                 <p>powered by <strong>weekday</strong></p>
             </header>
             
@@ -88,6 +100,7 @@ const UserForm = () => {
 
                 <ul className="error-signup">
                     {errors.map((error) => <li key={error}>{error}</li>)}
+                    {localErrors.map((error) => <li key={error}>{error}</li>)}
                 </ul>
 
                 <div className="auth-links">

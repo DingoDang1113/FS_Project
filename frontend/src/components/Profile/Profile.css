@@ -15,6 +15,12 @@
     align-items: flex-start;
     justify-content: space-between;
     font-family: inherit;
+    /* gap: 50px; */
+}
+
+.profile-form label {
+    font-weight: 400;
+    white-space: nowrap;
 }
 
 .profile-form h1 {
@@ -30,6 +36,7 @@
     position: sticky;
     top:12dvh;
     width: 100vh;
+    /* height: 80dvh; */
     /* font-size: 18px; */
     /* background-color: aquamarine; */
     
@@ -49,6 +56,7 @@
     justify-content: space-between;
     width: 50%;
     font-family: inherit;
+    /* gap: 5px; */
     /* margin-left: 30%; */
     /* background-color: aqua; */
 
@@ -60,8 +68,51 @@
     background-color: white;
     font-family: inherit;
     height: 100%;
-    margin-top: 3px;
+    margin-top: 5px;
+    /* border: 1px solid black; */
+}
 
+.fields select { 
+    /* margin-left: 5%; */
+    width: 70%;
+    background-color: white;
+    font-family: inherit;
+    height: 100%;
+    margin-top: 5px;
+    /* padding: 0; */
+    /* border: 1px solid black; */
+}
+
+.fields input, .fields select {
+    border: none;
+    box-sizing: border-box;
+    /* padding: 0; */
+    /* margin: 10; */
+    /* border-top: 1px solid black; */
+    border-bottom: 1px solid black;
+    /* border-collapse: collapse; */
+}
+
+.fields .user {
+    /* background-color: rgb(246, 247, 248); */
+    color: rgb(160, 163, 166);
+    height: 100%;
+    /* margin-top: 3px; */
+}
+
+.fields .hrUser {
+    /* background-color: rgb(246, 247, 248); */
+    /* color: rgb(185, 192, 199); */
+    height: 100%;
+    /* margin-top: 3px; */
+}
+
+.fields .self {
+    /* background-color: rgb(246, 247, 248); */
+    color: rgb(160, 163, 166);
+    height: 100%;
+
+    /* margin-top: 3px; */
 }
 
 .error-update{

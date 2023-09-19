@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Header.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {findUser, logoutUser} from '../../store/usersReducer'
@@ -10,9 +10,10 @@ import Search from '../Search/Search';
 import {CgProfile} from 'react-icons/cg';
 import {SlEnvolopeLetter} from 'react-icons/sl';
 import {GiOrganigram} from 'react-icons/gi';
-import {FaSignOutAlt} from 'react-icons/fa';
+import {FaSignOutAlt, FaLinkedinIn, FaGithub} from 'react-icons/fa';
 import {RiTeamLine} from 'react-icons/ri';
 import {MdDashboard} from 'react-icons/md';
+import {AiOutlineClose} from 'react-icons/ai'
 import {GiBoatPropeller} from 'react-icons/gi'
 
 
@@ -25,25 +26,83 @@ const Header = () => {
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
     const employeeId = employee?.employeeId
 
-    // console.log(employee)
-
-    // useEffect(() => {
-    //     if(!employee) {
-    //         dispatch(findUser(employeeId));
-    //     }
-    // }, [dispatch, employeeId]);
+    const [sidebar, setSidebar] = useState(false);
+    
     
     const handleClick = () => {
         dispatch(logoutUser(employeeId))
         }
+
+    const toggleSidebar = () => {
+        setSidebar(!sidebar)
+    }
         
     if (!userid && !employee) return <Redirect to={`/`} />
 
     return (
         <>
-            <header className='header-welcome'>
-                <button>Menu</button>
+            {sidebar && (
+                <div className='sidebar'>
 
+                    <div className='exit'>
+                        <button onClick={() => setSidebar(false)}><AiOutlineClose /> </button>
+                    </div>
+
+                    <div className='menu-items'>
+
+                        <div className='side-icons'>
+                            <Link to={`/users/profile/${employeeId}`} className="button">
+                                <span id='symbol-text'><CgProfile />Profile </span> 
+                            </Link>
+                        </div>
+
+                        <div className='side-icons'>
+                            <Link to={`/users/org-chart`} className="button">
+                                <span id='symbol-text'><GiOrganigram />Org Chart </span> 
+                            </Link>
+                        </div>
+
+                        {employee?.firstName=== 'HR' &&
+                        <div className='side-icons'>
+                            <Link to={`/users/hr-admin`} className="button">
+                                <span id='symbol-text'><MdDashboard />HR Dashboard</span> 
+                            </Link>
+                        </div>}
+
+                        {employee?.teamMembers?.length > 0 &&
+                        <div className='side-icons'>
+                            <Link to={`/users/org-chart/${employeeId}`} className="button">
+                                <span id='symbol-text'><RiTeamLine /> My Team </span> 
+                            </Link>
+                        </div>}
+                    </div>
+
+
+                    <div className='side-icons'>
+                        <button onClick={handleClick} value={'Sign Out'}> <span id='symbol-text'><FaSignOutAlt/>Sign Out</span></button>
+                    </div>
+
+                </div>
+            )}
+
+            <header className='header-welcome'>
+                <div className='social'>
+                    <button onClick={toggleSidebar}>Menu</button>
+                    <div className='tooltip'>
+                            <Link to={`https://www.linkedin.com/in/shalipeng/`} className="linkedin">
+                                <span><FaLinkedinIn /></span> 
+                            </Link>
+                            <span className='tooltiptext'>LinkedIn</span>
+                    </div>
+                    <div className='tooltip'>
+                            <Link to={`https://github.com/DingoDang1113`} className="github">
+                                <span><FaGithub /></span> 
+                            </Link>
+                            <span className='tooltiptext'>GitHub</span>
+                    </div>
+                </div>    
+
+                
                 <div className='logo'>
                     <Link to={`/users/home`} className="button-logo">
                         <span id='logo'><GiBoatPropeller /></span>
@@ -58,33 +117,42 @@ const Header = () => {
                 <Search />
               
                 <div className='icons'>
-                    {/* <button value={'Profile'}> <span><CgProfile /> </span>
-                    {/* <Link to={'/users/profile'} />  */}
-                     {/* </button> */}
 
-                     <Link to={`/users/profile/${employeeId}`} className="button">
-                         <span><CgProfile /></span> 
-                    </Link>
+                    <div className='tooltip'>
+                        <Link to={`/users/profile/${employeeId}`} className="button">
+                            <span><CgProfile /></span> 
+                        </Link>
+                        <span className='tooltiptext'>Profile</span>
+                    </div>
 
-                    <Link to={`/users/org-chart`} className="button">
-                         <span><GiOrganigram /></span> 
-                    </Link>
+                    <div className='tooltip'>
+                        <Link to={`/users/org-chart`} className="button">
+                            <span><GiOrganigram /></span> 
+                        </Link>
+                        <span className='tooltiptext' >Org Chart</span>
+                    </div>
 
-                    {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
-                         <span><MdDashboard /></span> 
-                    </Link>}
+                    {employee?.firstName=== 'HR' &&
+                     <div className='tooltip'>
+                         <Link to={`/users/hr-admin`} className="button">
+                            <span><MdDashboard /></span> 
+                        </Link>
+                        <span className='tooltiptext'>HR Dashboard</span>
+                    </div>}
 
-                    {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
-                         <span><RiTeamLine /></span> 
-                    </Link>}
+                    {employee?.teamMembers?.length > 0 &&
+                    <div className='tooltip'>
+                         <Link to={`/users/org-chart/${employeeId}`} className="button">
+                            <span><RiTeamLine /></span> 
+                        </Link>
+                        <span className='tooltiptext'>My Team</span>
+                    </div>}
 
+                    <div className='tooltip'>
+                        <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
+                        <span className='tooltiptext'>Sign Out</span>
+                    </div>
 
-
-                    {/* <button value={'Org Chart'}> <span><GiOrganigram/></span> </button> */}
-                    {/* <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button> */}
-                    {/* {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>} */}
-                    {/* {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>} */}
-                    <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
                 </div>
 
 

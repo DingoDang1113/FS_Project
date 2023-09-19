@@ -5,6 +5,9 @@ import './LoginForm.css'
 import { loginUser } from "../../store/usersReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import {GiBoatPropeller} from 'react-icons/gi';
+
+
 
 
 
@@ -18,7 +21,7 @@ function LoginForm() {
     const currentEmployeeId = useSelector((state) => state?.entities.users && state.entities.users[currentUser]?.employeeId)
     // console.log(useSelector((state) => state.entities.users[currentUser].employeeId))
 
-    console.log('current_user:', currentUser)
+    // console.log('current_user:', currentUser)
     // console.log('emp_id:', currentEmployeeId)
 
     if (currentUser) return <Redirect to={`/users/home`} />
@@ -54,7 +57,13 @@ function LoginForm() {
         <>
             
             <header className="login-header">
-                <h1>MayFlowers Employee Site</h1>
+            <div className='logo-login'>
+                        <span id='logo'><GiBoatPropeller /></span>
+                        <p id='logo'>MayFlowers </p>
+                        <h1> Employee Site</h1>  
+                </div>
+
+
                 <p>powered by <strong>weekday</strong></p>
             </header>
             <div onSubmit={handleSubmit} className="login-container">

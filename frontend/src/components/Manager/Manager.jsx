@@ -14,11 +14,6 @@ const Manager = ({mgr}) =>{
     const dispatch = useDispatch();
     const [nameList, setNameList] = useState([]);
 
-
-
-
-
-
     const loginEID = useSelector((state) =>  state.session?.currentUser)
     const currentUser = useSelector((state) => state?.entities.users && state.entities.users[loginEID])
 
@@ -34,11 +29,12 @@ const Manager = ({mgr}) =>{
                     employeeId: employee.employeeId,
                     name:`${employee.firstName} ${employee.lastName}`,
                     position: `${employee.positionDescription}`,
+                    employeeStatus: `${employee.employeeStatus}`,
                     startDate: employee.startDate,
                     level: employee.levelCode
                     // manager: employee.managerId
                 };
-                console.log("SHMs",employee) 
+                // console.log("SHMs",employee) 
                 return acc; 
             }, {});
             setNameList(miniProfile);
@@ -67,16 +63,17 @@ const Manager = ({mgr}) =>{
             <div className='directs'>
                 <div className="field-name">Employee Id</div>               
                 <div className="field-name">Name</div>
-                <div className="field-name">Level</div>
+                <div className="field-name">Employee Status</div>
                 <div className="field-name">Start Date</div>
-
+                <div className="field-name">Level</div>
 
                 {Object.values(nameList).map (employee => (
                         <div className='employee-row'>
                             <input type="text" value={employee.employeeId}  />
                             <input type="text" value={employee.name}  />
-                            <input type="text" value={employee.level}  />
+                            <input type="text" value={employee.employeeStatus}  />
                             <input type="date" value={employee.startDate} />
+                            <input type="text" value={employee.level}  />
                         </div>
 
                 ))}

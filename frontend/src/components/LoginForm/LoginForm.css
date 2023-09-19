@@ -177,3 +177,24 @@ li {
     height: 45%;
 }
 
+.logo-login{
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: center;
+
+    /* margin-top: 1%; */
+}
+
+.logo-login #logo{
+    color:white;
+    font-size: 24px;
+    /* padding: 1px; */
+    /* background-color: #df9011; */
+}
+
+.logo-login h1 {
+    margin-left: 4px;
+    font-size: 24px;
+}
+

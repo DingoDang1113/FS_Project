@@ -48,7 +48,7 @@ const OrgChart = () =>{
     const employeeData = (employeeMap, managerId='E1711') => {
         const employee = employeeMap[managerId];
         if(!employee) {return null}
-        const children = (employee.directsID || []).map(eId => employeeData(employeeMap, eId)).filter( e => e!==null)
+        const children = (employee.directsID || []).map(eId => employeeData(employeeMap, eId)).filter( e => e!== null)
         return {
             employeeId:employee.employeeId,
             name:employee.name,
@@ -94,7 +94,7 @@ const OrgChart = () =>{
             </div> */}
             
             <div className="chart">
-                <OrganizationChart datasource={ds} NodeTemplate={MyNode} chartClass="myChart"/>;
+                <OrganizationChart datasource={ds} NodeTemplate={MyNode} chartClass="myChart"/>
             </div>
         
         
