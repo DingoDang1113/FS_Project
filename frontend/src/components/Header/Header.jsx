@@ -88,19 +88,21 @@ const Header = () => {
                         <span className='tooltiptext' >Org Chart</span>
                     </div>
 
-                    <div className='tooltip'>
-                        {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
+                    {employee?.firstName=== 'HR' &&
+                     <div className='tooltip'>
+                         <Link to={`/users/hr-admin`} className="button">
                             <span><MdDashboard /></span> 
-                        </Link>}
+                        </Link>
                         <span className='tooltiptext'>HR Dashboard</span>
-                    </div>
+                    </div>}
 
+                    {employee?.teamMembers?.length > 0 &&
                     <div className='tooltip'>
-                        {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                         <Link to={`/users/org-chart/${employeeId}`} className="button">
                             <span><RiTeamLine /></span> 
-                        </Link>}
+                        </Link>
                         <span className='tooltiptext'>My Team</span>
-                    </div>
+                    </div>}
 
                     <div className='tooltip'>
                         <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>

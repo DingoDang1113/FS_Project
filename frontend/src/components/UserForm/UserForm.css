@@ -110,7 +110,7 @@ label{
     border-bottom: #2c69b6 solid 2px;
 }
 
-div.auth-links a {
+.auth-links .back {
     color:rgb(0,0,128);
 }
 

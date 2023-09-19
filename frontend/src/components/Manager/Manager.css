@@ -3,8 +3,8 @@
 .directs {
     margin-top: 5%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four columns of equal width for Employee Id, Name, Level, and Start Date */
-    gap: 5px; /* Spacing between the rows and columns */
+    grid-template-columns: repeat(5, 1fr); /* change column number */
+    gap: 5px; 
     width: 60%; /* Full width of its container */
     border-collapse: collapse; /* Remove spaces between borders*/
 }
