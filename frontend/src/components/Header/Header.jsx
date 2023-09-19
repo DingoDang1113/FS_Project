@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Header.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {findUser, logoutUser} from '../../store/usersReducer'
@@ -13,6 +13,7 @@ import {GiOrganigram} from 'react-icons/gi';
 import {FaSignOutAlt, FaLinkedinIn, FaGithub} from 'react-icons/fa';
 import {RiTeamLine} from 'react-icons/ri';
 import {MdDashboard} from 'react-icons/md';
+import {AiOutlineClose} from 'react-icons/ai'
 import {GiBoatPropeller} from 'react-icons/gi'
 
 
@@ -25,25 +26,64 @@ const Header = () => {
     const employee = useSelector(state => state?.entities.users && state.entities.users[userid]);
     const employeeId = employee?.employeeId
 
-    // console.log(employee)
-
-    // useEffect(() => {
-    //     if(!employee) {
-    //         dispatch(findUser(employeeId));
-    //     }
-    // }, [dispatch, employeeId]);
+    const [sidebar, setSidebar] = useState(false);
+    
     
     const handleClick = () => {
         dispatch(logoutUser(employeeId))
         }
+
+    const toggleSidebar = () => {
+        setSidebar(!sidebar)
+    }
         
     if (!userid && !employee) return <Redirect to={`/`} />
 
     return (
         <>
+            {sidebar && (
+                <div className='sidebar'>
+
+                    <div className='exit'>
+                        <button onClick={() => setSidebar(false)}><AiOutlineClose /> Exit </button>
+                    </div>
+
+                    <div className='side-icons'>
+                        <Link to={`/users/profile/${employeeId}`} className="button">
+                            <span id='symbol-text'><CgProfile /> Profile </span> 
+                        </Link>
+                    </div>
+
+                    <div className='side-icons'>
+                        <Link to={`/users/org-chart`} className="button">
+                            <span id='symbol-text'><GiOrganigram /> Org Chart </span> 
+                        </Link>
+                    </div>
+
+                    {employee?.firstName=== 'HR' &&
+                     <div className='side-icons'>
+                         <Link to={`/users/hr-admin`} className="button">
+                            <span id='symbol-text'><MdDashboard />HR Dashboard</span> 
+                        </Link>
+                    </div>}
+
+                    {employee?.teamMembers?.length > 0 &&
+                    <div className='side-icons'>
+                         <Link to={`/users/org-chart/${employeeId}`} className="button">
+                            <span id='symbol-text'><RiTeamLine /> My Team </span> 
+                        </Link>
+                    </div>}
+
+                    <div className='side-icons'>
+                        <button onClick={handleClick} value={'Sign Out'}> <span id='symbol-text'><FaSignOutAlt/></span> Sign Out</button>
+                    </div>
+
+                </div>
+            )}
+
             <header className='header-welcome'>
                 <div className='social'>
-                    <button>Menu</button>
+                    <button onClick={toggleSidebar}>Menu</button>
                     <div className='tooltip'>
                             <Link to={`https://www.linkedin.com/in/shalipeng/`} className="linkedin">
                                 <span><FaLinkedinIn /></span> 

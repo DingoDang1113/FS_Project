@@ -11,7 +11,7 @@
     "@workday/canvas-system-icons-web": "^3.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
+    "react-icons": "^4.11.0",
     "react-organizational-chart": "^2.2.1",
     "react-redux": "^8.1.2",
     "react-router": "^5.3.4",
