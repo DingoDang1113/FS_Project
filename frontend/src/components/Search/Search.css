@@ -76,3 +76,7 @@
 .autolist li a:hover {
     background-color: #ddd;
 }
+
+a#result-items{
+    z-index: 1000;
+}
