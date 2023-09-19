@@ -45,7 +45,7 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(findUser(profileUserEID))
-        console.log("PROFILE FETCH",profileUserEID)
+        // console.log("PROFILE FETCH",profileUserEID)
     }, [profileUserEID])
 
     useEffect(() =>{
@@ -104,8 +104,23 @@ const Profile = () => {
 
 
     const handleInput = (e, field) => {
-        setInput(prevState => ({...prevState, [field]: e.target.value
-        }));
+        let updatedValue = e.target.value;
+
+        let updatedState = {
+            ...input,
+            [field]: updatedValue
+        };
+
+
+        
+        if (field === "employeeStatus" && updatedValue === "Terminated") {
+                updatedState.managerId = "";
+                updatedState.positionId = "P666";
+                updatedState.jobCode = "L0000";
+                updatedState.levelCode ='000' ;
+            }
+            
+        setInput(updatedState);
     }
 
     let userTypeClass;
@@ -118,7 +133,6 @@ const Profile = () => {
     }
 
     const today = new Date().toISOString().split('T')[0];
-
 
 
     return (
@@ -209,7 +223,7 @@ const Profile = () => {
                 </label>)} */}
 
                 <ul className="error-update">
-                    {errors.map((error) => <li key={error}>{error}</li>)}
+                    {errors?.map((error) => <li key={error}>{error}</li>)}
                 </ul>
 
             </form>

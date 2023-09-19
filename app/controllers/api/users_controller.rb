@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
       if @user 
         render :show
       else 
-        render json: {error: 'user not found'}, status: 404
+        render json: {errors: 'user not found'}, status: 404
       end
     end
 
@@ -56,7 +56,7 @@ class Api::UsersController < ApplicationController
       if @user && @user.update(user_params)
         render :show
       else
-        render json: @user.errors.full_messages, status: 422
+        render json: {errors: @user.errors.full_messages}, status: 422
       end
     end
 

@@ -106,7 +106,7 @@ users = [
   { first_name: 'Diego', middle_name: '', last_name: 'Chavez', employee_status: 'Active', employee_id: 'W1529', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P223'},
   { first_name: 'HR', middle_name: '', last_name: 'HR', employee_status: 'Active', employee_id: 'G4333', password: '123456',job_code: 'HR003', start_date:'2023-05-27',level_code: '401', company_code: 'MFLO', position_id: 'P014', manager_id: 'R4402'},
   { first_name: 'Shali', middle_name: '', last_name: 'Peng', employee_status: 'Active', employee_id: 'P8925', password: '123456',job_code: 'IT001', start_date:'2023-08-14',level_code: '101', company_code: 'MFLO', position_id: 'P131'},
-  { first_name: 'A', middle_name: '', last_name: 'Goodman', employee_status: 'Terminanted', employee_id: 'R1234', password: '123456',job_code: 'IT001', start_date:'2021-08-14',termination_date: '2023-08-24', level_code: '301', company_code: 'MFLO', position_id: 'P223'},
+  { first_name: 'A', middle_name: '', last_name: 'Goodman', employee_status: 'Active', employee_id: 'R1234', password: '123456',job_code: 'IT001', start_date:'2021-08-14',termination_date: '2023-08-24', level_code: '301', company_code: 'MFLO', position_id: 'P223'},
 
 
 
