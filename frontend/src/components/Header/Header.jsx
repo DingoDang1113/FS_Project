@@ -58,33 +58,40 @@ const Header = () => {
                 <Search />
               
                 <div className='icons'>
-                    {/* <button value={'Profile'}> <span><CgProfile /> </span>
-                    {/* <Link to={'/users/profile'} />  */}
-                     {/* </button> */}
 
-                     <Link to={`/users/profile/${employeeId}`} className="button">
-                         <span><CgProfile /></span> 
-                    </Link>
+                    <div className='tooltip'>
+                        <Link to={`/users/profile/${employeeId}`} className="button">
+                            <span><CgProfile /></span> 
+                        </Link>
+                        <span className='tooltiptext'>Profile</span>
+                    </div>
 
-                    <Link to={`/users/org-chart`} className="button">
-                         <span><GiOrganigram /></span> 
-                    </Link>
+                    <div className='tooltip'>
+                        <Link to={`/users/org-chart`} className="button">
+                            <span><GiOrganigram /></span> 
+                        </Link>
+                        <span className='tooltiptext' >Org Chart</span>
+                    </div>
 
-                    {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
-                         <span><MdDashboard /></span> 
-                    </Link>}
+                    <div className='tooltip'>
+                        {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
+                            <span><MdDashboard /></span> 
+                        </Link>}
+                        <span className='tooltiptext'>HR Dashboard</span>
+                    </div>
 
-                    {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
-                         <span><RiTeamLine /></span> 
-                    </Link>}
+                    <div className='tooltip'>
+                        {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                            <span><RiTeamLine /></span> 
+                        </Link>}
+                        <span className='tooltiptext'>My Team</span>
+                    </div>
 
+                    <div className='tooltip'>
+                        <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
+                        <span className='tooltiptext'>Sign Out</span>
+                    </div>
 
-
-                    {/* <button value={'Org Chart'}> <span><GiOrganigram/></span> </button> */}
-                    {/* <button value={'Reuqest'}> <span><SlEnvolopeLetter/></span></button> */}
-                    {/* {employee?.firstName=== 'HR' && <button value={'Dashboard'}> <span><MdDashboard /></span> </button>} */}
-                    {/* {employeeId ==='T9413' && <button value={'Team'}> <span><RiTeamLine/></span> </button>} */}
-                    <button onClick={handleClick} value={'Sign Out'}> <span><FaSignOutAlt/></span> </button>
                 </div>
 
 
