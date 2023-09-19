@@ -10,7 +10,7 @@ import Search from '../Search/Search';
 import {CgProfile} from 'react-icons/cg';
 import {SlEnvolopeLetter} from 'react-icons/sl';
 import {GiOrganigram} from 'react-icons/gi';
-import {FaSignOutAlt} from 'react-icons/fa';
+import {FaSignOutAlt, FaLinkedinIn, FaGithub} from 'react-icons/fa';
 import {RiTeamLine} from 'react-icons/ri';
 import {MdDashboard} from 'react-icons/md';
 import {GiBoatPropeller} from 'react-icons/gi'
@@ -42,8 +42,23 @@ const Header = () => {
     return (
         <>
             <header className='header-welcome'>
-                <button>Menu</button>
+                <div className='social'>
+                    <button>Menu</button>
+                    <div className='tooltip'>
+                            <Link to={`https://www.linkedin.com/in/shalipeng/`} className="linkedin">
+                                <span><FaLinkedinIn /></span> 
+                            </Link>
+                            <span className='tooltiptext'>LinkedIn</span>
+                    </div>
+                    <div className='tooltip'>
+                            <Link to={`https://github.com/DingoDang1113`} className="github">
+                                <span><FaGithub /></span> 
+                            </Link>
+                            <span className='tooltiptext'>GitHub</span>
+                    </div>
+                </div>    
 
+                
                 <div className='logo'>
                     <Link to={`/users/home`} className="button-logo">
                         <span id='logo'><GiBoatPropeller /></span>

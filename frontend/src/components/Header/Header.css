@@ -109,7 +109,7 @@ h1{
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 100px;
-    background-color: #ffffff;
+    background-color: white;
     color: inherit;
     text-align: center;
     padding: 5px 0;
@@ -131,3 +131,14 @@ h1{
     visibility: visible;
     opacity: 1;
 }
+
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 5%;
+    /* background-color: #1372ec; */
+}
+
+
