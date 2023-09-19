@@ -35,7 +35,9 @@ const Profile = () => {
         mgrPositionCode:'', 
         positionDescription:'', 
         positionId:'', 
-        startDate:''
+        startDate:'',
+        terminationDate:'',
+    
     
     }])
     // console.log(profileUser)
@@ -114,7 +116,9 @@ const Profile = () => {
     } else {
         userTypeClass = 'user';
     }
-    
+
+    const today = new Date().toISOString().split('T')[0];
+
 
 
     return (
@@ -167,11 +171,11 @@ const Profile = () => {
                         </label>
 
                         <label className="fields"> Start Date
-                        <input type="text" className={userTypeClass} value={input.startDate} onChange={(e) => handleInput(e, 'startDate')} readOnly={fieldsSelector('startDate')}  />
+                        <input type="date" className={userTypeClass} value={input.startDate} onChange={(e) => handleInput(e, 'startDate')} readOnly={fieldsSelector('startDate')}  />
                         </label>
 
                         <label className="fields"> Termination Date
-                        <input type="text" className={userTypeClass} value={input.terminationDate} onChange={(e) => handleInput(e, 'terminationDate')} readOnly={fieldsSelector('terminationDate')}  />
+                        <input type="date"  className={userTypeClass} value={input.terminationDate} onChange={(e) => handleInput(e, 'terminationDate')} readOnly={fieldsSelector('terminationDate')}  />
                         </label>
 
                         <label className="fields"> Manager EID
