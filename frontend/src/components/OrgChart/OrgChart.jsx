@@ -25,7 +25,7 @@ const OrgChart = () =>{
         fetchAllUsers()
         .then(users => {
             const activeEmployees = Object.values(users).filter(employee => employee['employeeStatus'] ===  'Active');
-            console.log('EEEE',activeEmployees)
+            // console.log('EEEE',activeEmployees)
             const miniProfile = Object.values(activeEmployees).reduce((acc, employee) => {
                 acc[employee.employeeId] = {
                     employeeId: employee.employeeId,
