@@ -90,11 +90,11 @@ export const logoutUser = employeeId => dispatch => (
 
 let initialState = {};
 
-console.log(JSON.parse(sessionStorage.getItem('currentUser')))
-console.log(typeof null)
+// console.log(JSON.parse(sessionStorage.getItem('currentUser')))
+// console.log(typeof null)
 if (JSON.parse(sessionStorage.getItem('currentUser'))){
     const userObj = JSON.parse(sessionStorage.getItem('currentUser'))
-    console.log("USER",userObj)
+    // console.log("USER",userObj)
     initialState = {[userObj?.employeeId]:userObj}
 } 
 

@@ -10,7 +10,7 @@ export const restoreSession = () => async dispatch => {
             const data = await res.json(); 
             sessionStorage.setItem('currentUser', JSON.stringify(data));
             sessionStorage.setItem('csrfToken', token);
-            console.log ('session', data)
+            // console.log ('session', data)
             dispatch(receiveUser(data))
             return true;
         } else {

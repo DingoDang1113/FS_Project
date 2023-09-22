@@ -58,7 +58,7 @@ export const createUser = async userData => {
 }
 
 export const editUser = async (userData) =>  {
-    console.log("EDIT", userData)
+    // console.log("EDIT", userData)
     const res = await csrfFetch(`/api/users/${userData.employeeId}`, {
         method: "PUT",
         body: JSON.stringify(userData),

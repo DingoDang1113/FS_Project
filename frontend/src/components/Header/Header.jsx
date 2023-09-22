@@ -89,17 +89,19 @@ const Header = () => {
                 <div className='social'>
                     <button onClick={toggleSidebar}>Menu</button>
                     <div className='tooltip'>
-                            <Link to={`https://www.linkedin.com/in/shalipeng/`} className="linkedin">
+                        <a href="https://www.linkedin.com/in/shalipeng/" target="_blank" rel="noopener noreferrer" className="linkedin">
                                 <span><FaLinkedinIn /></span> 
-                            </Link>
-                            <span className='tooltiptext'>LinkedIn</span>
+                        </a>
+                        <span className='tooltiptext'>LinkedIn</span>
                     </div>
+
                     <div className='tooltip'>
-                            <Link to={`https://github.com/DingoDang1113`} className="github">
-                                <span><FaGithub /></span> 
-                            </Link>
-                            <span className='tooltiptext'>GitHub</span>
+                        <a href="https://github.com/DingoDang1113" target="_blank" rel="noopener noreferrer" className="github">
+                            <span><FaGithub /></span> 
+                        </a>
+                        <span className='tooltiptext'>GitHub</span>
                     </div>
+
                 </div>    
 
                 
