@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-    wrap_parameters include: User.attribute_names + ['password', 'firstName', 'middleName', 'lastName', 'managerId','employeeId','jobCode', 'positionId', 'terminationDate','levelCode']
+    wrap_parameters include: User.attribute_names + ['password', 'firstName', 'middleName', 'lastName', 'managerId','employeeId','jobCode', 'positionId', 'terminationDate','levelCode', 'employeeStatus']
 
     
     def index 
@@ -70,7 +70,7 @@ class Api::UsersController < ApplicationController
     def user_params
       # frontend ideally wants to dispatch { employee_id: 'employee_id', password: 'password'}
       # backend expects { user: { employee_id: 'employee_id', password: 'password' }}
-      params.require(:user).permit(:employee_id, :first_name, :middle_name, :last_name, :manager_id, :job_code, :position_id, :level_code, :termination_date, :password)
+      params.require(:user).permit(:employee_id, :first_name, :middle_name, :last_name, :manager_id, :job_code, :position_id, :level_code, :termination_date, :password, :employee_status)
     end
 
 

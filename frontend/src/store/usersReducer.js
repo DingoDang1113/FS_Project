@@ -51,6 +51,7 @@ export const createEmployee = userData => async dispatch => {
 export const updateEmployee = (userData, self) => async dispatch => {
     try {
         const user = await usersUtils.editUser(userData);
+        console.log('user', user)
        if (self) { sessionStorage.setItem('currentUser', JSON.stringify(user))}
         // console.log('thunk user:', JSON.stringify(user))
         // console.log('thunk currentUser', sessionStorage.getItem('currentUser'))

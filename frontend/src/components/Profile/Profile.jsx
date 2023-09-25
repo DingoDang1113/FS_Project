@@ -79,18 +79,7 @@ const Profile = () => {
 
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // if(password === confirmPassword) {
-            // dispatch(createEmployee({firstName, middleName, lastName}))
-        // }
-        dispatch(updateEmployee(input, (profileUserEID === currentUser.employeeId)))
-        .then (() => {
-            setSuccessful(true)
-        })
-
-    }
-
+    
     const fieldsSelector = (fieldName) => {
         if (profileUserEID === currentUser.employeeId) {
             return ![].includes(fieldName);
@@ -99,31 +88,31 @@ const Profile = () => {
         } else {
             return true
         };
-
+        
     };
-
-
+    
+    
     const handleInput = (e, field) => {
         let updatedValue = e.target.value;
-
+        
         let updatedState = {
             ...input,
             [field]: updatedValue
         };
-
-
+        
+        
         
         if (field === "employeeStatus" && updatedValue === "Terminated") {
-                updatedState.managerId = "";
-                updatedState.employeeStatus = "Terminated";
-                updatedState.positionId = "P666";
-                updatedState.jobCode = "L0000";
-                updatedState.levelCode ='000' ;
-            }
-            
+            updatedState.managerId = "";
+            updatedState.employeeStatus = "Terminated";
+            updatedState.positionId = "P666";
+            updatedState.jobCode = "L0000";
+            updatedState.levelCode ='000' ;
+        }
+        
         setInput(updatedState);
     }
-
+    
     let userTypeClass;
     if(currentUser.firstName === input.firstName && currentUser.firstName === "HR" ) {
         userTypeClass = 'self'; 
@@ -132,10 +121,23 @@ const Profile = () => {
     } else {
         userTypeClass = 'user';
     }
-
+    
     const today = new Date().toISOString().split('T')[0];
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // if(password === confirmPassword) {
+            // dispatch(createEmployee({firstName, middleName, lastName}))
+        // }
+        console.log('inpu',input)
+        // console.log('id1' profileUserEID)
+        dispatch(updateEmployee(input, (profileUserEID === currentUser.employeeId)))
+        .then (() => {
+            setSuccessful(true)
+        })
 
-
+    }
+    
     return (
         <>   
             <Header />
