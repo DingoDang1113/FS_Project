@@ -60,7 +60,7 @@ const UserWelcome = () => {
                             {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
                                 <span>On/Offboard Employees</span> 
                             </Link>}
-                            {(employee.levelCode !== '101' || employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                            {(employee.levelCode !== '101' && employee.levelCode !='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
                                 <span>View My Employees</span> 
                             </Link>}
                         </div>

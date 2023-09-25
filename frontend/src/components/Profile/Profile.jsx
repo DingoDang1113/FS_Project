@@ -129,7 +129,7 @@ const Profile = () => {
         // if(password === confirmPassword) {
             // dispatch(createEmployee({firstName, middleName, lastName}))
         // }
-        console.log('inpu',input)
+        // console.log('inpu',input)
         // console.log('id1' profileUserEID)
         dispatch(updateEmployee(input, (profileUserEID === currentUser.employeeId)))
         .then (() => {
