@@ -115,6 +115,7 @@ const Profile = () => {
         
         if (field === "employeeStatus" && updatedValue === "Terminated") {
                 updatedState.managerId = "";
+                updatedState.employeeStatus = "Terminated";
                 updatedState.positionId = "P666";
                 updatedState.jobCode = "L0000";
                 updatedState.levelCode ='000' ;
@@ -179,7 +180,7 @@ const Profile = () => {
                         <label className="fields"> Employee Status
                             <select className={userTypeClass} value={input.employeeStatus} onChange={(e) => handleInput(e, 'employeeStatus')} disabled={userTypeClass !== 'hrUser'} readOnly={fieldsSelector('employeeStatus')}  >
                                 <option value={"Terminated"}>Terminated</option>
-                                <option value={"LOA"}>Leave</option>
+                                <option value={"Leave"}>Leave</option>
                                 <option value={"Active"}>Active</option>
                             </select>
                         </label>
