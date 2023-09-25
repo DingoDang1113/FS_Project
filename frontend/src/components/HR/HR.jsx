@@ -17,7 +17,7 @@ const HR = () => {
         fetchAllUsers()
         .then(users => {
             const newHires = Object.values(users).filter(employee => employee.managerId === null && employee.employeeStatus === 'Active' );
-            const leavers = Object.values(users).filter(employee => employee.employeeStatus !== 'Active' && employee.positionId !== 'P666' );
+            const leavers = Object.values(users).filter(employee => employee.employeeStatus !== 'Active' );
             setNewHires(newHires);
             setLeavers(leavers);
         })
@@ -80,9 +80,6 @@ const HR = () => {
                         </div>
 
                 ))}
-
-
-                
 
 
             </div>
