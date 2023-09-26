@@ -5,6 +5,8 @@ Join us to experience a simplified and efficient employee management system.
 
 Inspired by the acclaimed enterprise software [Workday](https://www.workday.com/), weekday mirrors crucial features encompassing employment lifecycle, search functionality, and organizational chart visualization. Our portal is tailored to provide distinct accessibility and actions for HR personnel, managers, and general users, promoting an organized and user-centric experience.
 
+![login](https://github.com/DingoDang1113/FS_Project/assets/73029929/a8c28930-37d2-4016-b257-19a1df5d6827)
+
 ## 🛠 Technologies Employed:
 
 * **Frontend:**
