@@ -24,7 +24,7 @@
 .home{
     /* margin-left: 5%; */
     margin-top: 2%;
-    /* width: 80%; */
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -32,11 +32,12 @@
     /* background-color: #fff */
 }
 
+
 .welcome {
     /* font-size: 0.5rem; */
-    /* background-color: #edf6ff; */
+    /* background-color: green; */
     height: 30%;
-    width: 1000px;
+    width: 60%;
     border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
@@ -54,9 +55,11 @@
     /* margin-top: 5%; */
 }
 
-.home.welcome-sub{
+
+
+.welcome-sub{
     display: inline-flex;
-    /* background-color: aqua; */
+    background-color: aqua;
     /* flex-direction: row; */
     /* align-items: center; */
     /* justify-content: space-between; */
