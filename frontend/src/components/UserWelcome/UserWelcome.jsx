@@ -46,37 +46,41 @@ const UserWelcome = () => {
             <img className='banner' src='https://media.mktg.workday.com/is/image/workday/workday-blue?fmt=png-alpha&wid=1664' />
 
             <div className='home'>
+                <div className='left'> 
+                    <div className='welcome'> 
 
-                <div className='welcome'> 
-                    <h2>Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal</h2> 
-                    <p>It's {currentDate} </p>
-                    <div className='welcome-sub'>
+                            <h2>Hi, {employee ? employee.firstName : ''}! Welcome to your employee portal</h2> 
+                            <p>It's {currentDate} </p>
+
+                        <div className='welcome-sub'>
                         <h4>Quick Tasks</h4>
-                        <div className='quick-tasks' >
-                            <div className='links'>
-                                <Link to={`/users/profile/${employeeId}`} className="button">
-                                    <span>Go to My Profile</span> 
-                                </Link>
+                            <div className='quick-tasks' >
+                                <div className='links'>
+                                    <Link to={`/users/profile/${employeeId}`} className="button">
+                                        <span>Go to My Profile</span> 
+                                    </Link>
 
-                                {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
-                                    <span>On/Offboard Employees</span> 
-                                </Link>}
-                                {(employee.levelCode !== '101' && employee.levelCode !=='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
-                                    <span>View My Employees</span> 
-                                </Link>}
+                                    {employee?.firstName=== 'HR' && <Link to={`/users/hr-admin`} className="button">
+                                        <span>On/Offboard Employees</span> 
+                                    </Link>}
+                                    {(employee.levelCode !== '101' && employee.levelCode !=='000') && <Link to={`/users/org-chart/${employeeId}`} className="button">
+                                        <span>View My Employees</span> 
+                                    </Link>}
+                                </div>
                             </div>
+                            {/* <img className='img-home' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   /> */}
                         </div>
-                    </div>
-                        <img className='img-home' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
 
-                    </div>
+                        </div>
+                    
 
-
-                    <div className='waiting'>
-                        <h4>Awaiting Your Action</h4>
-                    </div>
-                    <div className='waiting' >
-                        <h4>Timely Suggestions</h4>
+                    <div className='middle'> 
+                        <div className='waiting'>
+                            <h4>Awaiting Your Action</h4>
+                        </div>
+                        <div className='waiting' >
+                            <h4>Timely Suggestions</h4>
+                        </div>
                     </div>
 
                     <div className='docs'>
@@ -95,7 +99,33 @@ const UserWelcome = () => {
 
                         </div>
                     </div>
+                </div>
+
+                <div className='right'>
+                    <div className='announcements'>
+                        <h3>Announcements</h3>
+                        <div className='contents'>
+                            <div className='news'>
+                                <img></img>
+                                <h4>Q3 Fitness Reimbursement</h4>
+                                <p>Due October 16th Please remember to submit your Q3 Fitness Reimbursement </p>
+                            </div>
+                            <div className='news'>
+                                <img></img>
+                                <h4>Q3 Student Loan Reimbursement</h4>
+                                <p>Due October 16th Please remember to submit your Q3 Student Loan Reimbursement </p>
+                            </div>
+
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+
+
             </div>
+
         
         </>
     )
