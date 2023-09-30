@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { Redirect, } from "react-router-dom/cjs/react-router-dom.min";
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+// import { ReactDOM } from 'react';
 
 
 // import { useState } from "react"
@@ -101,14 +102,18 @@ const UserWelcome = () => {
                     <h3>Announcements</h3>
                     <div className='contents'>
                         <div className='news'>
-                            <img></img>
-                            <h4>Q3 Fitness Reimbursement</h4>
-                            <p>Due October 16th Please remember to submit your Q3 Fitness Reimbursement </p>
+                        <img className='img-news' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
+                            <span>
+                                <h4>Q3 Fitness Reimbursement</h4>
+                                <p className='news-text'>Due October 16th Please remember to submit your Q3 Fitness Reimbursement </p>
+                            </span>
                         </div>
                         <div className='news'>
-                            <img></img>
-                            <h4>Q3 Student Loan Reimbursement</h4>
-                            <p>Due October 16th Please remember to submit your Q3 Student Loan Reimbursement </p>
+                        <img className='img-news' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
+                            <span>
+                                <h4>Q3 Student Loan Reimbursement</h4>
+                                <p className='news-text'>Due October 16th Please remember to submit your Q3 Student Loan Reimbursement </p>
+                            </span>
                         </div>
 
                     </div>
