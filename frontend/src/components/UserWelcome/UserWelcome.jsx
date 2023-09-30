@@ -98,6 +98,30 @@ const UserWelcome = () => {
                     </div>
                 </div>
 
+                <div className='docs'>
+                    <h2>Recommended for you </h2>
+                    <div className='subs'>
+                        <div className='subs-container'>
+                                <img className='img-docs' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
+                            <div className='sub-docs'>
+                                <h3>Understand Your People Network</h3>
+                                <h4>Based on your role</h4>
+                                <Link to={`/users/org-chart`}> View Org Chart</Link>
+                            </div>
+                        </div>
+
+                        <div className='subs-container'>
+                            <img className='img-docs' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
+                            <div className='sub-docs'>
+                                <h3>Showcase Your Best Self with Your Profile</h3>
+                                <h4>Based on your most popular actions</h4>
+                                <Link to={`/users/profile/${employeeId}`}> Manage Profile</Link>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
                 <div className='announcements'>
                     <h3>Announcements</h3>
                     <div className='contents'>
@@ -119,22 +143,6 @@ const UserWelcome = () => {
                     </div>
                 </div>
 
-                <div className='docs'>
-                    <h2>Recommended for you </h2>
-                    <div className='subs'>
-                        <div className='sub-docs'>
-                            <h3>Understand Your People Network</h3>
-                            <h4>Based on your role</h4>
-                            <Link to={`/users/org-chart`}> View Org Chart</Link>
-                        </div>
-                        <div className='sub-docs'>
-                            <h3>Showcase Your Best Self with Your Profile</h3>
-                            <h4>Based on your most popular actions</h4>
-                            <Link to={`/users/profile/${employeeId}`}> Manage Profile</Link>
-                        </div>
-
-                    </div>
-                </div>
 
                 
             </div>
