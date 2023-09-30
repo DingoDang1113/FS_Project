@@ -25,6 +25,12 @@ const UserWelcome = () => {
     // console.log(employee)
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let currentDate = new Date().toLocaleDateString(undefined, options);
+
+    let startDate = new Date(employee?.startDate);
+    let dateAfter30Days = new Date(startDate);
+    dateAfter30Days.setDate(startDate.getDate() + 30);
+    let dateAfter30DaysFormatted = dateAfter30Days.toLocaleDateString(undefined, options);
+
   
     // useEffect(() => {
     //     if(!employee) {
@@ -36,7 +42,11 @@ const UserWelcome = () => {
         dispatch(logoutUser(employeeId))
         }
         
+
+
     if (!userid && !employee) return <Redirect to={`/`} />
+
+
 
 
 
@@ -71,15 +81,19 @@ const UserWelcome = () => {
                     {/* <img className='img-home' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   /> */}
                 </div>
 
-                
-                
-
                 <div className='middle'> 
                     <div className='waiting'>
                         <h4>Awaiting Your Action</h4>
+                        <p>You're all caught up on your tasks</p>
                     </div>
                     <div className='waiting' >
                         <h4>Timely Suggestions</h4>
+                        {employee.jobCode === "NH000" ? 
+                        <span>Checklist for New Hires: 
+                            <li>Set up One on One meeting with your Manager</li>
+                            <li>Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} </li>
+                            
+                        </span> : ""}
                     </div>
                 </div>
 
