@@ -84,14 +84,14 @@ const UserWelcome = () => {
                 <div className='middle'> 
                     <div className='waiting'>
                         <h4>Awaiting Your Action</h4>
-                        <p>You're all caught up on your tasks</p>
+                        {employee.jobCode === "NH000" ? <p> Welcome to join us!  </p> : <p>You're all caught up on your tasks</p>}
+                        
                     </div>
                     <div className='waiting' >
                         <h4>Timely Suggestions</h4>
                         {employee.jobCode === "NH000" ? 
-                        <span>Checklist for New Hires: 
-                            <li>Set up One on One meeting with your Manager</li>
-                            <li>Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} </li>
+                        <span>
+                            Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} 
                             
                         </span> : ""}
                     </div>
