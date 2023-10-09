@@ -148,7 +148,7 @@ h1{
     top: 0;
     left: 0;
     width: 9.8%;   /* adjust width as needed */
-    height: 80%;
+    height: 20%;
     background-color: inherit;  
     overflow-x: hidden;
     transition: 0.5s;  /* smooth transition effect */
