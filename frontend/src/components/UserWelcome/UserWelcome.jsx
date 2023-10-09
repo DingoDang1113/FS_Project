@@ -27,6 +27,38 @@ const UserWelcome = () => {
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let currentDate = new Date().toLocaleDateString(undefined, options);
 
+    const getQuater = (date) => {
+        const month = date.getMonth();
+
+        if (month <= 4) {
+            return "Q1";
+        } else if (month <= 7) {
+            return "Q2";
+        } else if (month <= 10) {
+            return "Q3";
+        } else {
+            return "Q4";
+        }
+
+    }
+
+    const now = new Date();
+
+    const getMon = (Q) => {
+        if (Q === "Q1") {
+            return "Apr 30th";
+        } else if (Q === "Q2") {
+            return "Jul 31st"; 
+        } else if (Q === "Q3") {
+            return "Oct 31st"
+        } else {
+            return "Dec 31st"
+        }
+
+    }
+
+    
+
     let startDate = new Date(employee?.startDate);
     let dateAfter30Days = new Date(startDate);
     dateAfter30Days.setDate(startDate.getDate() + 30);
@@ -134,15 +166,15 @@ const UserWelcome = () => {
                         <div className='news'>
                         <img className='img-news' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
                             <span>
-                                <h4>Q3 Fitness Reimbursement</h4>
-                                <p className='news-text'>Due October 16th Please remember to submit your Q3 Fitness Reimbursement </p>
+                                <h4>{getQuater(now)} Fitness Reimbursement</h4>
+                                <p className='news-text'>Due {getMon(getQuater(now))} Please remember to submit your {getQuater(now)} Fitness Reimbursement </p>
                             </span>
                         </div>
                         <div className='news'>
                         <img className='img-news' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
                             <span>
-                                <h4>Q3 Student Loan Reimbursement</h4>
-                                <p className='news-text'>Due October 16th Please remember to submit your Q3 Student Loan Reimbursement </p>
+                                <h4>{getQuater(now)} Student Loan Reimbursement</h4>
+                                <p className='news-text'>Due {getMon(getQuater(now))} Please remember to submit your {getQuater(now)} Student Loan Reimbursement </p>
                             </span>
                         </div>
 
