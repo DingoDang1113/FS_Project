@@ -49,8 +49,6 @@ const UserWelcome = () => {
 
 
 
-
-
     return (
         <>
            
@@ -82,27 +80,19 @@ const UserWelcome = () => {
                     {/* <img className='img-home' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   /> */}
                 </div>
 
-                <div className='middle'> 
-                    <div className='waiting'>
-                        <h4>Awaiting Your Action</h4>
-                        {employee.jobCode === "NH000" ? <p> Welcome to join us!  </p> : <p>You're all caught up on your tasks</p>}
-                        
-                    </div>
-                    <div className='waiting' >
-                        <h4>Timely Suggestions</h4>
-                        {employee.jobCode === "NH000" ? 
-                        <span>
-                            Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} 
-                            
-                        </span> : ""}
-                    </div>
+
+                <div className='waiting'>
+                    <h4>Awaiting Your Action</h4>
+                    {employee.jobCode === "NH000" ? <p> Welcome to join us!  </p> : <p>You're all caught up on your tasks</p>}
+                    
                 </div>
+
 
                 <div className='docs'>
                     <h2>Recommended for you </h2>
                     <div className='subs'>
                         <div className='subs-container'>
-                                <img className='img-docs' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
+                                <img className='img-docs' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/ab987d3c-bdc9-4e87-9efe-3fb51bcf1e49'   />
                             <div className='sub-docs'>
                                 <h3>Understand Your People Network</h3>
                                 <h4>Based on your role</h4>
@@ -111,7 +101,7 @@ const UserWelcome = () => {
                         </div>
 
                         <div className='subs-container'>
-                            <img className='img-docs' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/0dd18694-351f-4d35-86fe-01b4b43ebb74'   />
+                            <img className='img-docs' src='https://github.com/DingoDang1113/FS_Project/assets/73029929/1e5f059b-6608-49c5-b61f-7b1f2b17277f'   />
                             <div className='sub-docs'>
                                 <h3>Showcase Your Best Self with Your Profile</h3>
                                 <h4>Based on your most popular actions</h4>
@@ -122,6 +112,14 @@ const UserWelcome = () => {
                     </div>
                 </div>
                 
+                <div className='waiting' >
+                    <h4>Timely Suggestions</h4>
+                    {employee.jobCode === "NH000" ? 
+                    <span>
+                        Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} 
+                        
+                    </span> : ""}
+                </div>
                 <div className='announcements'>
                     <h3>Announcements</h3>
                     <div className='contents'>
@@ -153,3 +151,4 @@ const UserWelcome = () => {
 }
 
 export default UserWelcome
+
