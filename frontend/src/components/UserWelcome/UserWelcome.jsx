@@ -49,6 +49,8 @@ const UserWelcome = () => {
 
 
 
+
+
     return (
         <>
            
@@ -81,11 +83,25 @@ const UserWelcome = () => {
                 </div>
 
 
-                <div className='waiting'>
-                    <h4>Awaiting Your Action</h4>
-                    {employee.jobCode === "NH000" ? <p> Welcome to join us!  </p> : <p>You're all caught up on your tasks</p>}
-                    
+                <div className='middle'>
+
+                    <div className='waiting'>
+                        <h4>Awaiting Your Action</h4>
+                        {employee.jobCode === "NH000" ? <p> Welcome to join us!  </p> : <p>You're all caught up on your tasks</p>}
+                        
+                    </div>
+                    <div className='waiting' >
+                        <h4>Timely Suggestions</h4>
+                        {employee.jobCode === "NH000" ? 
+                        <span>
+                            Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} 
+                            
+                        </span> : ""}
+                    </div>
+
+
                 </div>
+
 
 
                 <div className='docs'>
@@ -112,14 +128,6 @@ const UserWelcome = () => {
                     </div>
                 </div>
                 
-                <div className='waiting' >
-                    <h4>Timely Suggestions</h4>
-                    {employee.jobCode === "NH000" ? 
-                    <span>
-                        Enroll your Benefits plan(insurance & 401(K)) after {dateAfter30DaysFormatted} 
-                        
-                    </span> : ""}
-                </div>
                 <div className='announcements'>
                     <h3>Announcements</h3>
                     <div className='contents'>
@@ -151,4 +159,3 @@ const UserWelcome = () => {
 }
 
 export default UserWelcome
-
