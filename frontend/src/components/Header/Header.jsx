@@ -10,11 +10,12 @@ import Search from '../Search/Search';
 import {CgProfile} from 'react-icons/cg';
 import {SlEnvolopeLetter} from 'react-icons/sl';
 import {GiOrganigram} from 'react-icons/gi';
-import {FaSignOutAlt, FaLinkedinIn, FaGithub} from 'react-icons/fa';
+import {FaSignOutAlt, FaLinkedinIn, FaGithub, FaHamburger} from 'react-icons/fa';
 import {RiTeamLine} from 'react-icons/ri';
 import {MdDashboard} from 'react-icons/md';
 import {AiOutlineClose} from 'react-icons/ai'
 import {GiBoatPropeller} from 'react-icons/gi'
+
 
 
 
