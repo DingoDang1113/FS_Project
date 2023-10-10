@@ -17,6 +17,9 @@
         if user.job
             json.job_code_description user.job.job_code_description
         end
+        if user.level
+            json.level_description user.level.level_description
+        end
         if user.team_members
             json.team_members user.team_members.map {|member| member.employee_id}
             # json.manager_last_name @user.manager.last_name
