@@ -15,7 +15,10 @@ const Search = () => {
     useEffect(() => {
         fetchAllUsers()
         .then(users => {
-            const names = Object.values(users).map(employee => ({
+            // console.log('users', users)
+            const activeUsers = Object.values(users).filter(user => user.employeeStatus !== 'Terminated' && user.jobCode !== "NH000")
+            // console.log('activeUsers', activeUsers)
+            const names = activeUsers.map(employee => ({
                 name: `${employee.firstName} ${employee.lastName}`,
                 url:  `/users/profile/${employee.employeeId}`
                 
