@@ -9,9 +9,13 @@
         json.position_id user.position_id
         json.manager_id user.manager_id
         json.start_date user.start_date
+        json.termination_date user.termination_date
 
         if user.position
             json.position_description user.position.position_description
+        end
+        if user.job
+            json.job_code_description user.job.job_code_description
         end
         if user.team_members
             json.team_members user.team_members.map {|member| member.employee_id}

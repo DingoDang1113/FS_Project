@@ -20,7 +20,7 @@ h3 {
 .New-hires {
     margin: 2% auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 5px;
     width: 80%;
     border-collapse: collapse;
@@ -31,7 +31,7 @@ h3 {
 .Offboard-employees {
     margin: 2% auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* Adjusted to 3 columns since Level was removed */
+    grid-template-columns: repeat(5, 1fr);  /* Adjusted to 4 columns since Level was removed */
     gap: 5px;
     width: 80%;
     border-collapse: collapse;
