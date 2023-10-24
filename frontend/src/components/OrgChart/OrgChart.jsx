@@ -69,9 +69,6 @@ const OrgChart = () =>{
     // console.log('CHECH',ds)
     if (!ds) return null  
 
-
-
-
     return (
 
         <>
