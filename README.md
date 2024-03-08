@@ -83,8 +83,9 @@ weekday also provides a live org-chart visualization to mirror the current repor
 
 
 
-
-
-
-
+# How start the project (command line)
+ - bundle install 
+ - rails s 
+ - cd to frontend: npm start 
+ 
 
