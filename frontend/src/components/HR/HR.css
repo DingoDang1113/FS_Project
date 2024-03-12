@@ -31,7 +31,8 @@ h3 {
 .Offboard-employees {
     margin: 2% auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);  /* Adjusted to 4 columns since Level was removed */
+    grid-template-columns: repeat(5, 1fr);
+    /* Adjusted to 4 columns since Level was removed */
     gap: 5px;
     width: 80%;
     border-collapse: collapse;
@@ -54,12 +55,14 @@ h3 {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
-    grid-column: 2;  /* Position the name links in the second column */
+    grid-column: 2;
+    /* Position the name links in the second column */
     border: 1px solid #e0e0e0;
 
 }
 
-.employee-row input[type="text"], .employee-row input[type="date"] {
+.employee-row input[type="text"],
+.employee-row input[type="date"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #e0e0e0;
@@ -69,6 +72,7 @@ h3 {
     transition: background-color 0.3s;
 }
 
-.employee-row input[type="text"]:hover, .employee-row input[type="date"]:hover {
+.employee-row input[type="text"]:hover,
+.employee-row input[type="date"]:hover {
     background-color: #f5f5f5;
 }
