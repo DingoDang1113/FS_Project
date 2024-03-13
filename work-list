@@ -11,5 +11,10 @@
 <!-- 6. add successful message when update the form 
 -->
 
-3. add export on Manager tab to export employees 
+<!-- 3. add export on Manager tab to export employees  -->
+
+4. CRUD - for job code, position
+5. routes for each different company 
+6. Add Photos/Comp info for each employee
+7. Add recruiting module
 
