@@ -33,8 +33,8 @@ ActiveRecord::Base.connection.reset_pk_sequence!('user_effective_dates')
 
 # Seed data for Companies
 companies = [
-  { company_code: 'MFLO', company_name: 'May Flower LLC' },
-  { company_code: 'AAPP', company_name: 'Aapp Inc' },
+  { company_code: 'WSCO', company_name: 'Westeros Coporation' },
+  { company_code: 'IVI', company_name: 'Ice Vanguard Innovations' },
 ]
 companies.each do |company|
   Company.create!(company)
@@ -74,18 +74,30 @@ end
 
 # Seed data for Org Hierarchies
 org_hierarchies = [
-  { position_code: 'P001', position_description: 'CEO', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010101', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CEO' },
-  { position_code: 'P002', position_description: 'CFO', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010102', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CFO' },
-  { position_code: 'P003', position_description: 'CTO', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010103', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CTO' },
-  { position_code: 'P004', position_description: 'CHRO', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CHRO' },
-  { position_code: 'P013', position_description: 'Director - TECH', mgr_position_code: 'P003', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPMENT' },
-  { position_code: 'P123', position_description: 'Manager - TECH', mgr_position_code: 'P013', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPMENT' },
-  { position_code: 'P223', position_description: 'Manager - TECH', mgr_position_code: 'P013', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010313', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'FULL STACK' },
-  { position_code: 'P014', position_description: 'Director - HR', mgr_position_code: 'P004', org_level_one_id: '001', org_level_two_id: '00104', org_level_three_id: '0010314', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'HR', org_level_three_description: 'HRBP - TECH' },
-  { position_code: 'P131', position_description: 'Developer', mgr_position_code: 'P123', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPEMENT' },
-  { position_code: 'P202', position_description: 'Manager - FIN', mgr_position_code: 'P002', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010102', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'FIN', org_level_three_description: 'FP&A' },
-  { position_code: 'P999', position_description: 'New Hire', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'NEWHIRE', org_level_three_description: 'NEWHIRE' },
-  { position_code: 'P666', position_description: 'Terms', mgr_position_code: 'P001', org_level_one_id: '000', org_level_two_id: '0000', org_level_three_id: '00000', org_level_one_description: 'MAY FLOWER', org_level_two_description: 'TERMS', org_level_three_description: 'TERMS' },
+  { position_code: 'P001', position_description: 'Chief Executive Officer (King)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010101', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CEO' },
+  { position_code: 'P002', position_description: 'Chief Financial Officer (Master of Coin)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010102', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CFO' },
+  { position_code: 'P003', position_description: 'Chief Technology Officer (Master of Ships)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010103', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CTO' },
+  { position_code: 'P004', position_description: 'Chief Human Resources Officer (Lord Commander of the Kingsguard)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CHRO' },
+  { position_code: 'P005', position_description: 'Chief Operations Officer (Hand of the King)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF COO' },
+  { position_code: 'P006', position_description: 'Chief Security Officer (Lord Commander of the Kingsguard)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CSO' },
+  { position_code: 'P007', position_description: 'General Council (Mater of Laws)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF GC' },
+  { position_code: 'P008', position_description: 'Chief Communications Officer (Master of Whisperers)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CCO' },
+  { position_code: 'P009', position_description: 'Chief Science Officer (Grand Master)', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF CSO' },
+ 
+  { position_code: 'P010', position_description: 'CEO of the North', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF the North' },
+  { position_code: 'P011', position_description: 'CEO of the West', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF the West' },
+  { position_code: 'P012', position_description: 'CEO of the Eyrie', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF the Eyrie' },
+  { position_code: 'P013', position_description: 'CEO of the Targaryen', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010104', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'EXECUTIVE', org_level_three_description: 'OFFICE OF the Targaryen' },
+ 
+  { position_code: 'P304', position_description: 'Director - TECH', mgr_position_code: 'P003', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPMENT' },
+  { position_code: 'P303', position_description: 'Manager - TECH', mgr_position_code: 'P304', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPMENT' },
+  { position_code: 'P302', position_description: 'Manager - TECH', mgr_position_code: 'P304', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010313', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'TECH', org_level_three_description: 'FULL STACK' },
+  { position_code: 'P404', position_description: 'Director - HR', mgr_position_code: 'P004', org_level_one_id: '001', org_level_two_id: '00104', org_level_three_id: '0010314', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'HR', org_level_three_description: 'HRBP - TECH' },
+  { position_code: 'P301', position_description: 'Developer', mgr_position_code: 'P302', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'TECH', org_level_three_description: 'DEVELOPEMENT' },
+  { position_code: 'P204', position_description: 'Director - FIN', mgr_position_code: 'P002', org_level_one_id: '001', org_level_two_id: '00101', org_level_three_id: '0010102', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'FIN', org_level_three_description: 'FP&A' },
+  
+  { position_code: 'P999', position_description: 'New Hire', mgr_position_code: 'P001', org_level_one_id: '001', org_level_two_id: '00103', org_level_three_id: '0010303', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'NEWHIRE', org_level_three_description: 'NEWHIRE' },
+  { position_code: 'P666', position_description: 'Terms', mgr_position_code: 'P001', org_level_one_id: '000', org_level_two_id: '0000', org_level_three_id: '00000', org_level_one_description: 'Westeros Coporation', org_level_two_description: 'TERMS', org_level_three_description: 'TERMS' },
 
 
 
@@ -99,14 +111,23 @@ end
 
 
 users = [
-  { first_name: 'Francis', middle_name: '', last_name: 'Geary', employee_status: 'Active', employee_id: 'E1711', password: '123456',job_code: 'EXE01', start_date:'2021-08-14', level_code: '501', company_code: 'MFLO', position_id: 'P001' },
-  { first_name: 'Marcus', middle_name: '', last_name: 'Geary', employee_status: 'Active', employee_id: 'R4402', password: '123456',job_code: 'EXE02', start_date:'2021-08-14',level_code: '501', company_code: 'MFLO', position_id: 'P002', manager_id: 'E1711'},
-  { first_name: 'Darren', middle_name: '', last_name: 'Eid', employee_status: 'Active', employee_id: 'U4507', password: '123456',job_code: 'IT004', start_date:'2021-08-14',level_code: '401', company_code: 'MFLO', position_id: 'P013',manager_id: 'E1711' },
-  { first_name: 'Taylor', middle_name: '', last_name: 'Musolf', employee_status: 'Active', employee_id: 'T9413', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P123'},
-  { first_name: 'Diego', middle_name: '', last_name: 'Chavez', employee_status: 'Active', employee_id: 'W1529', password: '123456',job_code: 'IT003', start_date:'2021-08-14',level_code: '301', company_code: 'MFLO', position_id: 'P223'},
-  { first_name: 'HR', middle_name: '', last_name: 'HR', employee_status: 'Active', employee_id: 'G4333', password: '123456',job_code: 'HR003', start_date:'2023-05-27',level_code: '401', company_code: 'MFLO', position_id: 'P014', manager_id: 'R4402'},
-  { first_name: 'Shali', middle_name: '', last_name: 'Peng', employee_status: 'Active', employee_id: 'P8925', password: '123456',job_code: 'IT001', start_date:'2023-08-14',level_code: '101', company_code: 'MFLO', position_id: 'P131'},
-  { first_name: 'A', middle_name: '', last_name: 'Goodman', employee_status: 'Active', employee_id: 'R1234', password: '123456',job_code: 'IT001', start_date:'2021-08-14',termination_date: '2023-08-24', level_code: '301', company_code: 'MFLO', position_id: 'P223'},
+  { first_name: 'Robert', middle_name: '', last_name: 'Baratheon', employee_status: 'Active', employee_id: 'E1711', password: '123456',job_code: 'EXE01', start_date:'2011-04-17', level_code: '501', company_code: 'WSCO', position_id: 'P001' },
+  { first_name: 'Petyr', middle_name: '', last_name: 'Baelish', employee_status: 'Active', employee_id: 'W1529', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P002',manager_id: 'E1711'},
+  { first_name: 'George', middle_name: 'R.R', last_name: 'Martin', employee_status: 'Active', employee_id: 'A0101', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P004', manager_id: 'E1711'},
+  { first_name: 'Stannis', middle_name: '', last_name: 'Baratheon', employee_status: 'Active', employee_id: 'G4333', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P003', manager_id: 'E1711'},
+  { first_name: 'Jon', middle_name: '', last_name: 'Arryn', employee_status: 'Active', employee_id: 'T9413', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P005',manager_id: 'E1711'},
+  { first_name: 'Barristan', middle_name: '', last_name: 'Selmy', employee_status: 'Active', employee_id: 'G4682', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P006', manager_id: 'E1711'},
+  { first_name: 'Renly', middle_name: '', last_name: 'Baratheon', employee_status: 'Active', employee_id: 'E1234', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',termination_date: '', level_code: '501', company_code: 'WSCO', position_id: 'P007', manager_id: 'E1711'},
+  { first_name: 'Varys', middle_name: '', last_name: 'Spider', employee_status: 'Active', employee_id: 'R1357', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',termination_date: '', level_code: '501', company_code: 'WSCO', position_id: 'P008',manager_id: 'E1711'},
+  { first_name: 'Pycelle', middle_name: '', last_name: 'Master', employee_status: 'Active', employee_id: 'R1234', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',termination_date: '', level_code: '501', company_code: 'WSCO', position_id: 'P009',manager_id: 'E1711'},
+
+  { first_name: 'Eddard', middle_name: 'Ned', last_name: 'Stark', employee_status: 'Active', employee_id: 'R4402', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P010', manager_id: 'E1711'},
+  { first_name: 'Tywin', middle_name: '', last_name: 'Lannister', employee_status: 'Active', employee_id: 'U4507', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P011',manager_id: 'E1711' },
+  { first_name: 'Lysa', middle_name: '', last_name: 'Arryn', employee_status: 'Active', employee_id: 'W7821', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P012',manager_id: 'E1711' },
+  { first_name: 'Viserys', middle_name: '', last_name: 'Targaryen', employee_status: 'Active', employee_id: 'W1357', password: '123456',job_code: 'EXE02', start_date:'2011-04-17',level_code: '501', company_code: 'WSCO', position_id: 'P013',manager_id: 'E1711' },
+
+
+  { first_name: 'Shali', middle_name: '', last_name: 'Peng', employee_status: 'Active', employee_id: 'P8925', password: '123456',job_code: 'IT001', start_date:'2023-10-01',level_code: '101', company_code: 'WSCO', position_id: 'P301'},
 
 
 
