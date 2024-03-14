@@ -1,5 +1,10 @@
 class Api::JobsController < ApplicationController
 
+    def index 
+        @jobs = Job.all
+        render json: @jobs
+    end
+
   
     def show 
         @job = Job.find_by(job_code: params[:job_code]) 
@@ -10,11 +15,9 @@ class Api::JobsController < ApplicationController
         end
       end
   
-      def create
+    def create
         @job = Job.new(job_params)
 
-
-        
         if @job.save
           render :show
         else
@@ -22,7 +25,7 @@ class Api::JobsController < ApplicationController
         end
       end
   
-      def update
+    def update
         @job = Job.find_by(job_code: params[:job_code])
         if @job && @job.update(job_params)
           render :show
@@ -32,16 +35,25 @@ class Api::JobsController < ApplicationController
       end
   
       def destroy 
-        @job = nil 
+        @job = Job.find_by(job_code: params[:job_code])
+        if @job 
+            @job.destroy
+            render json: {message: "Job #{@job} has been deleted"  }, status: 200
+        else
+            render json: {errors: 'job not found'}, status: 404
+
+        end
+
       end
     
   
   
       private
       def job_params
-        # frontend ideally wants to dispatch { employee_id: 'employee_id', password: 'password'}
-        # backend expects { user: { employee_id: 'employee_id', password: 'password' }}
-        params.require(:job).permit(:job_code,:job_description,)
+        # frontend ideally wants to dispatch { job_code: 'job_code', }
+        # backend expects { job: { job_code 'job_code', }}
+        # params.permit(:job_code,:job_code_description,:job_function_description,:job_function_code,)
+        params.require(:job).permit(:job_code,:job_code_description,:job_function_description,:job_function_code,)
       end
 
     end  
