@@ -10,6 +10,7 @@ import NotFound from './components/NotFound/NotFound'
 import OrgChart from './components/OrgChart/OrgChart';
 import HR from './components/HR/HR';
 import Manager from './components/Manager/Manager';
+import Job from './components/Job/Job';
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/users/new' component={UserForm} />
         <Route path={`/users/home`} component={UserWelcome} /> 
         <Route path='/' component={LoginForm} exact />
+        <Route path={`/jobs`} component={Job} /> 
         <Route component={NotFound} />
         <Redirect to='/'/> 
       </Switch>

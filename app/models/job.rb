@@ -11,7 +11,7 @@
 #  updated_at               :datetime         not null
 #
 class Job < ApplicationRecord
-    validates :job_code, length:{minimum: 5},  presence:true, uniqueness: true, 
+    validates :job_code, length:{minimum: 5},  presence:true, uniqueness: true
     validates :job_code_description, :job_function_description,:job_function_code,  presence: true
 
     has_many :users,primary_key: :job_code, foreign_key: :job_code, dependent: :destroy
